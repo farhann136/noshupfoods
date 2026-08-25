@@ -3,27 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noshup Foods · Fresh bakery</title>
-  <!-- Font Awesome for icons -->
+  <title>Noshup Foods · Purple bakery</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
     }
 
     body {
-      background: #fef6f0;
-      color: #2d1f1a;
+      background: #f8f2fc;
+      color: #24182b;
       line-height: 1.5;
+      overflow-x: hidden;
     }
 
     .wrapper {
       max-width: 1300px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1.8rem;
+    }
+
+    /* ---------- animations ---------- */
+    @keyframes floatGlow {
+      0% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-8px) scale(1.02); }
+      100% { transform: translateY(0px) scale(1); }
+    }
+
+    @keyframes pulseSoft {
+      0% { opacity: 0.8; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1.02); }
+      100% { opacity: 0.8; transform: scale(0.98); }
+    }
+
+    @keyframes slideUp {
+      0%, 14% { transform: translateY(0); }
+      17%, 31% { transform: translateY(-5.2rem); }
+      34%, 48% { transform: translateY(-10.4rem); }
+      51%, 65% { transform: translateY(-15.6rem); }
+      68%, 82% { transform: translateY(-20.8rem); }
+      85%, 100% { transform: translateY(-26rem); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    @keyframes tiltIn {
+      0% { opacity: 0; transform: rotate(-2deg) scale(0.9); }
+      100% { opacity: 1; transform: rotate(0) scale(1); }
+    }
+
+    .animate-float {
+      animation: floatGlow 4s ease-in-out infinite;
+    }
+
+    .animate-pulse-soft {
+      animation: pulseSoft 3s ease-in-out infinite;
     }
 
     /* ---------- header ---------- */
@@ -31,61 +71,89 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 0;
+      padding: 1.4rem 0;
       flex-wrap: wrap;
-      border-bottom: 1px solid #f0d9ce;
+      border-bottom: 2px solid #d9c2e6;
+      backdrop-filter: blur(4px);
     }
 
     .logo {
-      font-size: 2rem;
+      font-size: 2.4rem;
       font-weight: 700;
       letter-spacing: -0.5px;
-      color: #8b4b3a;
+      background: linear-gradient(145deg, #6b3b7a, #9f5bb0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 12px rgba(120, 60, 150, 0.25);
     }
     .logo span {
-      color: #c7795a;
       font-weight: 300;
+      background: none;
+      color: #7b4c8a;
     }
 
     .nav-icons a {
-      margin-left: 1.5rem;
-      color: #4f342a;
+      margin-left: 1.8rem;
+      color: #3f2949;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       transition: 0.2s;
-      font-size: 1rem;
+      font-size: 1.05rem;
+      position: relative;
     }
     .nav-icons a i {
-      margin-right: 0.3rem;
+      margin-right: 0.4rem;
+      color: #8b5a9e;
+    }
+    .nav-icons a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #9b5eb3;
+      transition: 0.25s;
+    }
+    .nav-icons a:hover::after {
+      width: 100%;
     }
     .nav-icons a:hover {
-      color: #b35e3e;
+      color: #4f2860;
     }
 
-    /* ---------- hero + text slider ---------- */
+    /* ---------- hero + slider (purple) ---------- */
     .hero {
-      margin: 2.8rem 0 3.5rem;
+      margin: 2.8rem 0 3.2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
+      position: relative;
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 8vw, 4.2rem);
-      font-weight: 700;
-      color: #3a241d;
+      font-size: clamp(2.6rem, 9vw, 4.6rem);
+      font-weight: 800;
+      color: #321f3b;
       line-height: 1.2;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.4rem;
+      background: linear-gradient(135deg, #4f2a5e, #9155a8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: tiltIn 0.8s ease-out;
     }
     .hero-title i {
-      color: #c7795a;
-      margin: 0 0.3rem;
+      background: none;
+      color: #b074c4;
+      margin: 0 0.2rem;
+      filter: drop-shadow(0 0 6px #c394d6);
     }
 
-    /* text slider (animated) */
     .slider-container {
-      height: 4.6rem;
+      height: 5.4rem;
       overflow: hidden;
       margin: 1.2rem 0 0.8rem;
       width: 100%;
@@ -96,156 +164,189 @@
     .slider-track {
       display: flex;
       flex-direction: column;
-      animation: slideUp 12s ease-in-out infinite;
-      line-height: 1.3;
+      animation: slideUp 15s ease-in-out infinite;
+      line-height: 1.4;
     }
 
     .slider-item {
-      font-size: clamp(1.6rem, 5vw, 2.8rem);
-      font-weight: 300;
-      color: #5d382b;
-      background: #fae8df;
-      padding: 0.4rem 2.2rem;
-      border-radius: 60px;
-      backdrop-filter: blur(2px);
-      box-shadow: 0 6px 18px rgba(180, 100, 70, 0.08);
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 500;
+      color: #301b38;
+      background: #ede0f5;
+      padding: 0.5rem 2.8rem;
+      border-radius: 80px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 12px 28px rgba(110, 50, 140, 0.15);
       white-space: nowrap;
       margin: 0.5rem 0;
       display: inline-block;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
+      border: 1px solid #d9b6e8;
+      transition: 0.2s;
     }
 
     .slider-item i {
-      color: #b35e3e;
-      margin: 0 0.4rem;
-    }
-
-    @keyframes slideUp {
-      0%, 15% { transform: translateY(0); }
-      20%, 35% { transform: translateY(-4.8rem); }
-      40%, 55% { transform: translateY(-9.6rem); }
-      60%, 75% { transform: translateY(-14.4rem); }
-      80%, 95% { transform: translateY(-19.2rem); }
-      100% { transform: translateY(-24rem); }
+      color: #8b4b9e;
+      margin: 0 0.5rem;
+      filter: drop-shadow(0 0 4px #c393d6);
     }
 
     .hero-sub {
-      margin-top: 1.8rem;
-      font-size: 1.2rem;
-      color: #67493b;
-      background: rgba(255, 235, 225, 0.7);
-      padding: 0.6rem 2rem;
-      border-radius: 40px;
-      backdrop-filter: blur(4px);
-      display: inline-block;
-      border: 1px solid #f0cfbc;
+      margin-top: 2rem;
+      font-size: 1.25rem;
+      color: #402a4b;
+      background: rgba(225, 200, 240, 0.6);
+      padding: 0.6rem 2.6rem;
+      border-radius: 60px;
+      backdrop-filter: blur(6px);
+      border: 1px solid #d4b0e6;
+      animation: floatGlow 5s ease-in-out infinite;
+      font-weight: 500;
+    }
+    .hero-sub i {
+      color: #a15eb8;
     }
 
-    /* ---------- product grid ---------- */
+    /* ---------- section title ---------- */
     .section-title {
-      font-size: 2.2rem;
-      font-weight: 600;
-      margin: 3rem 0 1.8rem;
-      color: #3f2920;
-      border-left: 8px solid #c7795a;
-      padding-left: 1.2rem;
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin: 3.5rem 0 1.8rem;
+      color: #3b2247;
+      border-left: 10px solid #b074c4;
+      padding-left: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .section-title i {
+      color: #a25db9;
+      font-size: 2rem;
     }
 
+    /* ---------- bakery grid (purple glow) ---------- */
     .bakery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2.4rem;
       margin-bottom: 3rem;
     }
 
     .bakery-card {
-      background: white;
-      border-radius: 2.5rem 1rem 2.5rem 1rem;
-      padding: 1.8rem 1rem 1.5rem;
-      box-shadow: 0 10px 30px -8px rgba(130, 70, 50, 0.12);
-      transition: 0.25s ease-in-out;
+      background: rgba(255, 250, 255, 0.8);
+      backdrop-filter: blur(4px);
+      border-radius: 3rem 1.2rem 3rem 1.2rem;
+      padding: 2rem 1rem 1.8rem;
+      box-shadow: 0 12px 30px -6px rgba(100, 50, 130, 0.2);
+      transition: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       text-align: center;
-      border: 1px solid #f7ded1;
+      border: 1px solid #e1c8ed;
+      animation: floatGlow 5s ease-in-out infinite;
+      animation-delay: calc(var(--i, 0) * 0.2s);
     }
+    .bakery-card:nth-child(1) { --i: 0; }
+    .bakery-card:nth-child(2) { --i: 1; }
+    .bakery-card:nth-child(3) { --i: 2; }
+    .bakery-card:nth-child(4) { --i: 3; }
 
     .bakery-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 36px -10px rgba(150, 80, 50, 0.2);
-      border-color: #dbaa92;
+      transform: translateY(-12px) scale(1.01);
+      box-shadow: 0 24px 44px -10px #7b4a8f;
+      border-color: #bf8fd6;
+      background: white;
     }
 
     .bakery-card i {
-      font-size: 3.8rem;
-      color: #b35e3e;
-      background: #f6e3d9;
-      padding: 0.7rem;
+      font-size: 4.2rem;
+      color: #7d4596;
+      background: #efe2f7;
+      padding: 0.8rem;
       border-radius: 60px;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
       display: inline-block;
+      transition: 0.3s;
+      box-shadow: 0 0 0 2px #d7b6e8;
+    }
+    .bakery-card:hover i {
+      background: #dbbcf0;
+      transform: rotate(4deg) scale(1.05);
+      box-shadow: 0 0 0 4px #c79adb;
     }
 
     .bakery-card h3 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: #3c241b;
-      margin-bottom: 0.3rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2f1b38;
+      margin-bottom: 0.4rem;
     }
-
     .bakery-card p {
-      color: #7a5b4b;
+      color: #573f64;
       font-size: 1rem;
-      margin: 0.3rem 0 0.7rem;
+      margin: 0.4rem 0 0.9rem;
     }
 
     .badge {
-      background: #efe0d7;
-      padding: 0.2rem 1rem;
-      border-radius: 30px;
+      background: #dcc3ea;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
       font-size: 0.8rem;
       font-weight: 600;
-      color: #5b3729;
+      color: #3c2249;
       letter-spacing: 0.3px;
       display: inline-block;
+      box-shadow: inset 0 0 0 1px #c096d6;
     }
 
-    /* extra row : more bakery items */
+    /* extra items row (purple) */
     .extra-items {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.2rem 1.8rem;
-      background: #fcf0e9;
-      padding: 1.8rem 2rem;
-      border-radius: 80px 20px 80px 20px;
-      margin: 1.5rem 0 3rem;
+      gap: 1.2rem 2rem;
+      background: #ede0f5;
+      padding: 2rem 2.5rem;
+      border-radius: 100px 30px 100px 30px;
+      margin: 1.8rem 0 3.2rem;
+      border: 1px solid #d0afdf;
+      box-shadow: 0 10px 24px rgba(110, 50, 140, 0.1);
+      animation: pulseSoft 5s ease-in-out infinite;
     }
 
     .extra-items span {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       background: white;
-      padding: 0.3rem 1.4rem;
-      border-radius: 40px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-      color: #3a271f;
+      padding: 0.4rem 1.8rem;
+      border-radius: 60px;
+      box-shadow: 0 4px 12px rgba(90, 40, 110, 0.06);
+      color: #2d1838;
       font-weight: 500;
+      border: 1px solid #dbbdee;
+      transition: 0.2s;
+    }
+    .extra-items span:hover {
+      background: #f6edfc;
+      transform: scale(1.04);
+      border-color: #b884d0;
     }
     .extra-items i {
-      color: #b35e3e;
-      margin-right: 0.3rem;
+      color: #8d4fa8;
+      margin-right: 0.5rem;
     }
 
-    /* ---------- footer ---------- */
+    /* ---------- footer (purple tone) ---------- */
     footer {
-      margin-top: 3.5rem;
-      background: #281e1a;
-      color: #eeded6;
-      border-radius: 40px 40px 20px 20px;
-      padding: 2.5rem 1.8rem 1.8rem;
+      margin-top: 3.8rem;
+      background: #271f2e;
+      color: #e5d4ed;
+      border-radius: 60px 60px 30px 30px;
+      padding: 2.8rem 1.8rem 2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       position: relative;
+      box-shadow: 0 -4px 30px rgba(100, 40, 130, 0.2);
+      border-top: 2px solid #7a4b8e;
     }
 
     .footer-content {
@@ -253,79 +354,87 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.6rem;
     }
 
     .footer-whatsapp {
       background: #25D366;
       color: white;
-      padding: 0.75rem 2.2rem;
-      border-radius: 60px;
-      font-size: 1.3rem;
-      font-weight: 500;
+      padding: 0.9rem 2.8rem;
+      border-radius: 80px;
+      font-size: 1.4rem;
+      font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1rem;
       text-decoration: none;
-      transition: 0.2s;
-      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
-      margin-bottom: 0.6rem;
+      transition: 0.25s;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      margin-bottom: 0.4rem;
+      border: 1px solid #8ce0a8;
     }
 
     .footer-whatsapp i {
-      font-size: 1.8rem;
+      font-size: 2rem;
+      filter: drop-shadow(0 0 6px #b3ffd0);
     }
 
     .footer-whatsapp:hover {
-      background: #1fbf5a;
-      transform: scale(1.02);
+      background: #1ebd5a;
+      transform: scale(1.04) translateY(-3px);
+      box-shadow: 0 14px 30px rgba(37, 211, 102, 0.5);
     }
 
     .footer-credit {
-      margin-top: 1.8rem;
-      font-size: 1rem;
-      color: #bb9f91;
-      letter-spacing: 0.4px;
-      border-top: 1px solid #4d352b;
-      padding-top: 1.5rem;
+      margin-top: 2rem;
+      font-size: 1.05rem;
+      color: #b99ec9;
+      border-top: 2px solid #4c3657;
+      padding-top: 1.6rem;
       width: 100%;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.5rem 0.8rem;
+      gap: 0.8rem 1.8rem;
+      align-items: center;
     }
 
     .footer-credit a {
-      color: #f0cfbc;
+      color: #d9bde8;
       text-decoration: none;
       font-weight: 500;
       transition: 0.2s;
       border-bottom: 1px dotted transparent;
     }
-
     .footer-credit a:hover {
       color: #ffffff;
-      border-bottom-color: #c7795a;
+      border-bottom-color: #b882d0;
     }
 
-    .footer-credit .ffsoft-link {
-      font-weight: 600;
-      background: #3b2b24;
-      padding: 0.1rem 1rem;
-      border-radius: 40px;
-      margin-left: 0.3rem;
+    .ffsoft-link {
+      font-weight: 700;
+      background: #3a2b44;
+      padding: 0.15rem 1.4rem;
+      border-radius: 60px;
+      margin-left: 0.2rem;
+      border: 1px solid #7d4d93;
+      transition: 0.2s;
     }
-
-    .footer-credit .ffsoft-link i {
-      margin-right: 0.2rem;
+    .ffsoft-link i {
+      margin-right: 0.3rem;
+      color: #c393d6;
+    }
+    .ffsoft-link:hover {
+      background: #4f3560;
+      border-color: #b074c4;
     }
 
     /* small */
-    @media (max-width: 500px) {
+    @media (max-width: 550px) {
       .slider-item {
         white-space: normal;
-        font-size: 1.2rem;
-        padding: 0.3rem 1rem;
+        font-size: 1.3rem;
+        padding: 0.3rem 1.2rem;
       }
       .hero-title {
         font-size: 2.2rem;
@@ -342,110 +451,108 @@
   </style>
 </head>
 <body>
-  <div class="wrapper">
+<div class="wrapper">
 
-    <!-- header -->
-    <header class="top-bar">
-      <div class="logo">noshup<span>foods</span></div>
-      <div class="nav-icons">
-        <a href="#"><i class="fas fa-bread-slice"></i> Bakery</a>
-        <a href="#"><i class="fas fa-cake"></i> Cakes</a>
-        <a href="#"><i class="fas fa-phone-alt"></i> Contact</a>
-      </div>
-    </header>
+  <!-- header -->
+  <header class="top-bar">
+    <div class="logo">noshup<span>foods</span></div>
+    <div class="nav-icons">
+      <a href="#"><i class="fas fa-crown"></i> Bakery</a>
+      <a href="#"><i class="fas fa-cake"></i> Cakes</a>
+      <a href="#"><i class="fas fa-concierge-bell"></i> Contact</a>
+    </div>
+  </header>
 
-    <!-- hero + slider -->
-    <section class="hero">
-      <h1 class="hero-title">
-        <i class="fas fa-seedling"></i> fresh · baked <i class="fas fa-heart" style="color:#bc6c4c;"></i>
-      </h1>
-      <div class="slider-container">
-        <div class="slider-track">
-          <div class="slider-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
-          <div class="slider-item"><i class="fas fa-cookie-bite"></i>  nan khatai · crisp</div>
-          <div class="slider-item"><i class="fas fa-mug-saucer"></i>  tea time specials</div>
-          <div class="slider-item"><i class="fas fa-cake-candles"></i>  custom cupcakes</div>
-          <div class="slider-item"><i class="fas fa-utensils"></i>  fresh daily</div>
-          <div class="slider-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div> <!-- seamless loop -->
-        </div>
+  <!-- hero + slider -->
+  <section class="hero">
+    <h1 class="hero-title">
+      <i class="fas fa-seedling"></i> purple · fresh <i class="fas fa-heart" style="color:#b074c4;"></i>
+    </h1>
+    <div class="slider-container">
+      <div class="slider-track">
+        <div class="slider-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
+        <div class="slider-item"><i class="fas fa-cookie-bite"></i>  nan khatai · crisp</div>
+        <div class="slider-item"><i class="fas fa-mug-saucer"></i>  tea time delights</div>
+        <div class="slider-item"><i class="fas fa-cake-candles"></i>  custom cupcakes</div>
+        <div class="slider-item"><i class="fas fa-utensils"></i>  daily fresh</div>
+        <div class="slider-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
       </div>
-      <div class="hero-sub">
-        <i class="fas fa-store"></i>  handmade with love · since 2016
-      </div>
-    </section>
+    </div>
+    <div class="hero-sub">
+      <i class="fas fa-star"></i>  baked with passion · since 2016  <i class="fas fa-star"></i>
+    </div>
+  </section>
 
-    <!-- featured bakery items -->
-    <h2 class="section-title"><i class="fas fa-star" style="color:#c7795a; margin-right:0.6rem;"></i> signature treats</h2>
-    <div class="bakery-grid">
-      <div class="bakery-card">
-        <i class="fas fa-cake"></i>
-        <h3>fresh cakes</h3>
-        <p>vanilla, chocolate, red velvet</p>
-        <span class="badge">eggless option</span>
-      </div>
-      <div class="bakery-card">
-        <i class="fas fa-cookie"></i>
-        <h3>nan khatai</h3>
-        <p>traditional, nutty, melt-in-mouth</p>
-        <span class="badge">❤️ bestseller</span>
-      </div>
-      <div class="bakery-card">
-        <i class="fas fa-cupcake"></i>
-        <h3>cupcakes</h3>
-        <p>buttercream, fruity, sprinkles</p>
-        <span class="badge">12 flavours</span>
-      </div>
-      <div class="bakery-card">
-        <i class="fas fa-bread"></i>
-        <h3>artisan breads</h3>
-        <p>sourdough, multigrain, brioche</p>
-        <span class="badge">fresh baked</span>
+  <!-- featured -->
+  <h2 class="section-title"><i class="fas fa-crown"></i> signature treats</h2>
+  <div class="bakery-grid">
+    <div class="bakery-card">
+      <i class="fas fa-cake"></i>
+      <h3>fresh cakes</h3>
+      <p>vanilla, chocolate, red velvet</p>
+      <span class="badge">eggless option</span>
+    </div>
+    <div class="bakery-card">
+      <i class="fas fa-cookie"></i>
+      <h3>nan khatai</h3>
+      <p>traditional, nutty, melt-in-mouth</p>
+      <span class="badge">❤️ bestseller</span>
+    </div>
+    <div class="bakery-card">
+      <i class="fas fa-cupcake"></i>
+      <h3>cupcakes</h3>
+      <p>buttercream, fruity, sprinkles</p>
+      <span class="badge">12 flavours</span>
+    </div>
+    <div class="bakery-card">
+      <i class="fas fa-bread"></i>
+      <h3>artisan breads</h3>
+      <p>sourdough, multigrain, brioche</p>
+      <span class="badge">fresh baked</span>
+    </div>
+  </div>
+
+  <!-- extra items -->
+  <div class="extra-items">
+    <span><i class="fas fa-donut"></i> glazed donuts</span>
+    <span><i class="fas fa-pie"></i> fruit pies</span>
+    <span><i class="fas fa-muffin"></i> muffins</span>
+    <span><i class="fas fa-biscuit"></i> cookies</span>
+    <span><i class="fas fa-croissant"></i> croissants</span>
+    <span><i class="fas fa-cheese"></i> cheese danish</span>
+  </div>
+
+  <!-- footer -->
+  <footer>
+    <div class="footer-content">
+      <a href="https://wa.me/923228837335?text=Hello%20Noshup%20Foods%20%F0%9F%8D%B0%20I%20want%20to%20order%20fresh%20bakery!" 
+         class="footer-whatsapp" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i> Chat with us
+      </a>
+      <div style="font-size:1rem; opacity:0.85; margin-top:0.2rem; letter-spacing:0.3px;">
+        <i class="fas fa-phone-alt" style="margin-right:0.4rem;"></i> +92 322 8837335
       </div>
     </div>
 
-    <!-- extra bakery items (more items) -->
-    <div class="extra-items">
-      <span><i class="fas fa-donut"></i> glazed donuts</span>
-      <span><i class="fas fa-pie"></i> fruit pies</span>
-      <span><i class="fas fa-muffin"></i> muffins</span>
-      <span><i class="fas fa-biscuit"></i> cookies</span>
-      <span><i class="fas fa-croissant"></i> croissants</span>
-      <span><i class="fas fa-cheese"></i> cheese danish</span>
-    </div>
-
-    <!-- footer with whatsapp & credit -->
-    <footer>
-      <div class="footer-content">
-        <!-- WhatsApp click-to-chat -->
-        <a href="https://wa.me/923228837335?text=Hello%20Noshup%20Foods%20%F0%9F%8D%B0%20I%20want%20to%20order%20fresh%20bakery!" 
-           class="footer-whatsapp" 
-           target="_blank" 
-           rel="noopener noreferrer">
-          <i class="fab fa-whatsapp"></i> Chat with us
+    <div class="footer-credit">
+      <span>© 2026 Noshup Foods · fresh bakery</span>
+      <span style="display: inline-flex; align-items: center; gap: 0.2rem;">
+        <i class="fas fa-bolt" style="color: #b074c4;"></i>
+        Powered By:
+        <a href="https://fanisite.com" target="_blank" rel="noopener" class="ffsoft-link">
+          <i class="fas fa-code"></i> FFSOFT
         </a>
-        <div style="font-size:0.95rem; opacity:0.8; margin-top:0.2rem;">
-          <i class="fas fa-phone-alt" style="margin-right:0.3rem;"></i> +92 322 8837335
-        </div>
-      </div>
+      </span>
+      <span>
+        <a href="https://fanisite.com" target="_blank" rel="noopener" style="font-weight:400; color:#d1b3e0;">
+          <i class="fas fa-globe"></i> fanisite.com
+        </a>
+      </span>
+    </div>
+  </footer>
 
-      <!-- footer credit: Powered By FFSOFT + fanisite.com link -->
-      <div class="footer-credit">
-        <span>© 2026 Noshup Foods — fresh bakery since 2016</span>
-        <span style="display: inline-flex; align-items: center; gap: 0.3rem;">
-          <i class="fas fa-bolt" style="color: #c7795a;"></i>
-          Powered By: 
-          <a href="https://fanisite.com" target="_blank" rel="noopener" class="ffsoft-link">
-            <i class="fas fa-code"></i> FFSOFT
-          </a>
-        </span>
-        <span>
-          <a href="https://fanisite.com" target="_blank" rel="noopener" style="font-weight:400; color:#dbb6a6;">
-            <i class="fas fa-globe"></i> fanisite.com
-          </a>
-        </span>
-      </div>
-    </footer>
-
-  </div> <!-- wrapper -->
+</div> <!-- wrapper -->
 </body>
 </html>
