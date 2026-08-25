@@ -477,13 +477,15 @@
     </div>
 
     <!-- ================================================================ -->
-    <!-- ===== SCRIPT AREA: CATEGORIZED PRODUCT DATA ===== -->
+    <!-- ===== PRODUCT DATA — EDIT HERE TO ADD/REMOVE PRODUCTS ===== -->
     <!-- ================================================================ -->
     <script>
         // ------------------------------------------------------------------
-        //  PRODUCT DATA — Organized by categories
-        //  Image naming convention: category + number + .jpeg
-        //  Examples: biscuit1.jpeg, cupcake1.jpeg, cake1.jpeg, desert1.jpeg
+        //  📦 PRODUCT DATA — Add, remove, or edit products easily
+        //  
+        //  Categories: 'biscuits', 'deserts', 'cupcakes', 'partycakes'
+        //  Each product needs: image, name, description, size, serves, rating (1-5)
+        //  Image naming: use simple names like 'biscuit1.jpeg', 'cupcake1.jpeg', etc.
         // ------------------------------------------------------------------
         const productData = {
             biscuits: {
@@ -615,10 +617,38 @@
                         size: '8″',
                         serves: 'serves 8-10',
                         rating: 4
+                    },
+                    {
+                        image: 'cake5.jpeg',
+                        name: 'Carrot Walnut',
+                        description: 'Spiced carrot cake packed with crunchy walnuts and topped with smooth cream cheese frosting. Wholesome, flavorful, and perfectly balanced with cinnamon notes.',
+                        size: '8″',
+                        serves: 'serves 8-10',
+                        rating: 4
+                    },
+                    {
+                        image: 'cake6.jpeg',
+                        name: 'Carrot Walnut',
+                        description: 'Spiced carrot cake packed with crunchy walnuts and topped with smooth cream cheese frosting. Wholesome, flavorful, and perfectly balanced with cinnamon notes.',
+                        size: '8″',
+                        serves: 'serves 8-10',
+                        rating: 4
+                    },
+                    {
+                        image: 'cake7.jpeg',
+                        name: 'Carrot Walnut',
+                        description: 'Spiced carrot cake packed with crunchy walnuts and topped with smooth cream cheese frosting. Wholesome, flavorful, and perfectly balanced with cinnamon notes.',
+                        size: '8″',
+                        serves: 'serves 8-10',
+                        rating: 4
                     }
                 ]
             }
         };
+
+        // ================================================================
+        //  DO NOT EDIT BELOW THIS LINE — the code auto-renders everything
+        // ================================================================
 
         // ------------------------------------------------------------------
         //  RENDER CATEGORIZED PRODUCTS
@@ -632,14 +662,12 @@
             let globalIndex = 0;
             let html = '';
 
-            // Loop through categories in specific order
             const categoryOrder = ['biscuits', 'deserts', 'cupcakes', 'partycakes'];
             
             categoryOrder.forEach(categoryKey => {
                 const category = productData[categoryKey];
                 if (!category || category.items.length === 0) return;
 
-                // Category header
                 html += `
                     <div class="category-header" id="${category.id}">
                         <i class="fas ${category.icon}"></i>
@@ -648,7 +676,6 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 `;
 
-                // Render items for this category
                 category.items.forEach(product => {
                     const stars = '★'.repeat(product.rating) + '☆'.repeat(5 - product.rating);
                     html += `
@@ -673,12 +700,11 @@
                     globalIndex++;
                 });
 
-                html += `</div>`; // close grid
+                html += `</div>`;
             });
 
             container.innerHTML = html;
 
-            // Add click listeners to all product cards
             document.querySelectorAll('.product-card').forEach((card) => {
                 const index = parseInt(card.dataset.index);
                 card.addEventListener('click', () => openModal(index));
@@ -686,7 +712,7 @@
         }
 
         // ------------------------------------------------------------------
-        //  BUILD FLAT PRODUCTS ARRAY FOR MODAL LOOKUP
+        //  BUILD FLAT PRODUCTS ARRAY FOR MODAL
         // ------------------------------------------------------------------
         function buildFlatProducts() {
             const flat = [];
@@ -704,7 +730,7 @@
         const flatProducts = buildFlatProducts();
 
         // ------------------------------------------------------------------
-        //  MODAL / POPUP
+        //  MODAL
         // ------------------------------------------------------------------
         const modal = document.getElementById('productModal');
         const modalClose = document.getElementById('modalClose');
@@ -741,7 +767,6 @@
             document.body.style.overflow = '';
         }
 
-        // Close modal events
         modalClose.addEventListener('click', closeModal);
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
