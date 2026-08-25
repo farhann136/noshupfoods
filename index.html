@@ -57,15 +57,10 @@
             100% { opacity: 1; transform: rotate(0) scale(1); }
         }
 
-        @keyframes shimmerText {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
-        }
-
         .animate-float { animation: floatGlow 4s ease-in-out infinite; }
         .fade-in-up { animation: fadeInUp 0.8s ease-out; }
 
-        /* Hero with background image - MORE VISIBLE */
+        /* Hero with background image */
         .hero-section {
             background-image: url('background.png');
             background-size: cover;
@@ -78,7 +73,6 @@
             justify-content: center;
         }
 
-        /* Lighter overlay to make background more visible */
         .hero-overlay {
             background: rgba(252, 247, 253, 0.70);
             backdrop-filter: blur(1px);
@@ -155,6 +149,38 @@
 
         .product-card:hover img {
             transform: scale(1.02);
+        }
+
+        /* Category header */
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            padding-left: 1.2rem;
+            border-left: 8px solid var(--noshup-purple);
+        }
+
+        .category-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-purple);
+        }
+
+        .category-header i {
+            color: var(--medium-purple);
+            font-size: 1.8rem;
+        }
+
+        /* Star rating styles */
+        .stars {
+            color: #f5b342;
+            letter-spacing: 2px;
+            font-size: 0.95rem;
+        }
+        .stars .far {
+            color: #d4c4d8;
         }
 
         /* Modal / Popup styles */
@@ -246,16 +272,14 @@
             margin-right: 0.3rem;
         }
 
-        .modal-badge {
-            background: var(--light-purple);
-            padding: 0.25rem 1.4rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--dark-purple);
-            display: inline-block;
-            border: 1px solid var(--soft-lavender);
+        .modal-stars {
+            color: #f5b342;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
             margin-top: 0.8rem;
+        }
+        .modal-stars .far {
+            color: #d4c4d8;
         }
 
         /* Footer styles */
@@ -304,19 +328,36 @@
                 90% { transform: translateY(-16.8rem); opacity: 1; }
                 100% { transform: translateY(-21rem); opacity: 1; }
             }
+            .category-header h3 {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== HEADER - Logo only ===== -->
-    <header class="container mx-auto px-4 py-4 flex justify-center md:justify-start border-b-2" style="border-color: var(--soft-lavender);">
+    <!-- ===== HEADER - Logo + Categories ===== -->
+    <header class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center border-b-2" style="border-color: var(--soft-lavender);">
         <div class="logo-area">
             <img src="logo.png" alt="Noshup Foods logo" class="h-16 md:h-[72px] w-auto" style="filter: drop-shadow(0 2px 8px rgba(107, 26, 119, 0.2));" onerror="this.style.display='none'" />
         </div>
+        <nav class="flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0">
+            <a href="#biscuits" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full" style="color: var(--dark-purple);" onmouseover="this.style.color='var(--noshup-purple)'" onmouseout="this.style.color='var(--dark-purple)'">
+                <i class="fas fa-cookie" style="color: var(--medium-purple);"></i> Biscuits
+            </a>
+            <a href="#deserts" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full" style="color: var(--dark-purple);" onmouseover="this.style.color='var(--noshup-purple)'" onmouseout="this.style.color='var(--dark-purple)'">
+                <i class="fas fa-ice-cream" style="color: var(--medium-purple);"></i> Deserts
+            </a>
+            <a href="#cupcakes" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full" style="color: var(--dark-purple);" onmouseover="this.style.color='var(--noshup-purple)'" onmouseout="this.style.color='var(--dark-purple)'">
+                <i class="fas fa-cupcake" style="color: var(--medium-purple);"></i> Cup Cakes
+            </a>
+            <a href="#partycakes" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full" style="color: var(--dark-purple);" onmouseover="this.style.color='var(--noshup-purple)'" onmouseout="this.style.color='var(--dark-purple)'">
+                <i class="fas fa-birthday-cake" style="color: var(--medium-purple);"></i> Party Cakes
+            </a>
+        </nav>
     </header>
 
-    <!-- ===== HERO with background image - MORE VISIBLE ===== -->
+    <!-- ===== HERO with background image ===== -->
     <section class="hero-section">
         <div class="hero-overlay">
             <div class="container mx-auto px-4 text-center">
@@ -352,8 +393,8 @@
             <i class="fas fa-store" style="color: var(--medium-purple);"></i> Our Bakery
         </h2>
         
-        <!-- Product Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="productGrid"></div>
+        <!-- Product Grids - Rendered by JavaScript -->
+        <div id="productContainer"></div>
 
         <!-- Extra items -->
         <div class="flex flex-wrap justify-center gap-3 md:gap-5 mt-8 p-4 md:p-6 rounded-3xl" style="background: var(--light-purple); border: 1px solid var(--soft-lavender);">
@@ -430,164 +471,237 @@
                     <span><i class="fas fa-ruler"></i> <span id="modalSize">8″</span></span>
                     <span><i class="fas fa-users"></i> <span id="modalServes">serves 8-10</span></span>
                 </div>
-                <span class="modal-badge" id="modalBadge">⭐ best seller</span>
+                <div class="modal-stars" id="modalStars">⭐⭐⭐⭐⭐</div>
             </div>
         </div>
     </div>
 
     <!-- ================================================================ -->
-    <!-- ===== SCRIPT AREA: all product data + rendering + modal ===== -->
+    <!-- ===== SCRIPT AREA: CATEGORIZED PRODUCT DATA ===== -->
     <!-- ================================================================ -->
     <script>
         // ------------------------------------------------------------------
-        //  PRODUCT DATA — edit this array to add/remove/update products
-        //  Each product needs: image, name, description, size, serves, badge
+        //  PRODUCT DATA — Organized by categories
+        //  Image naming convention: category + number + .jpeg
+        //  Examples: biscuit1.jpeg, cupcake1.jpeg, cake1.jpeg, desert1.jpeg
         // ------------------------------------------------------------------
-        const products = [
-            // ---- Cupcakes ----
-            {
-                image: 'cc%20(1).jpeg',
-                name: 'Vanilla Cupcake',
-                description: 'Classic vanilla cupcake topped with silky buttercream frosting and colorful sprinkles. The sponge is light, fluffy, and perfectly moist — a timeless favourite for all ages.',
-                size: '3″',
-                serves: 'serves 1',
-                badge: '⭐ best seller'
+        const productData = {
+            biscuits: {
+                icon: 'fa-cookie',
+                label: 'Biscuits',
+                id: 'biscuits',
+                items: [
+                    {
+                        image: 'biscuit1.jpeg',
+                        name: 'Badami Naan Khataai',
+                        description: 'Traditional Pakistani biscuit made with almond flour and ghee, creating a crumbly, melt-in-mouth texture. Perfect with a cup of chai, this signature treat is a customer favourite.',
+                        size: '2″ round',
+                        serves: 'serves 1',
+                        rating: 5
+                    },
+                    {
+                        image: 'biscuit2.jpeg',
+                        name: 'Butter Cookies',
+                        description: 'Classic butter cookies with a melt-in-mouth texture. Light, crisp, and perfectly buttery — a timeless treat for all ages.',
+                        size: '2″ round',
+                        serves: 'serves 1',
+                        rating: 4
+                    }
+                ]
             },
-            {
-                image: 'cc%20(2).jpeg',
-                name: 'Red Velvet Cupcake',
-                description: 'Rich red velvet cupcake with a hint of cocoa, topped with creamy tangy cream cheese frosting. A perfect balance of sweetness and subtle chocolate notes.',
-                size: '3″',
-                serves: 'serves 1',
-                badge: '❤️ popular'
+            deserts: {
+                icon: 'fa-ice-cream',
+                label: 'Deserts',
+                id: 'deserts',
+                items: [
+                    {
+                        image: 'desert1.jpeg',
+                        name: 'Tiramisu',
+                        description: 'Classic Italian dessert with layers of coffee-soaked ladyfingers, creamy mascarpone, and a dusting of rich cocoa powder. A sophisticated treat for coffee lovers.',
+                        size: '6″',
+                        serves: 'serves 4-6',
+                        rating: 5
+                    },
+                    {
+                        image: 'desert2.jpeg',
+                        name: 'New York Cheesecake',
+                        description: 'Ultra-creamy cheesecake with a buttery graham cracker crust, topped with a vibrant berry compote. Rich, smooth, and absolutely irresistible.',
+                        size: '7″',
+                        serves: 'serves 6-8',
+                        rating: 5
+                    },
+                    {
+                        image: 'desert3.jpeg',
+                        name: 'Fudge Brownie',
+                        description: 'Gooey chocolate brownie loaded with walnuts and chocolate chunks. The perfect balance of crispy edges and a soft, fudgy centre that melts in your mouth.',
+                        size: '5″',
+                        serves: 'serves 4',
+                        rating: 4
+                    },
+                    {
+                        image: 'desert4.jpeg',
+                        name: 'Panna Cotta',
+                        description: 'Silky smooth Italian custard infused with vanilla bean, served with a tangy berry compote. Light, elegant, and the perfect ending to any meal.',
+                        size: '4″',
+                        serves: 'serves 2',
+                        rating: 4
+                    }
+                ]
             },
-            {
-                image: 'cc%20(3).jpeg',
-                name: 'Chocolate Fudge',
-                description: 'Decadent chocolate cupcake filled with rich ganache and topped with chocolate buttercream. Loaded with chocolate chips for an extra fudgy experience.',
-                size: '3″',
-                serves: 'serves 1',
-                badge: '🍫 fudgy'
+            cupcakes: {
+                icon: 'fa-cupcake',
+                label: 'Cup Cakes',
+                id: 'cupcakes',
+                items: [
+                    {
+                        image: 'cupcake1.jpeg',
+                        name: 'Vanilla Cupcake',
+                        description: 'Classic vanilla cupcake topped with silky buttercream frosting and colorful sprinkles. The sponge is light, fluffy, and perfectly moist — a timeless favourite for all ages.',
+                        size: '3″',
+                        serves: 'serves 1',
+                        rating: 5
+                    },
+                    {
+                        image: 'cupcake2.jpeg',
+                        name: 'Red Velvet Cupcake',
+                        description: 'Rich red velvet cupcake with a hint of cocoa, topped with creamy tangy cream cheese frosting. A perfect balance of sweetness and subtle chocolate notes.',
+                        size: '3″',
+                        serves: 'serves 1',
+                        rating: 5
+                    },
+                    {
+                        image: 'cupcake3.jpeg',
+                        name: 'Chocolate Fudge',
+                        description: 'Decadent chocolate cupcake filled with rich ganache and topped with chocolate buttercream. Loaded with chocolate chips for an extra fudgy experience.',
+                        size: '3″',
+                        serves: 'serves 1',
+                        rating: 4
+                    }
+                ]
             },
-
-            // ---- Cakes ----
-            {
-                image: 'c%20(1).jpeg',
-                name: 'Vanilla Dream',
-                description: 'A classic vanilla cake layered with fresh cream and topped with seasonal berries. Light, airy, and elegantly simple — perfect for any celebration.',
-                size: '8″',
-                serves: 'serves 8-10',
-                badge: '🎉 party favourite'
-            },
-            {
-                image: 'c%20(2).jpeg',
-                name: 'Chocolate Truffle',
-                description: 'Rich chocolate cake with layers of silky chocolate ganache and a glossy drip finish. A chocoholic\'s dream come true, indulgent and unforgettable.',
-                size: '8″',
-                serves: 'serves 8-10',
-                badge: '✨ decadent'
-            },
-            {
-                image: 'c%20(3).jpeg',
-                name: 'Red Velvet Cake',
-                description: 'Velvety red cake with a subtle cocoa flavour, layered with luxurious cream cheese frosting. A stunning centrepiece for weddings and special occasions.',
-                size: '8″',
-                serves: 'serves 8-10',
-                badge: '🌸 elegant'
-            },
-            {
-                image: 'c%20(4).jpeg',
-                name: 'Carrot Walnut',
-                description: 'Spiced carrot cake packed with crunchy walnuts and topped with smooth cream cheese frosting. Wholesome, flavorful, and perfectly balanced with cinnamon notes.',
-                size: '8″',
-                serves: 'serves 8-10',
-                badge: '🌿 wholesome'
-            },
-
-            // ---- Deserts ----
-            {
-                image: 'd%20(1).jpeg',
-                name: 'Tiramisu',
-                description: 'Classic Italian dessert with layers of coffee-soaked ladyfingers, creamy mascarpone, and a dusting of rich cocoa powder. A sophisticated treat for coffee lovers.',
-                size: '6″',
-                serves: 'serves 4-6',
-                badge: '🇮🇹 italian'
-            },
-            {
-                image: 'd%20(2).jpeg',
-                name: 'New York Cheesecake',
-                description: 'Ultra-creamy cheesecake with a buttery graham cracker crust, topped with a vibrant berry compote. Rich, smooth, and absolutely irresistible.',
-                size: '7″',
-                serves: 'serves 6-8',
-                badge: '🗽 classic'
-            },
-            {
-                image: 'd%20(3).jpeg',
-                name: 'Fudge Brownie',
-                description: 'Gooey chocolate brownie loaded with walnuts and chocolate chunks. The perfect balance of crispy edges and a soft, fudgy centre that melts in your mouth.',
-                size: '5″',
-                serves: 'serves 4',
-                badge: '🍫 gooey'
-            },
-            {
-                image: 'd%20(4).jpeg',
-                name: 'Panna Cotta',
-                description: 'Silky smooth Italian custard infused with vanilla bean, served with a tangy berry compote. Light, elegant, and the perfect ending to any meal.',
-                size: '4″',
-                serves: 'serves 2',
-                badge: '🍮 silky'
-            },
-
-            // ---- Biscuit ----
-            {
-                image: 'biscuit-placeholder.jpg',
-                name: 'Badami Naan Khataai',
-                description: 'Traditional Pakistani biscuit made with almond flour and ghee, creating a crumbly, melt-in-mouth texture. Perfect with a cup of chai, this signature treat is a customer favourite.',
-                size: '2″ round',
-                serves: 'serves 1',
-                badge: '⭐ signature'
+            partycakes: {
+                icon: 'fa-birthday-cake',
+                label: 'Party Cakes',
+                id: 'partycakes',
+                items: [
+                    {
+                        image: 'cake1.jpeg',
+                        name: 'Vanilla Dream',
+                        description: 'A classic vanilla cake layered with fresh cream and topped with seasonal berries. Light, airy, and elegantly simple — perfect for any celebration.',
+                        size: '8″',
+                        serves: 'serves 8-10',
+                        rating: 5
+                    },
+                    {
+                        image: 'cake2.jpeg',
+                        name: 'Chocolate Truffle',
+                        description: 'Rich chocolate cake with layers of silky chocolate ganache and a glossy drip finish. A chocoholic\'s dream come true, indulgent and unforgettable.',
+                        size: '8″',
+                        serves: 'serves 8-10',
+                        rating: 5
+                    },
+                    {
+                        image: 'cake3.jpeg',
+                        name: 'Red Velvet Cake',
+                        description: 'Velvety red cake with a subtle cocoa flavour, layered with luxurious cream cheese frosting. A stunning centrepiece for weddings and special occasions.',
+                        size: '8″',
+                        serves: 'serves 8-10',
+                        rating: 4
+                    },
+                    {
+                        image: 'cake4.jpeg',
+                        name: 'Carrot Walnut',
+                        description: 'Spiced carrot cake packed with crunchy walnuts and topped with smooth cream cheese frosting. Wholesome, flavorful, and perfectly balanced with cinnamon notes.',
+                        size: '8″',
+                        serves: 'serves 8-10',
+                        rating: 4
+                    }
+                ]
             }
-        ];
+        };
 
         // ------------------------------------------------------------------
-        //  RENDER PRODUCTS
+        //  RENDER CATEGORIZED PRODUCTS
         // ------------------------------------------------------------------
         function renderProducts() {
-            const grid = document.getElementById('productGrid');
-            if (!grid) return;
+            const container = document.getElementById('productContainer');
+            if (!container) return;
 
             const fallbackSVG = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect fill='%23F3E6F5' width='400' height='200'/%3E%3Ctext x='50' y='120' font-size='24' fill='%236B1A77'%3E%F0%9F%8D%B0 fresh%3C/text%3E%3C/svg%3E`;
 
+            let globalIndex = 0;
             let html = '';
-            products.forEach((p, index) => {
+
+            // Loop through categories in specific order
+            const categoryOrder = ['biscuits', 'deserts', 'cupcakes', 'partycakes'];
+            
+            categoryOrder.forEach(categoryKey => {
+                const category = productData[categoryKey];
+                if (!category || category.items.length === 0) return;
+
+                // Category header
                 html += `
-                    <div class="product-card bg-white rounded-3xl p-4 md:p-5 flex flex-col" data-index="${index}">
-                        <div class="overflow-hidden rounded-2xl" style="background: var(--light-purple);">
-                            <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='${fallbackSVG}'" />
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold mt-3" style="color: var(--dark-purple);">${p.name}</h3>
-                        <p class="text-sm flex-1" style="color: var(--main-dark);">${p.description.substring(0, 80)}${p.description.length > 80 ? '...' : ''}</p>
-                        <div class="flex flex-wrap items-center justify-between mt-3 gap-2">
-                            <div class="flex gap-3 text-sm font-medium px-3 py-1 rounded-full" style="color: var(--dark-purple); background: var(--light-purple);">
-                                <span><i class="fas fa-ruler" style="color: var(--medium-purple);"></i> ${p.size}</span>
-                                <span><i class="fas fa-users" style="color: var(--medium-purple);"></i> ${p.serves}</span>
-                            </div>
-                            <span class="badge text-xs font-semibold px-3 py-1 rounded-full" style="background: var(--light-purple); color: var(--dark-purple); border: 1px solid var(--soft-lavender);">${p.badge}</span>
-                        </div>
-                        <div class="mt-3 text-center text-sm font-medium" style="color: var(--medium-purple);">
-                            <i class="fas fa-eye"></i> Click to view details
-                        </div>
+                    <div class="category-header" id="${category.id}">
+                        <i class="fas ${category.icon}"></i>
+                        <h3>${category.label}</h3>
                     </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 `;
+
+                // Render items for this category
+                category.items.forEach(product => {
+                    const stars = '★'.repeat(product.rating) + '☆'.repeat(5 - product.rating);
+                    html += `
+                        <div class="product-card bg-white rounded-3xl p-4 md:p-5 flex flex-col" data-index="${globalIndex}">
+                            <div class="overflow-hidden rounded-2xl" style="background: var(--light-purple);">
+                                <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='${fallbackSVG}'" />
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold mt-3" style="color: var(--dark-purple);">${product.name}</h3>
+                            <p class="text-sm flex-1" style="color: var(--main-dark);">${product.description.substring(0, 80)}${product.description.length > 80 ? '...' : ''}</p>
+                            <div class="flex flex-wrap items-center justify-between mt-3 gap-2">
+                                <div class="flex gap-3 text-sm font-medium px-3 py-1 rounded-full" style="color: var(--dark-purple); background: var(--light-purple);">
+                                    <span><i class="fas fa-ruler" style="color: var(--medium-purple);"></i> ${product.size}</span>
+                                    <span><i class="fas fa-users" style="color: var(--medium-purple);"></i> ${product.serves}</span>
+                                </div>
+                                <div class="stars">${stars}</div>
+                            </div>
+                            <div class="mt-3 text-center text-sm font-medium" style="color: var(--medium-purple);">
+                                <i class="fas fa-eye"></i> Click to view details
+                            </div>
+                        </div>
+                    `;
+                    globalIndex++;
+                });
+
+                html += `</div>`; // close grid
             });
 
-            grid.innerHTML = html;
+            container.innerHTML = html;
 
             // Add click listeners to all product cards
-            document.querySelectorAll('.product-card').forEach((card, index) => {
+            document.querySelectorAll('.product-card').forEach((card) => {
+                const index = parseInt(card.dataset.index);
                 card.addEventListener('click', () => openModal(index));
             });
         }
+
+        // ------------------------------------------------------------------
+        //  BUILD FLAT PRODUCTS ARRAY FOR MODAL LOOKUP
+        // ------------------------------------------------------------------
+        function buildFlatProducts() {
+            const flat = [];
+            const categoryOrder = ['biscuits', 'deserts', 'cupcakes', 'partycakes'];
+            categoryOrder.forEach(key => {
+                if (productData[key]) {
+                    productData[key].items.forEach(item => {
+                        flat.push(item);
+                    });
+                }
+            });
+            return flat;
+        }
+
+        const flatProducts = buildFlatProducts();
 
         // ------------------------------------------------------------------
         //  MODAL / POPUP
@@ -599,10 +713,10 @@
         const modalDescription = document.getElementById('modalDescription');
         const modalSize = document.getElementById('modalSize');
         const modalServes = document.getElementById('modalServes');
-        const modalBadge = document.getElementById('modalBadge');
+        const modalStars = document.getElementById('modalStars');
 
         function openModal(index) {
-            const product = products[index];
+            const product = flatProducts[index];
             if (!product) return;
 
             modalImage.src = product.image;
@@ -614,7 +728,9 @@
             modalDescription.textContent = product.description;
             modalSize.textContent = product.size;
             modalServes.textContent = product.serves;
-            modalBadge.textContent = product.badge;
+            
+            const stars = '★'.repeat(product.rating) + '☆'.repeat(5 - product.rating);
+            modalStars.innerHTML = stars;
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
