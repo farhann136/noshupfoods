@@ -1,558 +1,794 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noshup Foods · Purple bakery</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Noshup Foods · fresh bakery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ----- Brand Colors ----- */
+        :root {
+            --noshup-purple: #6B1A77;
+            --dark-purple: #42104A;
+            --medium-purple: #84338F;
+            --light-purple: #F3E6F5;
+            --very-light-purple: #FCF7FD;
+            --soft-lavender: #E2CBE6;
+            --leaf-green: #7CB342;
+            --dark-green: #558B2F;
+            --white: #FFFFFF;
+            --main-dark: #28152C;
+        }
 
-    body {
-      background: #f8f2fc;
-      color: #24182b;
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
+        /* ----- global reset & base ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
 
-    .wrapper {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 1.8rem;
-    }
+        body {
+            background: var(--very-light-purple);
+            color: var(--main-dark);
+            line-height: 1.5;
+        }
 
-    /* ---------- animations ---------- */
-    @keyframes floatGlow {
-      0% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-8px) scale(1.02); }
-      100% { transform: translateY(0px) scale(1); }
-    }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 1.8rem;
+        }
 
-    @keyframes pulseSoft {
-      0% { opacity: 0.8; transform: scale(0.98); }
-      50% { opacity: 1; transform: scale(1.02); }
-      100% { opacity: 0.8; transform: scale(0.98); }
-    }
+        /* ----- animations ----- */
+        @keyframes floatGlow {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.02); }
+            100% { transform: translateY(0px) scale(1); }
+        }
 
-    @keyframes slideUp {
-      0%, 14% { transform: translateY(0); }
-      17%, 31% { transform: translateY(-5.2rem); }
-      34%, 48% { transform: translateY(-10.4rem); }
-      51%, 65% { transform: translateY(-15.6rem); }
-      68%, 82% { transform: translateY(-20.8rem); }
-      85%, 100% { transform: translateY(-26rem); }
-    }
+        @keyframes pulseSoft {
+            0% { opacity: 0.8; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0.8; transform: scale(0.98); }
+        }
 
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
+        @keyframes slideUp {
+            0% { transform: translateY(0); opacity: 1; }
+            10% { transform: translateY(0); opacity: 1; }
+            20% { transform: translateY(-5.2rem); opacity: 1; }
+            30% { transform: translateY(-5.2rem); opacity: 1; }
+            40% { transform: translateY(-10.4rem); opacity: 1; }
+            50% { transform: translateY(-10.4rem); opacity: 1; }
+            60% { transform: translateY(-15.6rem); opacity: 1; }
+            70% { transform: translateY(-15.6rem); opacity: 1; }
+            80% { transform: translateY(-20.8rem); opacity: 1; }
+            90% { transform: translateY(-20.8rem); opacity: 1; }
+            100% { transform: translateY(-26rem); opacity: 1; }
+        }
 
-    @keyframes tiltIn {
-      0% { opacity: 0; transform: rotate(-2deg) scale(0.9); }
-      100% { opacity: 1; transform: rotate(0) scale(1); }
-    }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
-    .animate-float {
-      animation: floatGlow 4s ease-in-out infinite;
-    }
+        @keyframes tiltIn {
+            0% { opacity: 0; transform: rotate(-2deg) scale(0.9); }
+            100% { opacity: 1; transform: rotate(0) scale(1); }
+        }
 
-    .animate-pulse-soft {
-      animation: pulseSoft 3s ease-in-out infinite;
-    }
+        @keyframes shimmerText {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
 
-    /* ---------- header ---------- */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.4rem 0;
-      flex-wrap: wrap;
-      border-bottom: 2px solid #d9c2e6;
-      backdrop-filter: blur(4px);
-    }
+        .animate-float { animation: floatGlow 4s ease-in-out infinite; }
+        .animate-pulse-soft { animation: pulseSoft 3s ease-in-out infinite; }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
 
-    .logo {
-      font-size: 2.4rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      background: linear-gradient(145deg, #6b3b7a, #9f5bb0);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 2px 12px rgba(120, 60, 150, 0.25);
-    }
-    .logo span {
-      font-weight: 300;
-      background: none;
-      color: #7b4c8a;
-    }
+        /* ----- header ----- */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            flex-wrap: wrap;
+            border-bottom: 2px solid var(--soft-lavender);
+        }
 
-    .nav-icons a {
-      margin-left: 1.8rem;
-      color: #3f2949;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.2s;
-      font-size: 1.05rem;
-      position: relative;
-    }
-    .nav-icons a i {
-      margin-right: 0.4rem;
-      color: #8b5a9e;
-    }
-    .nav-icons a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #9b5eb3;
-      transition: 0.25s;
-    }
-    .nav-icons a:hover::after {
-      width: 100%;
-    }
-    .nav-icons a:hover {
-      color: #4f2860;
-    }
+        .logo-area {
+            display: flex;
+            align-items: center;
+        }
 
-    /* ---------- hero + slider (purple) ---------- */
-    .hero {
-      margin: 2.8rem 0 3.2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
+        .logo-img {
+            height: 68px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(107, 26, 119, 0.2));
+            transition: 0.3s;
+        }
+        .logo-img:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 4px 12px rgba(107, 26, 119, 0.3));
+        }
 
-    .hero-title {
-      font-size: clamp(2.6rem, 9vw, 4.6rem);
-      font-weight: 800;
-      color: #321f3b;
-      line-height: 1.2;
-      margin-bottom: 0.4rem;
-      background: linear-gradient(135deg, #4f2a5e, #9155a8);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: tiltIn 0.8s ease-out;
-    }
-    .hero-title i {
-      background: none;
-      color: #b074c4;
-      margin: 0 0.2rem;
-      filter: drop-shadow(0 0 6px #c394d6);
-    }
+        .nav-icons a {
+            margin-left: 1.8rem;
+            color: var(--dark-purple);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            font-size: 1.05rem;
+            position: relative;
+        }
+        .nav-icons a i {
+            margin-right: 0.4rem;
+            color: var(--medium-purple);
+        }
+        .nav-icons a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--noshup-purple);
+            transition: 0.25s;
+        }
+        .nav-icons a:hover::after {
+            width: 100%;
+        }
+        .nav-icons a:hover {
+            color: var(--noshup-purple);
+        }
 
-    .slider-container {
-      height: 5.4rem;
-      overflow: hidden;
-      margin: 1.2rem 0 0.8rem;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
+        /* ----- hero ----- */
+        .hero {
+            margin: 2.8rem 0 3.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 420px;
+        }
 
-    .slider-track {
-      display: flex;
-      flex-direction: column;
-      animation: slideUp 15s ease-in-out infinite;
-      line-height: 1.4;
-    }
+        .hero-slogan {
+            font-size: clamp(1.6rem, 4vw, 2.8rem);
+            font-weight: 300;
+            color: var(--noshup-purple);
+            letter-spacing: 2px;
+            margin-bottom: 0.2rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .hero-slogan .leaf-icon {
+            color: var(--leaf-green);
+        }
 
-    .slider-item {
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      font-weight: 500;
-      color: #301b38;
-      background: #ede0f5;
-      padding: 0.5rem 2.8rem;
-      border-radius: 80px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 12px 28px rgba(110, 50, 140, 0.15);
-      white-space: nowrap;
-      margin: 0.5rem 0;
-      display: inline-block;
-      letter-spacing: 0.8px;
-      border: 1px solid #d9b6e8;
-      transition: 0.2s;
-    }
+        .hero-title {
+            font-size: clamp(2.6rem, 9vw, 4.6rem);
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+            color: var(--noshup-purple);
+            animation: tiltIn 0.8s ease-out;
+        }
+        .hero-title i {
+            color: var(--medium-purple);
+            margin: 0 0.2rem;
+            filter: drop-shadow(0 0 6px rgba(132, 51, 143, 0.3));
+        }
+        .hero-title .heart-icon {
+            color: var(--medium-purple);
+        }
 
-    .slider-item i {
-      color: #8b4b9e;
-      margin: 0 0.5rem;
-      filter: drop-shadow(0 0 4px #c393d6);
-    }
+        /* Rotating text slider */
+        .hero-slider-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 1.2rem 0 0.8rem;
+            height: 5.4rem;
+            overflow: hidden;
+            position: relative;
+        }
 
-    .hero-sub {
-      margin-top: 2rem;
-      font-size: 1.25rem;
-      color: #402a4b;
-      background: rgba(225, 200, 240, 0.6);
-      padding: 0.6rem 2.6rem;
-      border-radius: 60px;
-      backdrop-filter: blur(6px);
-      border: 1px solid #d4b0e6;
-      animation: floatGlow 5s ease-in-out infinite;
-      font-weight: 500;
-    }
-    .hero-sub i {
-      color: #a15eb8;
-    }
+        .hero-slider-track {
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 18s ease-in-out infinite;
+            line-height: 1.4;
+        }
 
-    /* ---------- section title ---------- */
-    .section-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin: 3.5rem 0 1.8rem;
-      color: #3b2247;
-      border-left: 10px solid #b074c4;
-      padding-left: 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-    .section-title i {
-      color: #a25db9;
-      font-size: 2rem;
-    }
+        .hero-slide-item {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 500;
+            color: var(--dark-purple);
+            background: var(--light-purple);
+            padding: 0.5rem 2.8rem;
+            border-radius: 80px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 12px 28px rgba(107, 26, 119, 0.12);
+            white-space: nowrap;
+            margin: 0.5rem 0;
+            display: inline-block;
+            letter-spacing: 0.8px;
+            border: 1px solid var(--soft-lavender);
+            transition: 0.3s;
+            height: 4.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    /* ---------- bakery grid (purple glow) ---------- */
-    .bakery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 2.4rem;
-      margin-bottom: 3rem;
-    }
+        .hero-slide-item i {
+            color: var(--medium-purple);
+            margin: 0 0.5rem;
+            filter: drop-shadow(0 0 4px rgba(132, 51, 143, 0.2));
+        }
 
-    .bakery-card {
-      background: rgba(255, 250, 255, 0.8);
-      backdrop-filter: blur(4px);
-      border-radius: 3rem 1.2rem 3rem 1.2rem;
-      padding: 2rem 1rem 1.8rem;
-      box-shadow: 0 12px 30px -6px rgba(100, 50, 130, 0.2);
-      transition: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      text-align: center;
-      border: 1px solid #e1c8ed;
-      animation: floatGlow 5s ease-in-out infinite;
-      animation-delay: calc(var(--i, 0) * 0.2s);
-    }
-    .bakery-card:nth-child(1) { --i: 0; }
-    .bakery-card:nth-child(2) { --i: 1; }
-    .bakery-card:nth-child(3) { --i: 2; }
-    .bakery-card:nth-child(4) { --i: 3; }
+        .hero-sub {
+            margin-top: 2rem;
+            font-size: 1.25rem;
+            color: var(--dark-purple);
+            background: var(--light-purple);
+            padding: 0.6rem 2.6rem;
+            border-radius: 60px;
+            backdrop-filter: blur(6px);
+            border: 1px solid var(--soft-lavender);
+            animation: floatGlow 5s ease-in-out infinite;
+            font-weight: 500;
+        }
+        .hero-sub i {
+            color: var(--medium-purple);
+        }
+        .hero-sub .star-icon {
+            color: var(--leaf-green);
+        }
 
-    .bakery-card:hover {
-      transform: translateY(-12px) scale(1.01);
-      box-shadow: 0 24px 44px -10px #7b4a8f;
-      border-color: #bf8fd6;
-      background: white;
-    }
+        /* ----- section title ----- */
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin: 3.5rem 0 1.8rem;
+            color: var(--dark-purple);
+            border-left: 10px solid var(--noshup-purple);
+            padding-left: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .section-title i {
+            color: var(--medium-purple);
+            font-size: 2rem;
+        }
 
-    .bakery-card i {
-      font-size: 4.2rem;
-      color: #7d4596;
-      background: #efe2f7;
-      padding: 0.8rem;
-      border-radius: 60px;
-      margin-bottom: 1rem;
-      display: inline-block;
-      transition: 0.3s;
-      box-shadow: 0 0 0 2px #d7b6e8;
-    }
-    .bakery-card:hover i {
-      background: #dbbcf0;
-      transform: rotate(4deg) scale(1.05);
-      box-shadow: 0 0 0 4px #c79adb;
-    }
+        /* ----- PRODUCT GRID ----- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.2rem;
+            margin: 2rem 0 3rem;
+        }
 
-    .bakery-card h3 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #2f1b38;
-      margin-bottom: 0.4rem;
-    }
-    .bakery-card p {
-      color: #573f64;
-      font-size: 1rem;
-      margin: 0.4rem 0 0.9rem;
-    }
+        .product-card {
+            background: var(--white);
+            border-radius: 2.2rem 0.8rem 2.2rem 0.8rem;
+            padding: 1.2rem 1.2rem 1.8rem;
+            box-shadow: 0 8px 28px rgba(107, 26, 119, 0.06);
+            transition: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            text-align: center;
+            border: 1px solid var(--soft-lavender);
+            display: flex;
+            flex-direction: column;
+        }
 
-    .badge {
-      background: #dcc3ea;
-      padding: 0.3rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #3c2249;
-      letter-spacing: 0.3px;
-      display: inline-block;
-      box-shadow: inset 0 0 0 1px #c096d6;
-    }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 44px -8px rgba(107, 26, 119, 0.15);
+            border-color: var(--medium-purple);
+        }
 
-    /* extra items row (purple) */
-    .extra-items {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.2rem 2rem;
-      background: #ede0f5;
-      padding: 2rem 2.5rem;
-      border-radius: 100px 30px 100px 30px;
-      margin: 1.8rem 0 3.2rem;
-      border: 1px solid #d0afdf;
-      box-shadow: 0 10px 24px rgba(110, 50, 140, 0.1);
-      animation: pulseSoft 5s ease-in-out infinite;
-    }
+        .product-card .img-wrap {
+            overflow: hidden;
+            border-radius: 1.6rem 0.4rem 1.6rem 0.4rem;
+            background: var(--light-purple);
+        }
 
-    .extra-items span {
-      font-size: 1.3rem;
-      background: white;
-      padding: 0.4rem 1.8rem;
-      border-radius: 60px;
-      box-shadow: 0 4px 12px rgba(90, 40, 110, 0.06);
-      color: #2d1838;
-      font-weight: 500;
-      border: 1px solid #dbbdee;
-      transition: 0.2s;
-    }
-    .extra-items span:hover {
-      background: #f6edfc;
-      transform: scale(1.04);
-      border-color: #b884d0;
-    }
-    .extra-items i {
-      color: #8d4fa8;
-      margin-right: 0.5rem;
-    }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: 0.4s ease;
+        }
 
-    /* ---------- footer (purple tone) ---------- */
-    footer {
-      margin-top: 3.8rem;
-      background: #271f2e;
-      color: #e5d4ed;
-      border-radius: 60px 60px 30px 30px;
-      padding: 2.8rem 1.8rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 -4px 30px rgba(100, 40, 130, 0.2);
-      border-top: 2px solid #7a4b8e;
-    }
+        .product-card:hover img {
+            transform: scale(1.02);
+        }
 
-    .footer-content {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-    }
+        .product-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-purple);
+            margin: 0.9rem 0 0.2rem;
+        }
 
-    .footer-whatsapp {
-      background: #25D366;
-      color: white;
-      padding: 0.9rem 2.8rem;
-      border-radius: 80px;
-      font-size: 1.4rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      text-decoration: none;
-      transition: 0.25s;
-      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
-      margin-bottom: 0.4rem;
-      border: 1px solid #8ce0a8;
-    }
+        .product-card .desc {
+            color: var(--main-dark);
+            font-size: 0.95rem;
+            margin: 0.2rem 0 0.6rem;
+            flex: 1;
+        }
 
-    .footer-whatsapp i {
-      font-size: 2rem;
-      filter: drop-shadow(0 0 6px #b3ffd0);
-    }
+        .product-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem 1.6rem;
+            font-size: 0.9rem;
+            color: var(--dark-purple);
+            margin: 0.4rem 0 0.6rem;
+            background: var(--light-purple);
+            padding: 0.4rem 0.6rem;
+            border-radius: 40px;
+        }
+        .product-meta i {
+            color: var(--medium-purple);
+            margin-right: 0.25rem;
+        }
 
-    .footer-whatsapp:hover {
-      background: #1ebd5a;
-      transform: scale(1.04) translateY(-3px);
-      box-shadow: 0 14px 30px rgba(37, 211, 102, 0.5);
-    }
+        .badge {
+            background: var(--light-purple);
+            padding: 0.25rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--dark-purple);
+            display: inline-block;
+            align-self: center;
+            box-shadow: inset 0 0 0 1px var(--soft-lavender);
+            margin-top: 0.4rem;
+        }
+        .badge .leaf-icon {
+            color: var(--leaf-green);
+        }
 
-    .footer-credit {
-      margin-top: 2rem;
-      font-size: 1.05rem;
-      color: #b99ec9;
-      border-top: 2px solid #4c3657;
-      padding-top: 1.6rem;
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.8rem 1.8rem;
-      align-items: center;
-    }
+        /* extra items row */
+        .extra-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 1.8rem;
+            background: var(--light-purple);
+            padding: 1.4rem 2rem;
+            border-radius: 100px 30px 100px 30px;
+            margin: 1.8rem 0 3.2rem;
+            border: 1px solid var(--soft-lavender);
+        }
 
-    .footer-credit a {
-      color: #d9bde8;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.2s;
-      border-bottom: 1px dotted transparent;
-    }
-    .footer-credit a:hover {
-      color: #ffffff;
-      border-bottom-color: #b882d0;
-    }
+        .extra-items span {
+            font-size: 1.1rem;
+            background: var(--white);
+            padding: 0.3rem 1.6rem;
+            border-radius: 60px;
+            color: var(--dark-purple);
+            font-weight: 500;
+            border: 1px solid var(--soft-lavender);
+            transition: 0.2s;
+        }
+        .extra-items span:hover {
+            background: var(--light-purple);
+            transform: scale(1.04);
+            border-color: var(--medium-purple);
+        }
+        .extra-items i {
+            color: var(--medium-purple);
+            margin-right: 0.5rem;
+        }
 
-    .ffsoft-link {
-      font-weight: 700;
-      background: #3a2b44;
-      padding: 0.15rem 1.4rem;
-      border-radius: 60px;
-      margin-left: 0.2rem;
-      border: 1px solid #7d4d93;
-      transition: 0.2s;
-    }
-    .ffsoft-link i {
-      margin-right: 0.3rem;
-      color: #c393d6;
-    }
-    .ffsoft-link:hover {
-      background: #4f3560;
-      border-color: #b074c4;
-    }
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark-purple);
+            color: var(--light-purple);
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            border-top: 3px solid var(--noshup-purple);
+        }
 
-    /* small */
-    @media (max-width: 550px) {
-      .slider-item {
-        white-space: normal;
-        font-size: 1.3rem;
-        padding: 0.3rem 1.2rem;
-      }
-      .hero-title {
-        font-size: 2.2rem;
-      }
-      .extra-items span {
-        font-size: 1rem;
-        padding: 0.2rem 1rem;
-      }
-      .top-bar {
-        flex-direction: column;
-        gap: 0.6rem;
-      }
-    }
-  </style>
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-grid h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-grid p,
+        .footer-grid .text-gray-400 {
+            color: #d4b8da;
+            line-height: 1.6;
+        }
+
+        .footer-grid .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin: 0.8rem 0 1rem;
+        }
+
+        .footer-grid .social-links a {
+            color: #d4b8da;
+            font-size: 1.8rem;
+            transition: 0.2s;
+        }
+        .footer-grid .social-links a:hover {
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .footer-grid .contact-info i {
+            width: 1.6rem;
+            color: var(--medium-purple);
+        }
+        .footer-grid .contact-info p {
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(132, 51, 143, 0.3);
+            padding-top: 1.8rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            color: #d4b8da;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.8rem 2rem;
+        }
+
+        .footer-bottom a {
+            color: #d4b8da;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+        .footer-bottom a:hover {
+            color: var(--white);
+            border-bottom-color: var(--medium-purple);
+        }
+
+        .ffsoft-link {
+            font-weight: 700;
+            background: rgba(132, 51, 143, 0.2);
+            padding: 0.2rem 1.4rem;
+            border-radius: 60px;
+            border: 1px solid rgba(132, 51, 143, 0.3);
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #d4b8da !important;
+            text-decoration: none !important;
+        }
+        .ffsoft-link:hover {
+            background: rgba(132, 51, 143, 0.4);
+            border-color: var(--medium-purple);
+            color: var(--white) !important;
+        }
+
+        /* ===== responsive ===== */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            .footer-grid .social-links {
+                justify-content: center;
+            }
+            .footer-grid .contact-info {
+                text-align: center;
+            }
+
+            .hero-slide-item {
+                white-space: normal;
+                font-size: 1.2rem;
+                padding: 0.3rem 1.2rem;
+                height: auto;
+                min-height: 3.6rem;
+            }
+            .hero-slider-wrapper {
+                height: 4.6rem;
+            }
+            @keyframes slideUp {
+                0% { transform: translateY(0); opacity: 1; }
+                10% { transform: translateY(0); opacity: 1; }
+                20% { transform: translateY(-4.2rem); opacity: 1; }
+                30% { transform: translateY(-4.2rem); opacity: 1; }
+                40% { transform: translateY(-8.4rem); opacity: 1; }
+                50% { transform: translateY(-8.4rem); opacity: 1; }
+                60% { transform: translateY(-12.6rem); opacity: 1; }
+                70% { transform: translateY(-12.6rem); opacity: 1; }
+                80% { transform: translateY(-16.8rem); opacity: 1; }
+                90% { transform: translateY(-16.8rem); opacity: 1; }
+                100% { transform: translateY(-21rem); opacity: 1; }
+            }
+
+            .top-bar {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+            .nav-icons a {
+                margin: 0 0.6rem;
+                font-size: 0.95rem;
+            }
+            .logo-img {
+                height: 58px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper">
 
-  <!-- header -->
-  <header class="top-bar">
-    <div class="logo">noshup<span>foods</span></div>
-    <div class="nav-icons">
-      <a href="#"><i class="fas fa-crown"></i> Bakery</a>
-      <a href="#"><i class="fas fa-cake"></i> Cakes</a>
-      <a href="#"><i class="fas fa-concierge-bell"></i> Contact</a>
-    </div>
-  </header>
+    <div class="container">
+        <!-- ===== HEADER ===== -->
+        <header class="top-bar">
+            <div class="logo-area">
+                <img src="logo.png" alt="Noshup Foods logo" class="logo-img" onerror="this.style.display='none'" />
+            </div>
+            <div class="nav-icons">
+                <a href="#products"><i class="fas fa-bread-slice"></i> Bakery</a>
+                <a href="#products"><i class="fas fa-cake"></i> Cakes</a>
+                <a href="#products"><i class="fas fa-cupcake"></i> Cupcakes</a>
+                <a href="#products"><i class="fas fa-cookie"></i> Biscuits</a>
+            </div>
+        </header>
 
-  <!-- hero + slider -->
-  <section class="hero">
-    <h1 class="hero-title">
-      <i class="fas fa-seedling"></i> purple · fresh <i class="fas fa-heart" style="color:#b074c4;"></i>
-    </h1>
-    <div class="slider-container">
-      <div class="slider-track">
-        <div class="slider-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
-        <div class="slider-item"><i class="fas fa-cookie-bite"></i>  nan khatai · crisp</div>
-        <div class="slider-item"><i class="fas fa-mug-saucer"></i>  tea time delights</div>
-        <div class="slider-item"><i class="fas fa-cake-candles"></i>  custom cupcakes</div>
-        <div class="slider-item"><i class="fas fa-utensils"></i>  daily fresh</div>
-        <div class="slider-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
-      </div>
-    </div>
-    <div class="hero-sub">
-      <i class="fas fa-star"></i>  baked with passion · since 2016  <i class="fas fa-star"></i>
-    </div>
-  </section>
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="hero-slogan">
+                <i class="fas fa-leaf leaf-icon"></i> Eat Better · Feel Better <i class="fas fa-leaf leaf-icon"></i>
+            </div>
+            <h1 class="hero-title">
+                <i class="fas fa-seedling"></i> fresh · baked <i class="fas fa-heart heart-icon"></i>
+            </h1>
+            
+            <!-- Rotating text slider -->
+            <div class="hero-slider-wrapper">
+                <div class="hero-slider-track">
+                    <div class="hero-slide-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
+                    <div class="hero-slide-item"><i class="fas fa-cookie-bite"></i>  nan khatai · crisp</div>
+                    <div class="hero-slide-item"><i class="fas fa-mug-saucer"></i>  tea time delights</div>
+                    <div class="hero-slide-item"><i class="fas fa-cake-candles"></i>  custom cupcakes</div>
+                    <div class="hero-slide-item"><i class="fas fa-utensils"></i>  daily fresh</div>
+                    <div class="hero-slide-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
+                </div>
+            </div>
 
-  <!-- featured -->
-  <h2 class="section-title"><i class="fas fa-crown"></i> signature treats</h2>
-  <div class="bakery-grid">
-    <div class="bakery-card">
-      <i class="fas fa-cake"></i>
-      <h3>fresh cakes</h3>
-      <p>vanilla, chocolate, red velvet</p>
-      <span class="badge">eggless option</span>
-    </div>
-    <div class="bakery-card">
-      <i class="fas fa-cookie"></i>
-      <h3>nan khatai</h3>
-      <p>traditional, nutty, melt-in-mouth</p>
-      <span class="badge">❤️ bestseller</span>
-    </div>
-    <div class="bakery-card">
-      <i class="fas fa-cupcake"></i>
-      <h3>cupcakes</h3>
-      <p>buttercream, fruity, sprinkles</p>
-      <span class="badge">12 flavours</span>
-    </div>
-    <div class="bakery-card">
-      <i class="fas fa-bread"></i>
-      <h3>artisan breads</h3>
-      <p>sourdough, multigrain, brioche</p>
-      <span class="badge">fresh baked</span>
-    </div>
-  </div>
+            <div class="hero-sub">
+                <i class="fas fa-star star-icon"></i>  baked with passion · since 2016  <i class="fas fa-star star-icon"></i>
+            </div>
+        </section>
 
-  <!-- extra items -->
-  <div class="extra-items">
-    <span><i class="fas fa-donut"></i> glazed donuts</span>
-    <span><i class="fas fa-pie"></i> fruit pies</span>
-    <span><i class="fas fa-muffin"></i> muffins</span>
-    <span><i class="fas fa-biscuit"></i> cookies</span>
-    <span><i class="fas fa-croissant"></i> croissants</span>
-    <span><i class="fas fa-cheese"></i> cheese danish</span>
-  </div>
+        <!-- ===== PRODUCTS ===== -->
+        <h2 class="section-title" id="products"><i class="fas fa-store"></i> Our Bakery</h2>
+        <div class="product-grid" id="productGrid"></div>
 
-  <!-- footer -->
-  <footer>
-    <div class="footer-content">
-      <a href="https://wa.me/923228837335?text=Hello%20Noshup%20Foods%20%F0%9F%8D%B0%20I%20want%20to%20order%20fresh%20bakery!" 
-         class="footer-whatsapp" 
-         target="_blank" 
-         rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i> Chat with us
-      </a>
-      <div style="font-size:1rem; opacity:0.85; margin-top:0.2rem; letter-spacing:0.3px;">
-        <i class="fas fa-phone-alt" style="margin-right:0.4rem;"></i> +92 322 8837335
-      </div>
-    </div>
+        <!-- extra items -->
+        <div class="extra-items">
+            <span><i class="fas fa-donut"></i> glazed donuts</span>
+            <span><i class="fas fa-pie"></i> fruit pies</span>
+            <span><i class="fas fa-muffin"></i> muffins</span>
+            <span><i class="fas fa-biscuit"></i> cookies</span>
+            <span><i class="fas fa-croissant"></i> croissants</span>
+            <span><i class="fas fa-cheese"></i> cheese danish</span>
+        </div>
+    </div> <!-- /container -->
 
-    <div class="footer-credit">
-      <span>© 2026 Noshup Foods · fresh bakery</span>
-      <span style="display: inline-flex; align-items: center; gap: 0.2rem;">
-        <i class="fas fa-bolt" style="color: #b074c4;"></i>
-        Powered By:
-        <a href="https://fanisite.com" target="_blank" rel="noopener" class="ffsoft-link">
-          <i class="fas fa-code"></i> FFSOFT
-        </a>
-      </span>
-      <span>
-        <a href="https://fanisite.com" target="_blank" rel="noopener" style="font-weight:400; color:#d1b3e0;">
-          <i class="fas fa-globe"></i> fanisite.com
-        </a>
-      </span>
-    </div>
-  </footer>
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Noshup Foods</h3>
+                    <p>Fresh bakery, cakes, cupcakes, and traditional biscuits — handmade with love since 2016.</p>
+                </div>
+                <div>
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://wa.me/923228837335" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p style="margin-top: 0.4rem;">Follow us for daily freshness!</p>
+                </div>
+                <div>
+                    <h3>Contact Information</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Lahore, Punjab, Pakistan</p>
+                        <p><i class="fas fa-phone"></i> +92 322 8837335</p>
+                        <p><i class="fas fa-envelope"></i> hello@noshupfoods.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Noshup Foods. All rights reserved.</span>
+                <span>
+                    <i class="fas fa-bolt" style="color: var(--medium-purple);"></i>
+                    Powered By:
+                    <a href="https://fanisite.com" target="_blank" rel="noopener" class="ffsoft-link">
+                        <i class="fas fa-code"></i> FFSOFT
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
 
-</div> <!-- wrapper -->
+    <!-- ================================================================ -->
+    <!-- ===== SCRIPT AREA: all product data lives here ===== -->
+    <!-- ================================================================ -->
+    <script>
+        // ------------------------------------------------------------------
+        //  PRODUCT DATA — edit this array to add/remove/update products
+        //  Each product needs: image, name, description, size, serves, badge
+        // ------------------------------------------------------------------
+        const products = [
+            // ---- Cupcakes ----
+            {
+                image: 'cc%20(1).jpeg',
+                name: 'Vanilla Cupcake',
+                description: 'Buttercream, sprinkles, fluffy sponge',
+                size: '3″',
+                serves: 'serves 1',
+                badge: '⭐ best seller'
+            },
+            {
+                image: 'cc%20(2).jpeg',
+                name: 'Red Velvet Cupcake',
+                description: 'Cream cheese frosting, cocoa touch',
+                size: '3″',
+                serves: 'serves 1',
+                badge: '❤️ popular'
+            },
+            {
+                image: 'cc%20(3).jpeg',
+                name: 'Chocolate Fudge',
+                description: 'Rich ganache, chocolate chips',
+                size: '3″',
+                serves: 'serves 1',
+                badge: '🍫 fudgy'
+            },
+
+            // ---- Cakes ----
+            {
+                image: 'c%20(1).jpeg',
+                name: 'Vanilla Dream',
+                description: 'Classic vanilla, fresh cream, berries',
+                size: '8″',
+                serves: 'serves 8-10',
+                badge: '🎉 party favourite'
+            },
+            {
+                image: 'c%20(2).jpeg',
+                name: 'Chocolate Truffle',
+                description: 'Rich chocolate, ganache drip',
+                size: '8″',
+                serves: 'serves 8-10',
+                badge: '✨ decadent'
+            },
+            {
+                image: 'c%20(3).jpeg',
+                name: 'Red Velvet Cake',
+                description: 'Cream cheese, velvety crumb',
+                size: '8″',
+                serves: 'serves 8-10',
+                badge: '🌸 elegant'
+            },
+            {
+                image: 'c%20(4).jpeg',
+                name: 'Carrot Walnut',
+                description: 'Spiced, walnuts, cream cheese',
+                size: '8″',
+                serves: 'serves 8-10',
+                badge: '🌿 wholesome'
+            },
+
+            // ---- Deserts ----
+            {
+                image: 'd%20(1).jpeg',
+                name: 'Tiramisu',
+                description: 'Coffee, mascarpone, cocoa',
+                size: '6″',
+                serves: 'serves 4-6',
+                badge: '🇮🇹 italian'
+            },
+            {
+                image: 'd%20(2).jpeg',
+                name: 'New York Cheesecake',
+                description: 'Creamy, graham crust, berry',
+                size: '7″',
+                serves: 'serves 6-8',
+                badge: '🗽 classic'
+            },
+            {
+                image: 'd%20(3).jpeg',
+                name: 'Fudge Brownie',
+                description: 'Walnuts, chocolate chunks',
+                size: '5″',
+                serves: 'serves 4',
+                badge: '🍫 gooey'
+            },
+            {
+                image: 'd%20(4).jpeg',
+                name: 'Panna Cotta',
+                description: 'Vanilla bean, berry compote',
+                size: '4″',
+                serves: 'serves 2',
+                badge: '🍮 silky'
+            },
+
+            // ---- Biscuit ----
+            {
+                image: 'biscuit-placeholder.jpg',
+                name: 'Badami Naan Khataai',
+                description: 'Traditional almond biscuit · crumbly, melt-in-mouth',
+                size: '2″ round',
+                serves: 'serves 1',
+                badge: '⭐ signature'
+            }
+        ];
+
+        // ------------------------------------------------------------------
+        //  RENDER PRODUCTS
+        // ------------------------------------------------------------------
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            if (!grid) return;
+
+            const fallbackSVG = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect fill='%23F3E6F5' width='400' height='200'/%3E%3Ctext x='50' y='120' font-size='24' fill='%236B1A77'%3E%F0%9F%8D%B0 fresh%3C/text%3E%3C/svg%3E`;
+
+            let html = '';
+            products.forEach(p => {
+                html += `
+                    <div class="product-card">
+                        <div class="img-wrap">
+                            <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='${fallbackSVG}'" />
+                        </div>
+                        <h3>${p.name}</h3>
+                        <p class="desc">${p.description}</p>
+                        <div class="product-meta">
+                            <span><i class="fas fa-ruler"></i> ${p.size}</span>
+                            <span><i class="fas fa-users"></i> ${p.serves}</span>
+                        </div>
+                        <span class="badge">${p.badge}</span>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = html;
+        }
+
+        document.addEventListener('DOMContentLoaded', renderProducts);
+    </script>
+
 </body>
 </html>
