@@ -65,24 +65,25 @@
         .animate-float { animation: floatGlow 4s ease-in-out infinite; }
         .fade-in-up { animation: fadeInUp 0.8s ease-out; }
 
-        /* Hero with background image */
+        /* Hero with background image - MORE VISIBLE */
         .hero-section {
             background-image: url('background.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
-            min-height: 500px;
+            min-height: 520px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        /* Lighter overlay to make background more visible */
         .hero-overlay {
-            background: rgba(252, 247, 253, 0.85);
-            backdrop-filter: blur(2px);
+            background: rgba(252, 247, 253, 0.70);
+            backdrop-filter: blur(1px);
             width: 100%;
-            min-height: 500px;
+            min-height: 520px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -111,11 +112,11 @@
             font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 500;
             color: var(--dark-purple);
-            background: var(--light-purple);
+            background: rgba(243, 230, 245, 0.92);
             padding: 0.5rem 2.8rem;
             border-radius: 80px;
             backdrop-filter: blur(6px);
-            box-shadow: 0 12px 28px rgba(107, 26, 119, 0.12);
+            box-shadow: 0 12px 28px rgba(107, 26, 119, 0.15);
             white-space: nowrap;
             margin: 0.5rem 0;
             display: flex;
@@ -308,28 +309,14 @@
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center border-b-2" style="border-color: var(--soft-lavender);">
+    <!-- ===== HEADER - Logo only ===== -->
+    <header class="container mx-auto px-4 py-4 flex justify-center md:justify-start border-b-2" style="border-color: var(--soft-lavender);">
         <div class="logo-area">
-            <img src="logo.png" alt="Noshup Foods logo" class="h-16 md:h-[68px] w-auto" style="filter: drop-shadow(0 2px 8px rgba(107, 26, 119, 0.2));" onerror="this.style.display='none'" />
+            <img src="logo.png" alt="Noshup Foods logo" class="h-16 md:h-[72px] w-auto" style="filter: drop-shadow(0 2px 8px rgba(107, 26, 119, 0.2));" onerror="this.style.display='none'" />
         </div>
-        <nav class="flex flex-wrap gap-2 md:gap-4">
-            <a href="#products" class="text-[#3f2949] hover:text-[#6B1A77] font-semibold transition text-sm md:text-base">
-                <i class="fas fa-bread-slice text-[#84338F] mr-1"></i> Bakery
-            </a>
-            <a href="#products" class="text-[#3f2949] hover:text-[#6B1A77] font-semibold transition text-sm md:text-base">
-                <i class="fas fa-cake text-[#84338F] mr-1"></i> Cakes
-            </a>
-            <a href="#products" class="text-[#3f2949] hover:text-[#6B1A77] font-semibold transition text-sm md:text-base">
-                <i class="fas fa-cupcake text-[#84338F] mr-1"></i> Cupcakes
-            </a>
-            <a href="#products" class="text-[#3f2949] hover:text-[#6B1A77] font-semibold transition text-sm md:text-base">
-                <i class="fas fa-cookie text-[#84338F] mr-1"></i> Biscuits
-            </a>
-        </nav>
     </header>
 
-    <!-- ===== HERO with background image ===== -->
+    <!-- ===== HERO with background image - MORE VISIBLE ===== -->
     <section class="hero-section">
         <div class="hero-overlay">
             <div class="container mx-auto px-4 text-center">
@@ -352,7 +339,7 @@
                     </div>
                 </div>
 
-                <div class="hero-sub inline-block mt-4 px-6 py-3 rounded-full text-lg md:text-xl font-medium animate-float" style="color: var(--dark-purple); background: var(--light-purple); border: 1px solid var(--soft-lavender);">
+                <div class="hero-sub inline-block mt-4 px-6 py-3 rounded-full text-lg md:text-xl font-medium animate-float" style="color: var(--dark-purple); background: rgba(243, 230, 245, 0.9); border: 1px solid var(--soft-lavender);">
                     <i class="fas fa-star" style="color: var(--leaf-green);"></i>  baked with passion · since 2016  <i class="fas fa-star" style="color: var(--leaf-green);"></i>
                 </div>
             </div>
