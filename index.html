@@ -85,19 +85,30 @@
             padding: 2rem 0;
         }
 
-        /* Make text more readable against the background */
+        /* ALL hero text in BLACK */
         .hero-slogan, .hero-title, .hero-slide-item, .hero-sub {
-            text-shadow: 0 2px 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.5);
+            color: #000000 !important;
+            text-shadow: 0 2px 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.6);
+        }
+
+        .hero-slogan i, .hero-title i, .hero-slide-item i, .hero-sub i {
+            color: #000000 !important;
+        }
+
+        .hero-title .heart-icon {
+            color: #000000 !important;
         }
 
         .hero-slide-item {
-            background: rgba(243, 230, 245, 0.85);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(4px);
+            border-color: rgba(0, 0, 0, 0.1);
         }
 
         .hero-sub {
-            background: rgba(243, 230, 245, 0.85);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(4px);
+            border-color: rgba(0, 0, 0, 0.1);
         }
 
         /* Rotating text slider */
@@ -121,24 +132,22 @@
         .hero-slide-item {
             font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 500;
-            color: var(--dark-purple);
             padding: 0.5rem 2.8rem;
             border-radius: 80px;
-            box-shadow: 0 12px 28px rgba(107, 26, 119, 0.15);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
             white-space: nowrap;
             margin: 0.5rem 0;
             display: flex;
             align-items: center;
             justify-content: center;
             letter-spacing: 0.8px;
-            border: 1px solid var(--soft-lavender);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             height: 4.4rem;
         }
 
         .hero-slide-item i {
-            color: var(--medium-purple);
             margin: 0 0.5rem;
-            filter: drop-shadow(0 0 4px rgba(132, 51, 143, 0.2));
+            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
         }
 
         /* Product card hover effect */
@@ -317,6 +326,54 @@
             color: white !important;
         }
 
+        /* Mobile menu styles */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            min-width: 200px;
+            border: 1px solid var(--soft-lavender);
+            z-index: 50;
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--dark-purple);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--light-purple);
+            color: var(--noshup-purple);
+        }
+
+        .hamburger-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--dark-purple);
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            transition: 0.2s;
+        }
+
+        .hamburger-btn:hover {
+            color: var(--noshup-purple);
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero-slide-item {
@@ -345,30 +402,58 @@
             .category-header h3 {
                 font-size: 1.4rem;
             }
+            .desktop-nav {
+                display: none !important;
+            }
+            .mobile-menu-trigger {
+                display: block !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu-trigger {
+                display: none !important;
+            }
+            .desktop-nav {
+                display: flex !important;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== HEADER - Logo + Categories ===== -->
-    <header class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center border-b-2" style="border-color: var(--soft-lavender);">
+    <!-- ===== HEADER - Logo + Categories with Hamburger ===== -->
+    <header class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center border-b-2 relative" style="border-color: var(--soft-lavender);">
         <div class="logo-area">
             <img src="logo.png" alt="Noshup Foods logo" class="h-16 md:h-[72px] w-auto" style="filter: drop-shadow(0 2px 8px rgba(107, 26, 119, 0.2));" onerror="this.style.display='none'" />
         </div>
-        <nav class="flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0" id="categoryNav">
+        
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0" id="desktopNav">
             <!-- Categories will be dynamically generated -->
         </nav>
+
+        <!-- Mobile Hamburger Button -->
+        <div class="mobile-menu-trigger">
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Mobile Menu Dropdown -->
+            <div class="mobile-menu" id="mobileMenu">
+                <!-- Categories will be dynamically generated -->
+            </div>
+        </div>
     </header>
 
-    <!-- ===== HERO with background image (80% visible) ===== -->
+    <!-- ===== HERO with background image (80% visible, black text) ===== -->
     <section class="hero-section">
         <div class="hero-overlay">
             <div class="container mx-auto px-4 text-center">
-                <div class="hero-slogan text-2xl md:text-4xl font-light mb-1" style="color: var(--noshup-purple);">
-                    <i class="fas fa-leaf" style="color: var(--leaf-green);"></i> Eat Better · Feel Better <i class="fas fa-leaf" style="color: var(--leaf-green);"></i>
+                <div class="hero-slogan text-2xl md:text-4xl font-light mb-1">
+                    <i class="fas fa-leaf" style="color: #000 !important;"></i> Eat Better · Feel Better <i class="fas fa-leaf" style="color: #000 !important;"></i>
                 </div>
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-1" style="color: var(--noshup-purple); animation: tiltIn 0.8s ease-out;">
-                    <i class="fas fa-seedling" style="color: var(--medium-purple);"></i> fresh · baked <i class="fas fa-heart" style="color: var(--medium-purple);"></i>
+                <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-extrabold mb-1" style="animation: tiltIn 0.8s ease-out;">
+                    <i class="fas fa-seedling"></i> fresh · baked <i class="fas fa-heart heart-icon"></i>
                 </h1>
                 
                 <!-- Rotating text slider -->
@@ -383,8 +468,8 @@
                     </div>
                 </div>
 
-                <div class="hero-sub inline-block mt-4 px-6 py-3 rounded-full text-lg md:text-xl font-medium animate-float" style="color: var(--dark-purple); background: rgba(243, 230, 245, 0.85); border: 1px solid var(--soft-lavender); backdrop-filter: blur(4px);">
-                    <i class="fas fa-star" style="color: var(--leaf-green);"></i>  baked with passion · since 2016  <i class="fas fa-star" style="color: var(--leaf-green);"></i>
+                <div class="hero-sub inline-block mt-4 px-6 py-3 rounded-full text-lg md:text-xl font-medium animate-float">
+                    <i class="fas fa-star" style="color: #000 !important;"></i>  baked with passion · since 2016  <i class="fas fa-star" style="color: #000 !important;"></i>
                 </div>
             </div>
         </div>
@@ -486,43 +571,12 @@
         // ------------------------------------------------------------------
         //  📦 PRODUCT DATA — Add, remove, or edit products easily
         //  
-        //  Categories: any name you want (will auto-generate in header)
+        //  Categories: 'deserts', 'biscuits', 'snacks'
         //  Each category needs: icon (FontAwesome class), label, items array
         //  Each product needs: image, name, description, size, serves, rating (1-5)
-        //  Image naming: use simple names like 'biscuit1.jpeg', 'cupcake1.jpeg', etc.
         //  ⚡ You can have ZERO or MANY items per category — code handles it!
         // ------------------------------------------------------------------
         const productData = {
-            biscuits: {
-                icon: 'fa-cookie',
-                label: 'Biscuits',
-                items: [
-                    {
-                        image: 'biscuit1.jpeg',
-                        name: 'Badami Naan Khataai',
-                        description: 'Traditional Pakistani biscuit made with almond flour and ghee, creating a crumbly, melt-in-mouth texture. Perfect with a cup of chai, this signature treat is a customer favourite.',
-                        size: '2″ round',
-                        serves: 'serves 1',
-                        rating: 5
-                    },
-                    {
-                        image: 'biscuit2.jpeg',
-                        name: 'Butter Cookies',
-                        description: 'Classic butter cookies with a melt-in-mouth texture. Light, crisp, and perfectly buttery — a timeless treat for all ages.',
-                        size: '2″ round',
-                        serves: 'serves 1',
-                        rating: 4
-                    },
-                    {
-                        image: 'biscuit3.jpeg',
-                        name: 'Chocolate Chip Cookies',
-                        description: 'Loaded with rich chocolate chips, these cookies are crispy on the edges and chewy in the center. A perfect treat with your afternoon tea.',
-                        size: '2″ round',
-                        serves: 'serves 1',
-                        rating: 5
-                    }
-                ]
-            },
             deserts: {
                 icon: 'fa-ice-cream',
                 label: 'Deserts',
@@ -561,89 +615,72 @@
                     }
                 ]
             },
-            cupcakes: {
-                icon: 'fa-cupcake',
-                label: 'Cup Cakes',
+            biscuits: {
+                icon: 'fa-cookie',
+                label: 'Biscuits',
                 items: [
                     {
-                        image: 'cupcake1.jpeg',
-                        name: 'Vanilla Cupcake',
-                        description: 'Classic vanilla cupcake topped with silky buttercream frosting and colorful sprinkles. The sponge is light, fluffy, and perfectly moist — a timeless favourite for all ages.',
-                        size: '3″',
+                        image: 'biscuit1.jpeg',
+                        name: 'Badami Naan Khataai',
+                        description: 'Traditional Pakistani biscuit made with almond flour and ghee, creating a crumbly, melt-in-mouth texture. Perfect with a cup of chai, this signature treat is a customer favourite.',
+                        size: '2″ round',
                         serves: 'serves 1',
                         rating: 5
                     },
                     {
-                        image: 'cupcake2.jpeg',
-                        name: 'Red Velvet Cupcake',
-                        description: 'Rich red velvet cupcake with a hint of cocoa, topped with creamy tangy cream cheese frosting. A perfect balance of sweetness and subtle chocolate notes.',
-                        size: '3″',
-                        serves: 'serves 1',
-                        rating: 5
-                    },
-                    {
-                        image: 'cupcake3.jpeg',
-                        name: 'Chocolate Fudge',
-                        description: 'Decadent chocolate cupcake filled with rich ganache and topped with chocolate buttercream. Loaded with chocolate chips for an extra fudgy experience.',
-                        size: '3″',
+                        image: 'biscuit2.jpeg',
+                        name: 'Butter Cookies',
+                        description: 'Classic butter cookies with a melt-in-mouth texture. Light, crisp, and perfectly buttery — a timeless treat for all ages.',
+                        size: '2″ round',
                         serves: 'serves 1',
                         rating: 4
+                    },
+                    {
+                        image: 'biscuit3.jpeg',
+                        name: 'Chocolate Chip Cookies',
+                        description: 'Loaded with rich chocolate chips, these cookies are crispy on the edges and chewy in the center. A perfect treat with your afternoon tea.',
+                        size: '2″ round',
+                        serves: 'serves 1',
+                        rating: 5
                     }
                 ]
             },
-            partycakes: {
-                icon: 'fa-birthday-cake',
-                label: 'Party Cakes',
+            snacks: {
+                icon: 'fa-utensils',
+                label: 'Snacks',
                 items: [
                     {
-                        image: 'cake1.jpeg',
-                        name: 'Vanilla Dream',
-                        description: 'A classic vanilla cake layered with fresh cream and topped with seasonal berries. Light, airy, and elegantly simple — perfect for any celebration.',
-                        size: '8″',
-                        serves: 'serves 8-10',
+                        image: 'snack1.jpeg',
+                        name: 'Mini Sandwiches',
+                        description: 'Assorted mini sandwiches with fresh fillings. Perfect for parties, gatherings, and afternoon tea. Made with freshly baked bread and premium ingredients.',
+                        size: '3″',
+                        serves: 'serves 1-2',
+                        rating: 4
+                    },
+                    {
+                        image: 'snack2.jpeg',
+                        name: 'Cheese Sticks',
+                        description: 'Crispy, golden cheese sticks with a gooey center. Served with tangy marinara sauce. A perfect snack for any occasion.',
+                        size: '4″',
+                        serves: 'serves 2',
+                        rating: 4
+                    },
+                    {
+                        image: 'snack3.jpeg',
+                        name: 'Mini Pizzas',
+                        description: 'Bite-sized pizzas topped with fresh mozzarella, tomato sauce, and your choice of toppings. A crowd-pleasing snack for parties and gatherings.',
+                        size: '3″',
+                        serves: 'serves 1',
                         rating: 5
                     },
                     {
-                        image: 'cake2.jpeg',
-                        name: 'Chocolate Truffle',
-                        description: 'Rich chocolate cake with layers of silky chocolate ganache and a glossy drip finish. A chocoholic\'s dream come true, indulgent and unforgettable.',
-                        size: '8″',
-                        serves: 'serves 8-10',
+                        image: 'snack4.jpeg',
+                        name: 'Samosa',
+                        description: 'Crispy, golden pastry filled with spiced potatoes and peas. Served with mint chutney. A classic snack that everyone loves.',
+                        size: '3″',
+                        serves: 'serves 1',
                         rating: 5
-                    },
-                    {
-                        image: 'cake3.jpeg',
-                        name: 'Red Velvet Cake',
-                        description: 'Velvety red cake with a subtle cocoa flavour, layered with luxurious cream cheese frosting. A stunning centrepiece for weddings and special occasions.',
-                        size: '8″',
-                        serves: 'serves 8-10',
-                        rating: 4
-                    },
-                    {
-                        image: 'cake4.jpeg',
-                        name: 'Carrot Walnut',
-                        description: 'Spiced carrot cake packed with crunchy walnuts and topped with smooth cream cheese frosting. Wholesome, flavorful, and perfectly balanced with cinnamon notes.',
-                        size: '8″',
-                        serves: 'serves 8-10',
-                        rating: 4
-                    },
-                    {
-                        image: 'cake5.jpeg',
-                        name: 'Carrot Walnut',
-                        description: 'Spiced carrot cake packed with crunchy walnuts and topped with smooth cream cheese frosting. Wholesome, flavorful, and perfectly balanced with cinnamon notes.',
-                        size: '8″',
-                        serves: 'serves 8-10',
-                        rating: 4
-                    },
-                    {
-                        image: 'cake6.jpeg',
-                        name: 'Carrot Walnut',
-                        description: 'Spiced carrot cake packed with crunchy walnuts and topped with smooth cream cheese frosting. Wholesome, flavorful, and perfectly balanced with cinnamon notes.',
-                        size: '8″',
-                        serves: 'serves 8-10',
-                        rating: 4
-                    },
-                    
+                    }
                 ]
             }
         };
@@ -653,28 +690,68 @@
         // ================================================================
 
         // ------------------------------------------------------------------
-        //  GENERATE CATEGORY NAVIGATION
+        //  GENERATE CATEGORY NAVIGATION (Desktop + Mobile)
         // ------------------------------------------------------------------
         function renderCategoryNav() {
-            const nav = document.getElementById('categoryNav');
-            if (!nav) return;
+            const desktopNav = document.getElementById('desktopNav');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!desktopNav || !mobileMenu) return;
 
-            let html = '';
+            let desktopHtml = '';
+            let mobileHtml = '';
             const categoryKeys = Object.keys(productData);
             
             categoryKeys.forEach(key => {
                 const category = productData[key];
                 if (!category || category.items.length === 0) return;
                 
-                html += `
+                // Desktop nav
+                desktopHtml += `
                     <a href="#${key}" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full" style="color: var(--dark-purple);" onmouseover="this.style.color='var(--noshup-purple)'" onmouseout="this.style.color='var(--dark-purple)'">
                         <i class="fas ${category.icon}" style="color: var(--medium-purple);"></i> ${category.label}
                     </a>
                 `;
+
+                // Mobile menu
+                mobileHtml += `
+                    <a href="#${key}" class="mobile-nav-link">
+                        <i class="fas ${category.icon}" style="color: var(--medium-purple); width: 1.5rem;"></i> ${category.label}
+                    </a>
+                `;
             });
 
-            nav.innerHTML = html;
+            desktopNav.innerHTML = desktopHtml;
+            mobileMenu.innerHTML = mobileHtml;
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('mobileMenu').classList.remove('open');
+                });
+            });
         }
+
+        // ------------------------------------------------------------------
+        //  HAMBURGER MENU TOGGLE
+        // ------------------------------------------------------------------
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mobileMenu.classList.toggle('open');
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenu.contains(e.target) && e.target !== hamburgerBtn && !hamburgerBtn.contains(e.target)) {
+                        mobileMenu.classList.remove('open');
+                    }
+                });
+            }
+        });
 
         // ------------------------------------------------------------------
         //  RENDER CATEGORIZED PRODUCTS
