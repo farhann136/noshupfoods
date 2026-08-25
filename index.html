@@ -60,7 +60,7 @@
         .animate-float { animation: floatGlow 4s ease-in-out infinite; }
         .fade-in-up { animation: fadeInUp 0.8s ease-out; }
 
-        /* Hero with background image */
+        /* Hero with background image - 80% visible */
         .hero-section {
             background-image: url('background.png');
             background-size: cover;
@@ -73,15 +73,31 @@
             justify-content: center;
         }
 
+        /* Lighter overlay - only 20% opacity so background is 80% visible */
         .hero-overlay {
-            background: rgba(252, 247, 253, 0.70);
-            backdrop-filter: blur(1px);
+            background: rgba(252, 247, 253, 0.20);
+            backdrop-filter: blur(0px);
             width: 100%;
             min-height: 520px;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem 0;
+        }
+
+        /* Make text more readable against the background */
+        .hero-slogan, .hero-title, .hero-slide-item, .hero-sub {
+            text-shadow: 0 2px 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-slide-item {
+            background: rgba(243, 230, 245, 0.85);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-sub {
+            background: rgba(243, 230, 245, 0.85);
+            backdrop-filter: blur(4px);
         }
 
         /* Rotating text slider */
@@ -106,10 +122,8 @@
             font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 500;
             color: var(--dark-purple);
-            background: rgba(243, 230, 245, 0.92);
             padding: 0.5rem 2.8rem;
             border-radius: 80px;
-            backdrop-filter: blur(6px);
             box-shadow: 0 12px 28px rgba(107, 26, 119, 0.15);
             white-space: nowrap;
             margin: 0.5rem 0;
@@ -341,23 +355,12 @@
         <div class="logo-area">
             <img src="logo.png" alt="Noshup Foods logo" class="h-16 md:h-[72px] w-auto" style="filter: drop-shadow(0 2px 8px rgba(107, 26, 119, 0.2));" onerror="this.style.display='none'" />
         </div>
-        <nav class="flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0">
-            <a href="#biscuits" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full" style="color: var(--dark-purple);" onmouseover="this.style.color='var(--noshup-purple)'" onmouseout="this.style.color='var(--dark-purple)'">
-                <i class="fas fa-cookie" style="color: var(--medium-purple);"></i> Biscuits
-            </a>
-            <a href="#deserts" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full" style="color: var(--dark-purple);" onmouseover="this.style.color='var(--noshup-purple)'" onmouseout="this.style.color='var(--dark-purple)'">
-                <i class="fas fa-ice-cream" style="color: var(--medium-purple);"></i> Deserts
-            </a>
-            <a href="#cupcakes" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full" style="color: var(--dark-purple);" onmouseover="this.style.color='var(--noshup-purple)'" onmouseout="this.style.color='var(--dark-purple)'">
-                <i class="fas fa-cupcake" style="color: var(--medium-purple);"></i> Cup Cakes
-            </a>
-            <a href="#partycakes" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full" style="color: var(--dark-purple);" onmouseover="this.style.color='var(--noshup-purple)'" onmouseout="this.style.color='var(--dark-purple)'">
-                <i class="fas fa-birthday-cake" style="color: var(--medium-purple);"></i> Party Cakes
-            </a>
+        <nav class="flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0" id="categoryNav">
+            <!-- Categories will be dynamically generated -->
         </nav>
     </header>
 
-    <!-- ===== HERO with background image ===== -->
+    <!-- ===== HERO with background image (80% visible) ===== -->
     <section class="hero-section">
         <div class="hero-overlay">
             <div class="container mx-auto px-4 text-center">
@@ -380,7 +383,7 @@
                     </div>
                 </div>
 
-                <div class="hero-sub inline-block mt-4 px-6 py-3 rounded-full text-lg md:text-xl font-medium animate-float" style="color: var(--dark-purple); background: rgba(243, 230, 245, 0.9); border: 1px solid var(--soft-lavender);">
+                <div class="hero-sub inline-block mt-4 px-6 py-3 rounded-full text-lg md:text-xl font-medium animate-float" style="color: var(--dark-purple); background: rgba(243, 230, 245, 0.85); border: 1px solid var(--soft-lavender); backdrop-filter: blur(4px);">
                     <i class="fas fa-star" style="color: var(--leaf-green);"></i>  baked with passion · since 2016  <i class="fas fa-star" style="color: var(--leaf-green);"></i>
                 </div>
             </div>
@@ -483,15 +486,16 @@
         // ------------------------------------------------------------------
         //  📦 PRODUCT DATA — Add, remove, or edit products easily
         //  
-        //  Categories: 'biscuits', 'deserts', 'cupcakes', 'partycakes'
+        //  Categories: any name you want (will auto-generate in header)
+        //  Each category needs: icon (FontAwesome class), label, items array
         //  Each product needs: image, name, description, size, serves, rating (1-5)
         //  Image naming: use simple names like 'biscuit1.jpeg', 'cupcake1.jpeg', etc.
+        //  ⚡ You can have ZERO or MANY items per category — code handles it!
         // ------------------------------------------------------------------
         const productData = {
             biscuits: {
                 icon: 'fa-cookie',
                 label: 'Biscuits',
-                id: 'biscuits',
                 items: [
                     {
                         image: 'biscuit1.jpeg',
@@ -508,13 +512,20 @@
                         size: '2″ round',
                         serves: 'serves 1',
                         rating: 4
+                    },
+                    {
+                        image: 'biscuit3.jpeg',
+                        name: 'Chocolate Chip Cookies',
+                        description: 'Loaded with rich chocolate chips, these cookies are crispy on the edges and chewy in the center. A perfect treat with your afternoon tea.',
+                        size: '2″ round',
+                        serves: 'serves 1',
+                        rating: 5
                     }
                 ]
             },
             deserts: {
                 icon: 'fa-ice-cream',
                 label: 'Deserts',
-                id: 'deserts',
                 items: [
                     {
                         image: 'desert1.jpeg',
@@ -553,7 +564,6 @@
             cupcakes: {
                 icon: 'fa-cupcake',
                 label: 'Cup Cakes',
-                id: 'cupcakes',
                 items: [
                     {
                         image: 'cupcake1.jpeg',
@@ -584,7 +594,6 @@
             partycakes: {
                 icon: 'fa-birthday-cake',
                 label: 'Party Cakes',
-                id: 'partycakes',
                 items: [
                     {
                         image: 'cake1.jpeg',
@@ -651,6 +660,30 @@
         // ================================================================
 
         // ------------------------------------------------------------------
+        //  GENERATE CATEGORY NAVIGATION
+        // ------------------------------------------------------------------
+        function renderCategoryNav() {
+            const nav = document.getElementById('categoryNav');
+            if (!nav) return;
+
+            let html = '';
+            const categoryKeys = Object.keys(productData);
+            
+            categoryKeys.forEach(key => {
+                const category = productData[key];
+                if (!category || category.items.length === 0) return;
+                
+                html += `
+                    <a href="#${key}" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full" style="color: var(--dark-purple);" onmouseover="this.style.color='var(--noshup-purple)'" onmouseout="this.style.color='var(--dark-purple)'">
+                        <i class="fas ${category.icon}" style="color: var(--medium-purple);"></i> ${category.label}
+                    </a>
+                `;
+            });
+
+            nav.innerHTML = html;
+        }
+
+        // ------------------------------------------------------------------
         //  RENDER CATEGORIZED PRODUCTS
         // ------------------------------------------------------------------
         function renderProducts() {
@@ -662,20 +695,22 @@
             let globalIndex = 0;
             let html = '';
 
-            const categoryOrder = ['biscuits', 'deserts', 'cupcakes', 'partycakes'];
+            const categoryKeys = Object.keys(productData);
             
-            categoryOrder.forEach(categoryKey => {
+            categoryKeys.forEach(categoryKey => {
                 const category = productData[categoryKey];
                 if (!category || category.items.length === 0) return;
 
+                // Category header
                 html += `
-                    <div class="category-header" id="${category.id}">
+                    <div class="category-header" id="${categoryKey}">
                         <i class="fas ${category.icon}"></i>
-                        <h3>${category.label}</h3>
+                        <h3>${category.label} (${category.items.length})</h3>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 `;
 
+                // Render items for this category
                 category.items.forEach(product => {
                     const stars = '★'.repeat(product.rating) + '☆'.repeat(5 - product.rating);
                     html += `
@@ -703,6 +738,17 @@
                 html += `</div>`;
             });
 
+            // If no products at all, show a message
+            if (globalIndex === 0) {
+                html = `
+                    <div class="text-center py-12" style="color: var(--dark-purple);">
+                        <i class="fas fa-bread-slice text-6xl mb-4" style="color: var(--medium-purple);"></i>
+                        <h3 class="text-2xl font-semibold">No products yet</h3>
+                        <p class="mt-2">Check back soon for our delicious bakery items!</p>
+                    </div>
+                `;
+            }
+
             container.innerHTML = html;
 
             document.querySelectorAll('.product-card').forEach((card) => {
@@ -716,8 +762,8 @@
         // ------------------------------------------------------------------
         function buildFlatProducts() {
             const flat = [];
-            const categoryOrder = ['biscuits', 'deserts', 'cupcakes', 'partycakes'];
-            categoryOrder.forEach(key => {
+            const categoryKeys = Object.keys(productData);
+            categoryKeys.forEach(key => {
                 if (productData[key]) {
                     productData[key].items.forEach(item => {
                         flat.push(item);
@@ -778,7 +824,10 @@
         // ------------------------------------------------------------------
         //  INIT
         // ------------------------------------------------------------------
-        document.addEventListener('DOMContentLoaded', renderProducts);
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategoryNav();
+            renderProducts();
+        });
     </script>
 
 </body>
