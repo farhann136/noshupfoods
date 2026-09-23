@@ -204,10 +204,7 @@ const productData = {
                     'Box of 6': { price: 480 },
                     'Box of 12': { price: 900 }
                 }
-            },
-            
-           
-           
+            }
         ]
     },
 
