@@ -135,17 +135,7 @@ const productData = {
                     'Pack of 6': { price: 1600 }
                 }
             },
-            {
-                image: 'desert10.jpg',
-                name: 'Baklava',
-                description: 'Layers of flaky phyllo pastry filled with chopped nuts and sweetened with honey syrup. A rich Middle Eastern treat.',
-                size: '3″ piece',
-                serves: 'serves 1',
-                rating: 4,
-                packs: {
-                    'Box of 6': { price: 900 },
-                    'Box of 12': { price: 1700 }
-                }
+            
             }
         ]
     },
