@@ -143,7 +143,7 @@ const productData = {
         label: 'Biscuits',
         items: [
             {
-                image: 'biscuit1.jpeg',
+                image: 'biscuit1.jpg',
                 name: 'Badami Naan Khataai',
                 description: 'Traditional Pakistani biscuit made with almond flour and ghee, creating a crumbly, melt-in-mouth texture. Perfect with a cup of chai, this signature treat is a customer favourite.',
                 size: '2″ round',
@@ -156,7 +156,7 @@ const productData = {
                 }
             },
             {
-                image: 'biscuit2.jpeg',
+                image: 'biscuit2.jpg',
                 name: 'Butter Cookies',
                 description: 'Classic butter cookies with a melt-in-mouth texture. Light, crisp, and perfectly buttery — a timeless treat for all ages.',
                 size: '2″ round',
@@ -169,7 +169,7 @@ const productData = {
                 }
             },
             {
-                image: 'biscuit3.jpeg',
+                image: 'biscuit3.jpg',
                 name: 'Chocolate Chip Cookies',
                 description: 'Loaded with rich chocolate chips, these cookies are crispy on the edges and chewy in the center. A perfect treat with your afternoon tea.',
                 size: '2″ round',
@@ -182,7 +182,7 @@ const productData = {
                 }
             },
             {
-                image: 'biscuit4.jpeg',
+                image: 'biscuit4.jpg',
                 name: 'Coconut Macaroons',
                 description: 'Chewy coconut macaroons with a crisp exterior and soft, moist interior. Dipped in dark chocolate for extra richness.',
                 size: '2″ round',
@@ -194,7 +194,7 @@ const productData = {
                 }
             },
             {
-                image: 'biscuit5.jpeg',
+                image: 'biscuit5.jpg',
                 name: 'Oatmeal Raisin Cookies',
                 description: 'Hearty oatmeal cookies with plump raisins and a hint of cinnamon. Soft, chewy, and full of wholesome flavor.',
                 size: '2.5″ round',
@@ -205,66 +205,9 @@ const productData = {
                     'Box of 12': { price: 900 }
                 }
             },
-            {
-                image: 'biscuit6.jpeg',
-                name: 'Shortbread Fingers',
-                description: 'Traditional Scottish shortbread with a rich, buttery flavor and crumbly texture. Dusted lightly with sugar.',
-                size: '3″ finger',
-                serves: 'serves 1',
-                rating: 5,
-                packs: {
-                    '250g': { price: 400 },
-                    '500g': { price: 750 }
-                }
-            },
-            {
-                image: 'biscuit7.jpeg',
-                name: 'Almond Biscotti',
-                description: 'Twice-baked Italian cookies loaded with almonds. Crisp and perfect for dipping in coffee or tea.',
-                size: '3″ slice',
-                serves: 'serves 1',
-                rating: 4,
-                packs: {
-                    'Box of 6': { price: 600 },
-                    'Box of 12': { price: 1100 }
-                }
-            },
-            {
-                image: 'biscuit8.jpeg',
-                name: 'Ginger Snaps',
-                description: 'Spicy and sweet ginger cookies with a snap. Made with real ginger and a touch of molasses.',
-                size: '2″ round',
-                serves: 'serves 1',
-                rating: 4,
-                packs: {
-                    '250g': { price: 320 },
-                    '500g': { price: 600 }
-                }
-            },
-            {
-                image: 'biscuit9.jpeg',
-                name: 'Peanut Butter Cookies',
-                description: 'Rich and nutty peanut butter cookies with a classic fork pattern on top. Soft-baked for the perfect chew.',
-                size: '2.5″ round',
-                serves: 'serves 1',
-                rating: 5,
-                packs: {
-                    'Box of 6': { price: 500 },
-                    'Box of 12': { price: 950 }
-                }
-            },
-            {
-                image: 'biscuit10.jpeg',
-                name: 'Jam Thumbprint Cookies',
-                description: 'Buttery cookies with a sweet jam center. A beautiful and delicious treat for any occasion.',
-                size: '2″ round',
-                serves: 'serves 1',
-                rating: 5,
-                packs: {
-                    'Box of 6': { price: 550 },
-                    'Box of 12': { price: 1000 }
-                }
-            }
+            
+           
+           
         ]
     },
 
