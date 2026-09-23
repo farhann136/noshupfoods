@@ -23,7 +23,7 @@ const productData = {
         label: 'Deserts',
         items: [
             {
-                image: 'desert1.jpeg',
+                image: 'desert1.jpg',
                 name: 'Tiramisu',
                 description: 'Classic Italian dessert with layers of coffee-soaked ladyfingers, creamy mascarpone, and a dusting of rich cocoa powder. A sophisticated treat for coffee lovers.',
                 size: '6″',
@@ -36,7 +36,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert2.jpeg',
+                image: 'desert2.jpg',
                 name: 'New York Cheesecake',
                 description: 'Ultra-creamy cheesecake with a buttery graham cracker crust, topped with a vibrant berry compote. Rich, smooth, and absolutely irresistible.',
                 size: '7″',
@@ -49,7 +49,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert3.jpeg',
+                image: 'desert3.jpg',
                 name: 'Fudge Brownie',
                 description: 'Gooey chocolate brownie loaded with walnuts and chocolate chunks. The perfect balance of crispy edges and a soft, fudgy centre that melts in your mouth.',
                 size: '5″',
@@ -62,7 +62,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert4.jpeg',
+                image: 'desert4.jpg',
                 name: 'Panna Cotta',
                 description: 'Silky smooth Italian custard infused with vanilla bean, served with a tangy berry compote. Light, elegant, and the perfect ending to any meal.',
                 size: '4″',
@@ -74,7 +74,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert5.jpeg',
+                image: 'desert5.jpg',
                 name: 'Chocolate Lava Cake',
                 description: 'Warm chocolate cake with a molten center that flows when you cut into it. Served with a scoop of vanilla ice cream for the ultimate indulgence.',
                 size: '4″',
@@ -86,7 +86,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert6.jpeg',
+                image: 'desert6.jpg',
                 name: 'Fruit Trifle',
                 description: 'Layers of sponge cake, fresh fruits, custard, and whipped cream. A refreshing and colorful dessert that is perfect for gatherings.',
                 size: '8″ bowl',
@@ -98,7 +98,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert7.jpeg',
+                image: 'desert7.jpg',
                 name: 'Red Velvet Cupcake',
                 description: 'Moist red velvet cake topped with rich cream cheese frosting. A classic favorite with a beautiful red crumb.',
                 size: '2.5″',
@@ -111,7 +111,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert8.jpeg',
+                image: 'desert8.jpg',
                 name: 'Lemon Tart',
                 description: 'Buttery tart shell filled with tangy lemon curd, topped with a light meringue. A perfect balance of sweet and sour.',
                 size: '4″',
@@ -123,7 +123,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert9.jpeg',
+                image: 'desert9.jpg',
                 name: 'Chocolate Mousse',
                 description: 'Light and airy chocolate mousse made with premium dark chocolate. Served in individual cups for a perfect portion.',
                 size: '3″ cup',
@@ -136,7 +136,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert10.jpeg',
+                image: 'desert10.jpg',
                 name: 'Baklava',
                 description: 'Layers of flaky phyllo pastry filled with chopped nuts and sweetened with honey syrup. A rich Middle Eastern treat.',
                 size: '3″ piece',
