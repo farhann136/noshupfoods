@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>Noshup Foods · fresh bakery</title>
+
     <!-- ===== Favicon ===== -->
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="apple-touch-icon" href="images/favicon.png" />
-    
+
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    
+
     <style>
         :root {
             --noshup-purple: #6B1A77;
@@ -167,25 +168,116 @@
         }
         .product-card:hover img { transform: scale(1.02); }
 
-        /* ===== Category header ===== */
-        .category-header {
+        /* ===== Category section wrapper (distinct per category) ===== */
+        .category-section {
+            border-radius: 2rem;
+            padding: 1.5rem 1.25rem 2rem;
+            margin-top: 2.5rem;
+            position: relative;
+            scroll-margin-top: 100px;
+            transition: background 0.3s ease;
+        }
+
+        .category-section.theme-0 {
+            background: linear-gradient(180deg, #FDF2F8 0%, #FCF7FD 100%);
+            border: 1px solid #F3D9E8;
+        }
+        .category-section.theme-1 {
+            background: linear-gradient(180deg, #FFF8EC 0%, #FCF7FD 100%);
+            border: 1px solid #F0E0C4;
+        }
+        .category-section.theme-2 {
+            background: linear-gradient(180deg, #F1F8EC 0%, #FCF7FD 100%);
+            border: 1px solid #D9E8CC;
+        }
+        .category-section.theme-3 {
+            background: linear-gradient(180deg, #EEF5FB 0%, #FCF7FD 100%);
+            border: 1px solid #CFDDEA;
+        }
+        .category-section.theme-4 {
+            background: linear-gradient(180deg, #F7F0FB 0%, #FCF7FD 100%);
+            border: 1px solid #E2CBE6;
+        }
+
+        /* ===== Category banner ===== */
+        .category-banner {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            margin-top: 2.5rem;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
             margin-bottom: 1.5rem;
-            padding-left: 1.2rem;
-            border-left: 8px solid var(--noshup-purple);
-            scroll-margin-top: 100px;
+            padding-bottom: 1rem;
+            border-bottom: 2px dashed rgba(132, 51, 143, 0.25);
         }
-        .category-header h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
+
+        .category-banner-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-icon-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            color: #ffffff;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        .category-icon-badge.icon-theme-0 { background: linear-gradient(135deg, #E46A9D, #C13B75); }
+        .category-icon-badge.icon-theme-1 { background: linear-gradient(135deg, #F0A93B, #D4881B); }
+        .category-icon-badge.icon-theme-2 { background: linear-gradient(135deg, #7CB342, #558B2F); }
+        .category-icon-badge.icon-theme-3 { background: linear-gradient(135deg, #5C9BD1, #3579B5); }
+        .category-icon-badge.icon-theme-4 { background: linear-gradient(135deg, #9B5FBF, #6B1A77); }
+
+        .category-title-block {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .category-title {
+            font-size: clamp(1.5rem, 4vw, 2.1rem);
+            font-weight: 800;
             color: var(--dark-purple);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
         }
-        .category-header i {
+
+        .category-subtitle {
+            font-size: 0.85rem;
+            font-weight: 500;
             color: var(--medium-purple);
-            font-size: 1.8rem;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .category-count-pill {
+            background: var(--white);
+            border: 1px solid var(--soft-lavender);
+            color: var(--dark-purple);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.1rem;
+            border-radius: 999px;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(107, 26, 119, 0.08);
+        }
+        .category-count-pill i {
+            color: var(--medium-purple);
+            margin-right: 0.35rem;
+        }
+
+        .category-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(132, 51, 143, 0.25), transparent);
+            margin: 2.5rem 0 0;
         }
 
         /* ===== Stars ===== */
@@ -426,7 +518,6 @@
                 90% { transform: translateY(-16.8rem); opacity: 1; }
                 100% { transform: translateY(-21rem); opacity: 1; }
             }
-            .category-header h3 { font-size: 1.4rem; }
             .desktop-nav { display: none !important; }
             .mobile-menu-trigger { display: block !important; }
             .modal-content { padding: 1.8rem 1.2rem 1.2rem; }
@@ -443,6 +534,25 @@
             #floatingWhatsApp .wa-tooltip { display: none; }
         }
 
+        @media (max-width: 640px) {
+            .category-section {
+                padding: 1.25rem 0.9rem 1.5rem;
+                border-radius: 1.5rem;
+            }
+            .category-icon-badge {
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+            }
+            .category-banner {
+                gap: 0.75rem;
+            }
+            .category-count-pill {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.9rem;
+            }
+        }
+
         @media (min-width: 769px) {
             .mobile-menu-trigger { display: none !important; }
             .desktop-nav { display: flex !important; }
@@ -455,12 +565,12 @@
 </head>
 <body>
 
-    <!-- ===== HEADER - Logo + Categories with Hamburger ===== -->
+    <!-- ===== HEADER ===== -->
     <header class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center border-b-2 relative" style="border-color: var(--soft-lavender);">
         <div class="logo-area">
             <img src="images/logo.png" alt="Noshup Foods logo" class="h-16 md:h-[72px] w-auto" style="filter: drop-shadow(0 2px 8px rgba(107, 26, 119, 0.2));" onerror="this.style.display='none'" />
         </div>
-        
+
         <!-- Desktop Navigation -->
         <nav class="desktop-nav flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0" id="desktopNav"></nav>
 
@@ -483,7 +593,7 @@
                 <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-extrabold mb-1" style="animation: tiltIn 0.8s ease-out;">
                     <i class="fas fa-seedling"></i> fresh · baked <i class="fas fa-heart"></i>
                 </h1>
-                
+
                 <div class="hero-slider-wrapper">
                     <div class="hero-slider-track">
                         <div class="hero-slide-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
@@ -532,7 +642,6 @@
     </div>
 
     <!-- ===== FOOTER ===== -->
-    <!-- ===== FOOTER ===== -->
     <footer class="mt-12 py-10" style="background: var(--dark-purple); border-top: 3px solid var(--noshup-purple);">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
@@ -572,7 +681,7 @@
         </div>
     </footer>
 
-    <!-- ===== FLOATING WHATSAPP BUTTON (bottom-right) ===== -->
+    <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
     <a href="https://wa.me/923228837335?text=Hi%20Noshup%20Foods!%20I'd%20like%20to%20inquire%20about%20your%20bakery%20items."
        target="_blank" rel="noopener"
        id="floatingWhatsApp"
@@ -582,7 +691,7 @@
         <span class="wa-tooltip">Chat with us</span>
     </a>
 
-    <!-- ===== MODAL / POPUP ===== -->
+    <!-- ===== MODAL ===== -->
     <div class="modal-overlay" id="productModal">
         <div class="modal-content">
             <button class="modal-close" id="modalClose">&times;</button>
@@ -655,7 +764,7 @@
             });
         }
 
-        // ---------- Product Grid ----------
+        // ---------- Product Grid (distinct category sections) ----------
         function renderProducts() {
             const container = document.getElementById('productContainer');
             if (!container) return;
@@ -675,13 +784,28 @@
                 return;
             }
 
-            cats.forEach(([categoryKey, category]) => {
+            cats.forEach(([categoryKey, category], catIndex) => {
+                const theme = catIndex % 5; // cycle through 5 themes
+                const itemCount = category.items.length;
+                const itemLabel = itemCount === 1 ? 'item' : 'items';
+
                 html += `
-                    <div class="category-header" id="${categoryKey}">
-                        <i class="fas ${category.icon}"></i>
-                        <h3>${category.label} (${category.items.length})</h3>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <section class="category-section theme-${theme}" id="${categoryKey}">
+                        <div class="category-banner">
+                            <div class="category-banner-left">
+                                <div class="category-icon-badge icon-theme-${theme}">
+                                    <i class="fas ${category.icon}"></i>
+                                </div>
+                                <div class="category-title-block">
+                                    <span class="category-subtitle">Our Menu</span>
+                                    <h2 class="category-title">${category.label}</h2>
+                                </div>
+                            </div>
+                            <span class="category-count-pill">
+                                <i class="fas fa-utensils"></i> ${itemCount} ${itemLabel}
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 `;
 
                 category.items.forEach(product => {
@@ -720,7 +844,11 @@
                     globalIndex++;
                 });
 
-                html += `</div>`;
+                html += `
+                        </div>
+                        <div class="category-divider"></div>
+                    </section>
+                `;
             });
 
             container.innerHTML = html;
