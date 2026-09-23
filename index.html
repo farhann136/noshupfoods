@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>Noshup Foods · fresh bakery</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <style>
+        :root {
+            --noshup-purple: #6B1A77;
+            --dark-purple: #42104A;
+            --medium-purple: #84338F;
+            --light-purple: #F3E6F5;
+            --very-light-purple: #FCF7FD;
+            --soft-lavender: #E2CBE6;
+            --leaf-green: #7CB342;
+            --dark-green: #558B2F;
+            --white: #FFFFFF;
+            --main-dark: #28152C;
+            --gold-star: #f5b342;
+            --wa-green: #25D366;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.02); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(0); opacity: 1; }
+            10% { transform: translateY(0); opacity: 1; }
+            20% { transform: translateY(-5.2rem); opacity: 1; }
+            30% { transform: translateY(-5.2rem); opacity: 1; }
+            40% { transform: translateY(-10.4rem); opacity: 1; }
+            50% { transform: translateY(-10.4rem); opacity: 1; }
+            60% { transform: translateY(-15.6rem); opacity: 1; }
+            70% { transform: translateY(-15.6rem); opacity: 1; }
+            80% { transform: translateY(-20.8rem); opacity: 1; }
+            90% { transform: translateY(-20.8rem); opacity: 1; }
+            100% { transform: translateY(-26rem); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes tiltIn {
+            0% { opacity: 0; transform: rotate(-2deg) scale(0.9); }
+            100% { opacity: 1; transform: rotate(0) scale(1); }
+        }
+
+        @keyframes waPulse {
+            0%   { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45), 0 0 0 0   rgba(37, 211, 102, 0.55); }
+            70%  { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45), 0 0 0 18px rgba(37, 211, 102, 0);   }
+            100% { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45), 0 0 0 0   rgba(37, 211, 102, 0);   }
+        }
+
+        .animate-float { animation: floatGlow 4s ease-in-out infinite; }
+
+        /* ===== Hero ===== */
+        .hero-section {
+            background-image: url('images/hero.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            background: rgba(252, 247, 253, 0.20);
+            width: 100%;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .hero-slogan, .hero-title, .hero-slide-item, .hero-sub {
+            color: #000000 !important;
+            text-shadow: 0 2px 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.6);
+        }
+        .hero-slogan i, .hero-title i, .hero-slide-item i, .hero-sub i {
+            color: #000000 !important;
+        }
+
+        .hero-slider-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 1.2rem 0 0.8rem;
+            height: 5.4rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-slider-track {
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 18s ease-in-out infinite;
+            line-height: 1.4;
+        }
+
+        .hero-slide-item {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 500;
+            padding: 0.5rem 2.8rem;
+            border-radius: 80px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.8px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            height: 4.4rem;
+        }
+
+        .hero-slide-item i {
+            margin: 0 0.5rem;
+            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .hero-sub {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== Product card ===== */
+        .product-card {
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
+            border: 1px solid var(--soft-lavender);
+            background: var(--white);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 44px -8px rgba(107, 26, 119, 0.15);
+            border-color: var(--medium-purple);
+        }
+        .product-card img {
+            transition: 0.4s ease;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card:hover img { transform: scale(1.02); }
+
+        /* ===== Category header ===== */
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            padding-left: 1.2rem;
+            border-left: 8px solid var(--noshup-purple);
+            scroll-margin-top: 100px;
+        }
+        .category-header h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-purple);
+        }
+        .category-header i {
+            color: var(--medium-purple);
+            font-size: 1.8rem;
+        }
+
+        /* ===== Stars ===== */
+        .stars { color: var(--gold-star); letter-spacing: 2px; font-size: 0.95rem; }
+        .stars .far { color: #d4c4d8; }
+
+        /* ===== Modal ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-overlay.active { display: flex; }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 2rem;
+            max-width: 520px;
+            width: 100%;
+            padding: 2.5rem 2rem 2rem;
+            position: relative;
+            animation: fadeInUp 0.4s ease-out;
+            border: 2px solid var(--soft-lavender);
+            box-shadow: 0 30px 60px rgba(107, 26, 119, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--dark-purple);
+            cursor: pointer;
+            transition: 0.2s;
+            background: none;
+            border: none;
+            line-height: 1;
+            z-index: 10;
+        }
+        .modal-close:hover { color: var(--noshup-purple); transform: rotate(90deg); }
+
+        .modal-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 1.2rem;
+            margin-bottom: 1.2rem;
+            background: var(--light-purple);
+        }
+
+        .modal-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--dark-purple);
+            margin-bottom: 0.5rem;
+        }
+        .modal-description {
+            color: var(--main-dark);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--dark-purple);
+            font-weight: 500;
+            background: var(--light-purple);
+            padding: 0.8rem 1.4rem;
+            border-radius: 40px;
+            align-items: center;
+        }
+        .modal-meta i { color: var(--medium-purple); margin-right: 0.3rem; }
+
+        .modal-stars {
+            color: var(--gold-star);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-top: 0.2rem;
+        }
+
+        .pack-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.8rem; }
+        .pack-item {
+            background: var(--very-light-purple);
+            border: 1px solid var(--soft-lavender);
+            border-radius: 2rem;
+            padding: 0.4rem 1.2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--dark-purple);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .pack-item .price {
+            font-weight: 700;
+            color: var(--noshup-purple);
+            margin-left: 0.2rem;
+        }
+
+        /* ===== Footer ===== */
+        .footer-ffsoft-link {
+            font-weight: 700;
+            background: rgba(132, 51, 143, 0.2);
+            padding: 0.2rem 1.4rem;
+            border-radius: 60px;
+            border: 1px solid rgba(132, 51, 143, 0.3);
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #d4b8da !important;
+            text-decoration: none !important;
+        }
+        .footer-ffsoft-link:hover {
+            background: rgba(132, 51, 143, 0.4);
+            border-color: var(--medium-purple);
+            color: white !important;
+        }
+
+        /* ===== Mobile menu ===== */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            min-width: 200px;
+            border: 1px solid var(--soft-lavender);
+            z-index: 50;
+        }
+        .mobile-menu.open { display: block; }
+        .mobile-menu a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--dark-purple);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: 0.2s;
+        }
+        .mobile-menu a:hover {
+            background: var(--light-purple);
+            color: var(--noshup-purple);
+        }
+
+        .hamburger-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--dark-purple);
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            transition: 0.2s;
+        }
+        .hamburger-btn:hover { color: var(--noshup-purple); }
+
+        /* ===== Floating WhatsApp button ===== */
+        #floatingWhatsApp {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--wa-green);
+            color: #ffffff !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45), 0 4px 10px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            animation: waPulse 2.4s ease-in-out infinite;
+        }
+        #floatingWhatsApp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 14px 32px rgba(37, 211, 102, 0.6), 0 6px 14px rgba(0, 0, 0, 0.2);
+        }
+        #floatingWhatsApp i { color: #ffffff; }
+
+        #floatingWhatsApp .wa-tooltip {
+            position: absolute;
+            right: 74px;
+            top: 50%;
+            transform: translateY(-50%) translateX(8px);
+            background: var(--dark-purple);
+            color: #fff;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+        }
+        #floatingWhatsApp:hover .wa-tooltip {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .hero-slide-item {
+                white-space: normal;
+                font-size: 1.2rem;
+                padding: 0.3rem 1.2rem;
+                height: auto;
+                min-height: 3.6rem;
+            }
+            .hero-slider-wrapper { height: 4.6rem; }
+            @keyframes slideUp {
+                0% { transform: translateY(0); opacity: 1; }
+                10% { transform: translateY(0); opacity: 1; }
+                20% { transform: translateY(-4.2rem); opacity: 1; }
+                30% { transform: translateY(-4.2rem); opacity: 1; }
+                40% { transform: translateY(-8.4rem); opacity: 1; }
+                50% { transform: translateY(-8.4rem); opacity: 1; }
+                60% { transform: translateY(-12.6rem); opacity: 1; }
+                70% { transform: translateY(-12.6rem); opacity: 1; }
+                80% { transform: translateY(-16.8rem); opacity: 1; }
+                90% { transform: translateY(-16.8rem); opacity: 1; }
+                100% { transform: translateY(-21rem); opacity: 1; }
+            }
+            .category-header h3 { font-size: 1.4rem; }
+            .desktop-nav { display: none !important; }
+            .mobile-menu-trigger { display: block !important; }
+            .modal-content { padding: 1.8rem 1.2rem 1.2rem; }
+            .modal-title { font-size: 1.5rem; }
+            .modal-image { height: 180px; }
+
+            #floatingWhatsApp {
+                width: 54px;
+                height: 54px;
+                font-size: 1.75rem;
+                bottom: 16px;
+                right: 16px;
+            }
+            #floatingWhatsApp .wa-tooltip { display: none; }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu-trigger { display: none !important; }
+            .desktop-nav { display: flex !important; }
+        }
+
+        .modal-content::-webkit-scrollbar { width: 6px; }
+        .modal-content::-webkit-scrollbar-track { background: var(--light-purple); border-radius: 10px; }
+        .modal-content::-webkit-scrollbar-thumb { background: var(--medium-purple); border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER - Logo + Categories with Hamburger ===== -->
+    <header class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center border-b-2 relative" style="border-color: var(--soft-lavender);">
+        <div class="logo-area">
+            <img src="images/logo.png" alt="Noshup Foods logo" class="h-16 md:h-[72px] w-auto" style="filter: drop-shadow(0 2px 8px rgba(107, 26, 119, 0.2));" onerror="this.style.display='none'" />
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0" id="desktopNav"></nav>
+
+        <!-- Mobile Hamburger Button -->
+        <div class="mobile-menu-trigger">
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="mobile-menu" id="mobileMenu"></div>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <div class="container mx-auto px-4 text-center">
+                <div class="hero-slogan text-2xl md:text-4xl font-light mb-1">
+                    <i class="fas fa-leaf"></i> Eat Better · Feel Better <i class="fas fa-leaf"></i>
+                </div>
+                <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-extrabold mb-1" style="animation: tiltIn 0.8s ease-out;">
+                    <i class="fas fa-seedling"></i> fresh · baked <i class="fas fa-heart"></i>
+                </h1>
+                
+                <div class="hero-slider-wrapper">
+                    <div class="hero-slider-track">
+                        <div class="hero-slide-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
+                        <div class="hero-slide-item"><i class="fas fa-cookie-bite"></i>  nan khatai · crisp</div>
+                        <div class="hero-slide-item"><i class="fas fa-mug-saucer"></i>  tea time delights</div>
+                        <div class="hero-slide-item"><i class="fas fa-cake-candles"></i>  custom cupcakes</div>
+                        <div class="hero-slide-item"><i class="fas fa-utensils"></i>  daily fresh</div>
+                        <div class="hero-slide-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
+                    </div>
+                </div>
+
+                <div class="hero-sub inline-block mt-4 px-6 py-3 rounded-full text-lg md:text-xl font-medium animate-float">
+                    <i class="fas fa-star"></i>  baked with passion · since 2016  <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTS ===== -->
+    <div class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3" style="color: var(--dark-purple); border-left: 10px solid var(--noshup-purple); padding-left: 1.4rem;">
+            <i class="fas fa-store" style="color: var(--medium-purple);"></i> Our Bakery
+        </h2>
+        <div id="productContainer"></div>
+
+        <div class="flex flex-wrap justify-center gap-3 md:gap-5 mt-8 p-4 md:p-6 rounded-3xl" style="background: var(--light-purple); border: 1px solid var(--soft-lavender);">
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
+                <i class="fas fa-donut" style="color: var(--medium-purple);"></i> glazed donuts
+            </span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
+                <i class="fas fa-pie" style="color: var(--medium-purple);"></i> fruit pies
+            </span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
+                <i class="fas fa-muffin" style="color: var(--medium-purple);"></i> muffins
+            </span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
+                <i class="fas fa-biscuit" style="color: var(--medium-purple);"></i> cookies
+            </span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
+                <i class="fas fa-croissant" style="color: var(--medium-purple);"></i> croissants
+            </span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
+                <i class="fas fa-cheese" style="color: var(--medium-purple);"></i> cheese danish
+            </span>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER ===== -->
+    <footer class="mt-12 py-10" style="background: var(--dark-purple); border-top: 3px solid var(--noshup-purple);">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--white);">Noshup Foods</h3>
+                    <p style="color: #d4b8da;">Fresh bakery, cakes, cupcakes, and traditional biscuits — handmade with love since 2016.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--white);">Connect With Us</h3>
+                    <div class="flex justify-center md:justify-start gap-4 mb-2">
+                        <a href="#" target="_blank" class="text-2xl transition hover:text-white" style="color: #d4b8da;" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank" class="text-2xl transition hover:text-white" style="color: #d4b8da;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="text-2xl transition hover:text-white" style="color: #d4b8da;" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p style="color: #d4b8da;">Follow us for daily freshness!</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3" style="color: var(--white);">Contact Information</h3>
+                    <div style="color: #d4b8da;">
+                        <p class="mb-1"><i class="fas fa-map-marker-alt" style="color: var(--medium-purple); width: 1.6rem;"></i> Lahore, Punjab, Pakistan</p>
+                        <p class="mb-1"><i class="fas fa-phone" style="color: var(--medium-purple); width: 1.6rem;"></i> +92 322 8837335</p>
+                        <p><i class="fas fa-envelope" style="color: var(--medium-purple); width: 1.6rem;"></i> hello@noshupfoods.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t pt-6 mt-6 text-center flex flex-wrap justify-center items-center gap-2 md:gap-6" style="border-color: rgba(132, 51, 143, 0.3); color: #d4b8da;">
+                <span>&copy; 2026 Noshup Foods. All rights reserved.</span>
+                <span>
+                    <i class="fas fa-bolt" style="color: var(--medium-purple);"></i>
+                    Powered By:
+                    <a href="https://fanisite.com" target="_blank" rel="noopener" class="footer-ffsoft-link">
+                        <i class="fas fa-code"></i> FFSOFT
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== FLOATING WHATSAPP BUTTON (bottom-right) ===== -->
+    <a href="https://wa.me/923228837335?text=Hi%20Noshup%20Foods!%20I'd%20like%20to%20inquire%20about%20your%20bakery%20items."
+       target="_blank" rel="noopener"
+       id="floatingWhatsApp"
+       aria-label="Chat with Noshup Foods on WhatsApp"
+       title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="wa-tooltip">Chat with us</span>
+    </a>
+
+    <!-- ===== MODAL / POPUP ===== -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <img src="" alt="Product" class="modal-image" id="modalImage" />
+            <h2 class="modal-title" id="modalTitle">Product Name</h2>
+            <p class="modal-description" id="modalDescription">Product description goes here.</p>
+            <div class="mb-3">
+                <p class="font-semibold mb-1" style="color: var(--dark-purple);"><i class="fas fa-box-open" style="color: var(--medium-purple);"></i> Pack Sizes & Prices</p>
+                <div class="pack-grid" id="modalPackGrid"></div>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+                <div class="modal-meta">
+                    <span><i class="fas fa-ruler"></i> <span id="modalSize">—</span></span>
+                    <span><i class="fas fa-users"></i> <span id="modalServes">—</span></span>
+                </div>
+                <div class="modal-stars" id="modalStars"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Data + logic ===== -->
+    <script src="data.js"></script>
+    <script>
+        // ================================================================
+        //  DYNAMIC RENDER — edit only data.js to manage products
+        // ================================================================
+
+        const FALLBACK_SVG = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect fill='%23F3E6F5' width='400' height='200'/%3E%3Ctext x='50' y='120' font-size='24' fill='%236B1A77'%3E%F0%9F%8D%B0 fresh%3C/text%3E%3C/svg%3E`;
+
+        let flatProducts = [];
+
+        function getCategoriesWithItems() {
+            return Object.entries(productData).filter(
+                ([_, cat]) => cat && Array.isArray(cat.items) && cat.items.length > 0
+            );
+        }
+
+        // ---------- Header Nav ----------
+        function renderCategoryNav() {
+            const desktopNav = document.getElementById('desktopNav');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!desktopNav || !mobileMenu) return;
+
+            let desktopHtml = '';
+            let mobileHtml = '';
+
+            getCategoriesWithItems().forEach(([key, category]) => {
+                desktopHtml += `
+                    <a href="#${key}" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full"
+                       style="color: var(--dark-purple);"
+                       onmouseover="this.style.color='var(--noshup-purple)'"
+                       onmouseout="this.style.color='var(--dark-purple)'">
+                        <i class="fas ${category.icon}" style="color: var(--medium-purple);"></i> ${category.label}
+                    </a>
+                `;
+                mobileHtml += `
+                    <a href="#${key}" class="mobile-nav-link">
+                        <i class="fas ${category.icon}" style="color: var(--medium-purple); width: 1.5rem;"></i> ${category.label}
+                    </a>
+                `;
+            });
+
+            desktopNav.innerHTML = desktopHtml;
+            mobileMenu.innerHTML = mobileHtml;
+
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('mobileMenu').classList.remove('open');
+                });
+            });
+        }
+
+        // ---------- Product Grid ----------
+        function renderProducts() {
+            const container = document.getElementById('productContainer');
+            if (!container) return;
+
+            let globalIndex = 0;
+            let html = '';
+
+            const cats = getCategoriesWithItems();
+            if (cats.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12" style="color: var(--dark-purple);">
+                        <i class="fas fa-bread-slice text-6xl mb-4" style="color: var(--medium-purple);"></i>
+                        <h3 class="text-2xl font-semibold">No products yet</h3>
+                        <p class="mt-2">Check back soon for our delicious bakery items!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            cats.forEach(([categoryKey, category]) => {
+                html += `
+                    <div class="category-header" id="${categoryKey}">
+                        <i class="fas ${category.icon}"></i>
+                        <h3>${category.label} (${category.items.length})</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                `;
+
+                category.items.forEach(product => {
+                    const rating = product.rating || 5;
+                    const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+                    const packEntries = product.packs ? Object.entries(product.packs) : [];
+                    let lowestPrice = '';
+                    if (packEntries.length > 0) {
+                        const prices = packEntries.map(([_, p]) => p.price).filter(p => typeof p === 'number');
+                        if (prices.length > 0) lowestPrice = Math.min(...prices);
+                    }
+
+                    html += `
+                        <div class="product-card bg-white rounded-3xl p-4 md:p-5 flex flex-col" data-index="${globalIndex}">
+                            <div class="overflow-hidden rounded-2xl" style="background: var(--light-purple);">
+                                <img src="images/${product.image}" alt="${product.name}" loading="lazy"
+                                     onerror="this.src='${FALLBACK_SVG}'" />
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold mt-3" style="color: var(--dark-purple);">${product.name}</h3>
+                            <p class="text-sm flex-1" style="color: var(--main-dark);">
+                                ${product.description.substring(0, 70)}${product.description.length > 70 ? '...' : ''}
+                            </p>
+                            <div class="flex flex-wrap items-center justify-between mt-3 gap-2">
+                                <div class="flex gap-3 text-sm font-medium px-3 py-1 rounded-full" style="color: var(--dark-purple); background: var(--light-purple);">
+                                    <span><i class="fas fa-ruler" style="color: var(--medium-purple);"></i> ${product.size || '—'}</span>
+                                    <span><i class="fas fa-tag" style="color: var(--medium-purple);"></i> from Rs ${lowestPrice || '—'}</span>
+                                </div>
+                                <div class="stars">${stars}</div>
+                            </div>
+                            <div class="mt-3 text-center text-sm font-medium" style="color: var(--medium-purple);">
+                                <i class="fas fa-eye"></i> Click to view details
+                            </div>
+                        </div>
+                    `;
+                    globalIndex++;
+                });
+
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+
+            document.querySelectorAll('.product-card').forEach(card => {
+                const index = parseInt(card.dataset.index);
+                card.addEventListener('click', () => openModal(index));
+            });
+        }
+
+        // ---------- Flat list for modal ----------
+        function buildFlatProducts() {
+            const flat = [];
+            getCategoriesWithItems().forEach(([_, cat]) => {
+                cat.items.forEach(item => flat.push(item));
+            });
+            return flat;
+        }
+
+        // ---------- Modal ----------
+        const modal = document.getElementById('productModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalSize = document.getElementById('modalSize');
+        const modalServes = document.getElementById('modalServes');
+        const modalStars = document.getElementById('modalStars');
+        const modalPackGrid = document.getElementById('modalPackGrid');
+
+        function openModal(index) {
+            const product = flatProducts[index];
+            if (!product) return;
+
+            modalImage.src = `images/${product.image}`;
+            modalImage.alt = product.name;
+            modalImage.onerror = function() { this.src = FALLBACK_SVG; };
+
+            modalTitle.textContent = product.name;
+            modalDescription.textContent = product.description;
+            modalSize.textContent = product.size || '—';
+            modalServes.textContent = product.serves || '—';
+
+            const rating = product.rating || 5;
+            modalStars.innerHTML = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+            let packHtml = '';
+            if (product.packs && Object.keys(product.packs).length > 0) {
+                for (const [packName, packData] of Object.entries(product.packs)) {
+                    packHtml += `
+                        <div class="pack-item">
+                            <i class="fas fa-box" style="color: var(--medium-purple);"></i> ${packName}
+                            <span class="price">Rs ${packData.price}</span>
+                        </div>
+                    `;
+                }
+            } else {
+                packHtml = `<span class="text-sm italic" style="color: var(--main-dark);">Pack sizes available on request</span>`;
+            }
+            modalPackGrid.innerHTML = packHtml;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        // ---------- Hamburger ----------
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', e => {
+                    e.stopPropagation();
+                    mobileMenu.classList.toggle('open');
+                });
+                document.addEventListener('click', e => {
+                    if (!mobileMenu.contains(e.target) && e.target !== hamburgerBtn && !hamburgerBtn.contains(e.target)) {
+                        mobileMenu.classList.remove('open');
+                    }
+                });
+            }
+        });
+
+        // ---------- Init ----------
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof productData !== 'undefined') {
+                flatProducts = buildFlatProducts();
+                renderCategoryNav();
+                renderProducts();
+            } else {
+                console.error('productData not found — make sure data.js is loaded before the main script');
+                document.getElementById('productContainer').innerHTML =
+                    `<p class="text-center py-8" style="color: var(--dark-purple);">⚠️ Product data could not be loaded.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
