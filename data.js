@@ -214,8 +214,8 @@ const productData = {
         items: [
             {
                 image: 'snack1.jpg',
-                name: 'Mini Sandwiches',
-                description: 'Assorted mini sandwiches with fresh fillings. Perfect for parties, gatherings, and afternoon tea. Made with freshly baked bread and premium ingredients.',
+                name: 'Meringue Biscuits',
+                description: 'Light, airy, sweet little clouds that melt the moment you bite.',
                 size: '3″',
                 serves: 'serves 1-2',
                 rating: 4,
@@ -227,8 +227,8 @@ const productData = {
             },
             {
                 image: 'snack2.jpg',
-                name: 'Cheese Sticks',
-                description: 'Crispy, golden cheese sticks with a gooey center. Served with tangy marinara sauce. A perfect snack for any occasion.',
+                name: 'Butter Cookies',
+                description: 'Premium Butter Cookies – Rich, Crispy & Melt-In-Mouth',
                 size: '4″',
                 serves: 'serves 2',
                 rating: 4,
@@ -239,8 +239,8 @@ const productData = {
             },
             {
                 image: 'snack3.jpg',
-                name: 'Mini Pizzas',
-                description: 'Bite-sized pizzas topped with fresh mozzarella, tomato sauce, and your choice of toppings. A crowd-pleasing snack for parties and gatherings.',
+                name: 'Morsels',
+                description: 'Our signature butter coin biscuits, Pale golden, crisp, melt-in-mouth & impossible to stop at one.',
                 size: '3″',
                 serves: 'serves 1',
                 rating: 5,
@@ -252,8 +252,8 @@ const productData = {
             },
             {
                 image: 'snack4.jpg',
-                name: 'Samosa',
-                description: 'Crispy, golden pastry filled with spiced potatoes and peas. Served with mint chutney. A classic snack that everyone loves.',
+                name: 'Macaron',
+                description: 'A taste of Italy in Lahore',
                 size: '3″',
                 serves: 'serves 1',
                 rating: 5,
@@ -265,8 +265,8 @@ const productData = {
             },
             {
                 image: 'snack5.jpg',
-                name: 'Chicken Patties',
-                description: 'Flaky pastry filled with seasoned chicken and vegetables. Baked to golden perfection for a satisfying snack.',
+                name: 'Badam Khatai',
+                description: 'A Premium Badam Khatai, Golden, Buttery & Almond-Rich Delight.',
                 size: '4″',
                 serves: 'serves 1',
                 rating: 4,
@@ -278,8 +278,8 @@ const productData = {
             },
             {
                 image: 'snack6.jpg',
-                name: 'Spring Rolls',
-                description: 'Crispy vegetable spring rolls served with sweet chili sauce. A light and crunchy snack that everyone enjoys.',
+                name: 'Butter Cake Rusk',
+                description: 'Golden, buttery, double-baked for extra crunch. Light, crispy, melts with chai.',
                 size: '4″',
                 serves: 'serves 1-2',
                 rating: 4,
@@ -290,8 +290,8 @@ const productData = {
             },
             {
                 image: 'snack7.jpg',
-                name: 'Garlic Bread',
-                description: 'Freshly baked bread topped with garlic butter and herbs. Crispy on the outside, soft on the inside.',
+                name: 'Sourdough Bread',
+                description: 'Slow-fermented, crusty outside, cloud-soft inside with an open airy crumb. The classic artisan loaf.',
                 size: '6″',
                 serves: 'serves 2',
                 rating: 4,
@@ -302,8 +302,8 @@ const productData = {
             },
             {
                 image: 'snack8.jpg',
-                name: 'Chicken Nuggets',
-                description: 'Tender chicken nuggets with a crispy golden coating. Served with ketchup or mayo for dipping.',
+                name: 'Burger Bun',
+                description: 'Soft, fresh, and delicious burger buns with a light, fluffy texture—perfect for juicy burgers, sandwiches, and homemade meals.',
                 size: '2″',
                 serves: 'serves 1-2',
                 rating: 5,
@@ -314,8 +314,8 @@ const productData = {
             },
             {
                 image: 'snack9.jpg',
-                name: 'French Fries',
-                description: 'Golden, crispy french fries seasoned with salt and served with ketchup. A classic snack for all ages.',
+                name: 'Fucasia Bread',
+                description: 'Golden, olive oil-rich and pillowy, topped with fresh rosemary and flaked sea salt. Simple, fragrant, irresistible.',
                 size: 'Regular',
                 serves: 'serves 1-2',
                 rating: 5,
