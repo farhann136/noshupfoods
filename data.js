@@ -213,7 +213,7 @@ const productData = {
         label: 'Snacks',
         items: [
             {
-                image: 'snack1.jpeg',
+                image: 'snack1.jpg',
                 name: 'Mini Sandwiches',
                 description: 'Assorted mini sandwiches with fresh fillings. Perfect for parties, gatherings, and afternoon tea. Made with freshly baked bread and premium ingredients.',
                 size: '3″',
@@ -226,7 +226,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack2.jpeg',
+                image: 'snack2.jpg',
                 name: 'Cheese Sticks',
                 description: 'Crispy, golden cheese sticks with a gooey center. Served with tangy marinara sauce. A perfect snack for any occasion.',
                 size: '4″',
@@ -238,7 +238,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack3.jpeg',
+                image: 'snack3.jpg',
                 name: 'Mini Pizzas',
                 description: 'Bite-sized pizzas topped with fresh mozzarella, tomato sauce, and your choice of toppings. A crowd-pleasing snack for parties and gatherings.',
                 size: '3″',
@@ -251,7 +251,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack4.jpeg',
+                image: 'snack4.jpg',
                 name: 'Samosa',
                 description: 'Crispy, golden pastry filled with spiced potatoes and peas. Served with mint chutney. A classic snack that everyone loves.',
                 size: '3″',
@@ -264,7 +264,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack5.jpeg',
+                image: 'snack5.jpg',
                 name: 'Chicken Patties',
                 description: 'Flaky pastry filled with seasoned chicken and vegetables. Baked to golden perfection for a satisfying snack.',
                 size: '4″',
@@ -277,7 +277,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack6.jpeg',
+                image: 'snack6.jpg',
                 name: 'Spring Rolls',
                 description: 'Crispy vegetable spring rolls served with sweet chili sauce. A light and crunchy snack that everyone enjoys.',
                 size: '4″',
@@ -289,7 +289,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack7.jpeg',
+                image: 'snack7.jpg',
                 name: 'Garlic Bread',
                 description: 'Freshly baked bread topped with garlic butter and herbs. Crispy on the outside, soft on the inside.',
                 size: '6″',
@@ -301,7 +301,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack8.jpeg',
+                image: 'snack8.jpg',
                 name: 'Chicken Nuggets',
                 description: 'Tender chicken nuggets with a crispy golden coating. Served with ketchup or mayo for dipping.',
                 size: '2″',
@@ -313,7 +313,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack9.jpeg',
+                image: 'snack9.jpg',
                 name: 'French Fries',
                 description: 'Golden, crispy french fries seasoned with salt and served with ketchup. A classic snack for all ages.',
                 size: 'Regular',
@@ -323,18 +323,6 @@ const productData = {
                     'Small': { price: 250 },
                     'Medium': { price: 350 },
                     'Large': { price: 450 }
-                }
-            },
-            {
-                image: 'snack10.jpeg',
-                name: 'Onion Rings',
-                description: 'Crispy battered onion rings fried to golden perfection. Served with a tangy dipping sauce.',
-                size: '3″',
-                serves: 'serves 2',
-                rating: 4,
-                packs: {
-                    '6 pcs': { price: 350 },
-                    '12 pcs': { price: 650 }
                 }
             }
         ]
