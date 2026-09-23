@@ -324,6 +324,18 @@ const productData = {
                     'Medium': { price: 350 },
                     'Large': { price: 450 }
                 }
+            },
+            {
+                image: 'snack10.jpg',
+                name: 'Garlic Bread',
+                description: 'Freshly baked bread topped with garlic butter and herbs. Crispy on the outside, soft on the inside.',
+                size: '6″',
+                serves: 'serves 2',
+                rating: 4,
+                packs: {
+                    '4 pcs': { price: 350 },
+                    '8 pcs': { price: 650 }
+                }
             }
         ]
     }
