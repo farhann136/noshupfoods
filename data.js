@@ -134,8 +134,6 @@ const productData = {
                     'Pack of 4': { price: 1100 },
                     'Pack of 6': { price: 1600 }
                 }
-            },
-            
             }
         ]
     },
