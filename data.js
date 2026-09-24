@@ -336,6 +336,19 @@ const productData = {
                     '4 pcs': { price: 350 },
                     '8 pcs': { price: 650 }
                 }
+            },
+            {
+                image: 'snack11.jpg',
+                name: 'Raspberry Cake',
+                description: 'Soft, fluffy sponge layered with fresh raspberry filling and topped with creamy frosting. A fruity, tangy delight in every bite.',
+                size: '6″',
+                serves: 'serves 4-6',
+                rating: 5,
+                packs: {
+                    'Slice': { price: 400 },
+                    'Half (6″)': { price: 1400 },
+                    'Whole (8″)': { price: 2600 }
+                }
             }
         ]
     }
