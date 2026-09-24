@@ -20,7 +20,7 @@
 const productData = {
     deserts: {
         icon: 'fa-ice-cream',
-        label: 'Deserts',
+        label: 'Cakes & Sundaes',
         items: [
             {
                 image: 'desert1.jpg',
@@ -139,12 +139,11 @@ const productData = {
     },
 
     // ============================================================
-    //  BISCUITS section — currently holds SNACK-type items
-    //  (breads, rusks, meringues, macarons, etc.)
+    //  BISCUITS & BREADS section — holds snack/bread-type items
     // ============================================================
     biscuits: {
         icon: 'fa-cookie',
-        label: 'Biscuits',
+        label: 'Biscuits & Breads',
         items: [
             {
                 image: 'snack1.jpg',
@@ -288,8 +287,7 @@ const productData = {
     },
 
     // ============================================================
-    //  SNACKS section — currently holds BISCUIT-type items
-    //  (nan khatai, cookies, macaroons, etc.)
+    //  SNACKS section — holds biscuit-type items
     // ============================================================
     snacks: {
         icon: 'fa-utensils',
