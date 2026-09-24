@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>Noshup Foods · fresh bakery</title>
 
-    <!-- ===== Favicon ===== -->
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="apple-touch-icon" href="images/favicon.png" />
 
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
     <style>
@@ -23,67 +19,41 @@
             --light-purple: #F3E6F5;
             --very-light-purple: #FCF7FD;
             --soft-lavender: #E2CBE6;
-            --leaf-green: #7CB342;
-            --dark-green: #558B2F;
             --white: #FFFFFF;
             --main-dark: #28152C;
             --gold-star: #f5b342;
             --wa-green: #25D366;
         }
 
-        @keyframes floatGlow {
-            0% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-8px) scale(1.02); }
-            100% { transform: translateY(0px) scale(1); }
-        }
-
+        @keyframes floatGlow { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.02); } }
         @keyframes slideUp {
-            0% { transform: translateY(0); opacity: 1; }
-            10% { transform: translateY(0); opacity: 1; }
-            20% { transform: translateY(-5.2rem); opacity: 1; }
-            30% { transform: translateY(-5.2rem); opacity: 1; }
-            40% { transform: translateY(-10.4rem); opacity: 1; }
-            50% { transform: translateY(-10.4rem); opacity: 1; }
-            60% { transform: translateY(-15.6rem); opacity: 1; }
-            70% { transform: translateY(-15.6rem); opacity: 1; }
-            80% { transform: translateY(-20.8rem); opacity: 1; }
-            90% { transform: translateY(-20.8rem); opacity: 1; }
-            100% { transform: translateY(-26rem); opacity: 1; }
+            0%,10% { transform: translateY(0); }
+            20%,30% { transform: translateY(-5.2rem); }
+            40%,50% { transform: translateY(-10.4rem); }
+            60%,70% { transform: translateY(-15.6rem); }
+            80%,90% { transform: translateY(-20.8rem); }
+            100% { transform: translateY(-26rem); }
         }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes tiltIn {
-            0% { opacity: 0; transform: rotate(-2deg) scale(0.9); }
-            100% { opacity: 1; transform: rotate(0) scale(1); }
-        }
-
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes tiltIn { from { opacity: 0; transform: rotate(-2deg) scale(0.9); } to { opacity: 1; transform: rotate(0) scale(1); } }
         @keyframes waPulse {
-            0%   { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45), 0 0 0 0   rgba(37, 211, 102, 0.55); }
-            70%  { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45), 0 0 0 18px rgba(37, 211, 102, 0);   }
-            100% { box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45), 0 0 0 0   rgba(37, 211, 102, 0);   }
+            0%   { box-shadow: 0 10px 25px rgba(37,211,102,0.45), 0 0 0 0   rgba(37,211,102,0.55); }
+            70%  { box-shadow: 0 10px 25px rgba(37,211,102,0.45), 0 0 0 18px rgba(37,211,102,0); }
+            100% { box-shadow: 0 10px 25px rgba(37,211,102,0.45), 0 0 0 0   rgba(37,211,102,0); }
         }
 
         .animate-float { animation: floatGlow 4s ease-in-out infinite; }
 
-        /* ===== Hero ===== */
         .hero-section {
-            background-image: url('images/hero.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: url('images/hero.png') center/cover no-repeat;
             position: relative;
             min-height: 520px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .hero-overlay {
-            background: rgba(252, 247, 253, 0.20);
+            background: rgba(252,247,253,0.20);
             width: 100%;
             min-height: 520px;
             display: flex;
@@ -91,14 +61,11 @@
             justify-content: center;
             padding: 2rem 0;
         }
-
         .hero-title, .hero-slide-item, .hero-sub {
-            color: #000000 !important;
-            text-shadow: 0 2px 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.6);
+            color: #000 !important;
+            text-shadow: 0 2px 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.6);
         }
-        .hero-title i, .hero-slide-item i, .hero-sub i {
-            color: #000000 !important;
-        }
+        .hero-title i, .hero-slide-item i, .hero-sub i { color: #000 !important; }
 
         .hero-slider-wrapper {
             width: 100%;
@@ -107,46 +74,36 @@
             margin: 1.2rem 0 0.8rem;
             height: 5.4rem;
             overflow: hidden;
-            position: relative;
         }
-
         .hero-slider-track {
             display: flex;
             flex-direction: column;
             animation: slideUp 18s ease-in-out infinite;
             line-height: 1.4;
         }
-
         .hero-slide-item {
             font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 500;
             padding: 0.5rem 2.8rem;
             border-radius: 80px;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
             white-space: nowrap;
             margin: 0.5rem 0;
             display: flex;
             align-items: center;
             justify-content: center;
             letter-spacing: 0.8px;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255,255,255,0.85);
             backdrop-filter: blur(4px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0,0,0,0.1);
             height: 4.4rem;
         }
-
-        .hero-slide-item i {
-            margin: 0 0.5rem;
-            filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
-        }
-
         .hero-sub {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255,255,255,0.85);
             backdrop-filter: blur(4px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0,0,0,0.1);
         }
 
-        /* ===== Product card ===== */
         .product-card {
             transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             cursor: pointer;
@@ -155,20 +112,10 @@
             border-radius: 1.5rem;
             overflow: hidden;
         }
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 44px -8px rgba(107, 26, 119, 0.15);
-            border-color: var(--medium-purple);
-        }
-        .product-card img {
-            transition: 0.4s ease;
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 44px -8px rgba(107,26,119,0.15); border-color: var(--medium-purple); }
+        .product-card img { transition: 0.4s ease; width: 100%; height: 200px; object-fit: cover; }
         .product-card:hover img { transform: scale(1.02); }
 
-        /* ===== Add to Cart / WhatsApp button ===== */
         .add-to-cart-btn {
             display: inline-flex;
             align-items: center;
@@ -178,54 +125,30 @@
             padding: 0.6rem 1rem;
             border-radius: 999px;
             background: var(--wa-green);
-            color: #ffffff !important;
+            color: #fff !important;
             font-weight: 700;
             font-size: 0.9rem;
             text-decoration: none !important;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            box-shadow: 0 6px 16px rgba(37,211,102,0.35);
             border: none;
             margin-top: 0.75rem;
         }
-        .add-to-cart-btn:hover {
-            transform: translateY(-2px);
-            background: #1ebe5b;
-            box-shadow: 0 10px 22px rgba(37, 211, 102, 0.5);
-        }
-        .add-to-cart-btn i { color: #ffffff; }
+        .add-to-cart-btn:hover { transform: translateY(-2px); background: #1ebe5b; box-shadow: 0 10px 22px rgba(37,211,102,0.5); }
+        .add-to-cart-btn i { color: #fff; }
 
-        /* ===== Category section wrapper ===== */
         .category-section {
             border-radius: 2rem;
             padding: 1.5rem 1.25rem 2rem;
             margin-top: 2.5rem;
-            position: relative;
             scroll-margin-top: 100px;
-            transition: background 0.3s ease;
         }
+        .category-section.theme-0 { background: linear-gradient(180deg, #FDF2F8 0%, #FCF7FD 100%); border: 1px solid #F3D9E8; }
+        .category-section.theme-1 { background: linear-gradient(180deg, #FFF8EC 0%, #FCF7FD 100%); border: 1px solid #F0E0C4; }
+        .category-section.theme-2 { background: linear-gradient(180deg, #F1F8EC 0%, #FCF7FD 100%); border: 1px solid #D9E8CC; }
+        .category-section.theme-3 { background: linear-gradient(180deg, #EEF5FB 0%, #FCF7FD 100%); border: 1px solid #CFDDEA; }
+        .category-section.theme-4 { background: linear-gradient(180deg, #F7F0FB 0%, #FCF7FD 100%); border: 1px solid #E2CBE6; }
 
-        .category-section.theme-0 {
-            background: linear-gradient(180deg, #FDF2F8 0%, #FCF7FD 100%);
-            border: 1px solid #F3D9E8;
-        }
-        .category-section.theme-1 {
-            background: linear-gradient(180deg, #FFF8EC 0%, #FCF7FD 100%);
-            border: 1px solid #F0E0C4;
-        }
-        .category-section.theme-2 {
-            background: linear-gradient(180deg, #F1F8EC 0%, #FCF7FD 100%);
-            border: 1px solid #D9E8CC;
-        }
-        .category-section.theme-3 {
-            background: linear-gradient(180deg, #EEF5FB 0%, #FCF7FD 100%);
-            border: 1px solid #CFDDEA;
-        }
-        .category-section.theme-4 {
-            background: linear-gradient(180deg, #F7F0FB 0%, #FCF7FD 100%);
-            border: 1px solid #E2CBE6;
-        }
-
-        /* ===== Category banner ===== */
         .category-banner {
             display: flex;
             align-items: center;
@@ -234,26 +157,16 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
-            border-bottom: 2px dashed rgba(132, 51, 143, 0.25);
+            border-bottom: 2px dashed rgba(132,51,143,0.25);
         }
-
-        .category-banner-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+        .category-banner-left { display: flex; align-items: center; gap: 1rem; }
 
         .category-icon-badge {
-            width: 60px;
-            height: 60px;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.7rem;
-            color: #ffffff;
+            width: 60px; height: 60px; border-radius: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.7rem; color: #fff;
             flex-shrink: 0;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
         .category-icon-badge.icon-theme-0 { background: linear-gradient(135deg, #E46A9D, #C13B75); }
         .category-icon-badge.icon-theme-1 { background: linear-gradient(135deg, #F0A93B, #D4881B); }
@@ -261,28 +174,8 @@
         .category-icon-badge.icon-theme-3 { background: linear-gradient(135deg, #5C9BD1, #3579B5); }
         .category-icon-badge.icon-theme-4 { background: linear-gradient(135deg, #9B5FBF, #6B1A77); }
 
-        .category-title-block {
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem;
-        }
-
-        .category-title {
-            font-size: clamp(1.5rem, 4vw, 2.1rem);
-            font-weight: 800;
-            color: var(--dark-purple);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .category-subtitle {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--medium-purple);
-            opacity: 0.85;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
+        .category-title { font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 800; color: var(--dark-purple); line-height: 1.1; }
+        .category-subtitle { font-size: 0.85rem; font-weight: 500; color: var(--medium-purple); opacity: 0.85; text-transform: uppercase; letter-spacing: 0.08em; }
 
         .category-count-pill {
             background: var(--white);
@@ -293,80 +186,43 @@
             padding: 0.5rem 1.1rem;
             border-radius: 999px;
             white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(107, 26, 119, 0.08);
+            box-shadow: 0 4px 12px rgba(107,26,119,0.08);
         }
-        .category-count-pill i {
-            color: var(--medium-purple);
-            margin-right: 0.35rem;
-        }
+        .category-count-pill i { color: var(--medium-purple); margin-right: 0.35rem; }
 
         .category-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(132, 51, 143, 0.25), transparent);
+            background: linear-gradient(90deg, transparent, rgba(132,51,143,0.25), transparent);
             margin: 2.5rem 0 0;
         }
 
-        /* ===== Stars ===== */
         .stars { color: var(--gold-star); letter-spacing: 2px; font-size: 0.95rem; }
-        .stars .far { color: #d4c4d8; }
 
         /* ===== Testimonials ===== */
         .testimonials-section {
-            margin-top: 3rem;
-            padding: 2.5rem 1.25rem 2.5rem;
-            border-radius: 2rem;
             background: linear-gradient(180deg, #F7F0FB 0%, #FCF7FD 100%);
-            border: 1px solid var(--soft-lavender);
+            border-top: 1px solid var(--soft-lavender);
+            border-bottom: 1px solid var(--soft-lavender);
+            padding: 3rem 0;
             position: relative;
             overflow: hidden;
         }
-        .testimonials-section::before {
-            content: "\201C";
-            position: absolute;
-            top: -1.5rem;
-            right: 1.5rem;
-            font-size: 12rem;
-            line-height: 1;
-            color: rgba(132, 51, 143, 0.07);
-            font-family: Georgia, serif;
-            pointer-events: none;
-        }
-
         .testimonials-heading {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
         .testimonials-heading-badge {
-            width: 60px;
-            height: 60px;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            color: #fff;
+            width: 60px; height: 60px; border-radius: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; color: #fff;
             background: linear-gradient(135deg, #9B5FBF, #6B1A77);
-            box-shadow: 0 8px 20px rgba(107, 26, 119, 0.25);
+            box-shadow: 0 8px 20px rgba(107,26,119,0.25);
             flex-shrink: 0;
         }
-        .testimonials-title {
-            font-size: clamp(1.5rem, 4vw, 2.1rem);
-            font-weight: 800;
-            color: var(--dark-purple);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin: 0;
-        }
-        .testimonials-subtitle {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--medium-purple);
-            opacity: 0.85;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
+        .testimonials-title { font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 800; color: var(--dark-purple); line-height: 1.1; margin: 0; }
+        .testimonials-subtitle { font-size: 0.85rem; font-weight: 500; color: var(--medium-purple); opacity: 0.85; text-transform: uppercase; letter-spacing: 0.08em; }
         .testimonials-intro {
             color: var(--main-dark);
             max-width: 620px;
@@ -377,7 +233,7 @@
         }
 
         .testimonial-card {
-            background: #ffffff;
+            background: #fff;
             border: 1px solid var(--soft-lavender);
             border-radius: 1.5rem;
             padding: 1.5rem 1.4rem 1.3rem;
@@ -385,28 +241,22 @@
             flex-direction: column;
             gap: 0.85rem;
             height: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             position: relative;
         }
         .testimonial-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 40px -12px rgba(107, 26, 119, 0.22);
+            box-shadow: 0 20px 40px -12px rgba(107,26,119,0.22);
             border-color: var(--medium-purple);
         }
         .testimonial-card .quote-icon {
             position: absolute;
             top: 1rem;
             right: 1.25rem;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--soft-lavender);
-            opacity: 0.9;
         }
-        .testimonial-text {
-            color: var(--main-dark);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
+        .testimonial-text { color: var(--main-dark); font-size: 0.95rem; line-height: 1.6; flex-grow: 1; margin: 0; }
         .testimonial-footer {
             display: flex;
             align-items: center;
@@ -415,54 +265,20 @@
             border-top: 1px dashed var(--soft-lavender);
         }
         .testimonial-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            flex-shrink: 0;
-            box-shadow: 0 6px 14px rgba(107, 26, 119, 0.2);
+            width: 48px; height: 48px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 700; font-size: 1rem;
+            letter-spacing: 0.5px; flex-shrink: 0;
+            box-shadow: 0 6px 14px rgba(107,26,119,0.2);
         }
-        .testimonial-name {
-            font-weight: 700;
-            color: var(--dark-purple);
-            font-size: 1rem;
-            line-height: 1.2;
-            margin: 0;
-        }
-        .testimonial-location {
-            font-size: 0.8rem;
-            color: var(--medium-purple);
-            margin: 0;
-        }
-        .testimonial-location i {
-            margin-right: 0.25rem;
-        }
-        .testimonial-stars {
-            color: var(--gold-star);
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-        }
+        .testimonial-name { font-weight: 700; color: var(--dark-purple); font-size: 1rem; line-height: 1.2; margin: 0; }
+        .testimonial-location { font-size: 0.8rem; color: var(--medium-purple); margin: 0; }
+        .testimonial-location i { margin-right: 0.25rem; }
+        .testimonial-stars { color: var(--gold-star); letter-spacing: 2px; font-size: 0.9rem; }
 
         /* ===== Modal ===== */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
         .modal-overlay.active { display: flex; }
-
         .modal-content {
             background: var(--white);
             border-radius: 2rem;
@@ -472,93 +288,29 @@
             position: relative;
             animation: fadeInUp 0.4s ease-out;
             border: 2px solid var(--soft-lavender);
-            box-shadow: 0 30px 60px rgba(107, 26, 119, 0.2);
+            box-shadow: 0 30px 60px rgba(107,26,119,0.2);
             max-height: 90vh;
             overflow-y: auto;
         }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 2rem;
-            color: var(--dark-purple);
-            cursor: pointer;
-            transition: 0.2s;
-            background: none;
-            border: none;
-            line-height: 1;
-            z-index: 10;
-        }
+        .modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; color: var(--dark-purple); cursor: pointer; transition: 0.2s; background: none; border: none; line-height: 1; z-index: 10; }
         .modal-close:hover { color: var(--noshup-purple); transform: rotate(90deg); }
-
-        .modal-image {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 1.2rem;
-            margin-bottom: 1.2rem;
-            background: var(--light-purple);
-        }
-
-        .modal-title {
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: var(--dark-purple);
-            margin-bottom: 0.5rem;
-        }
-        .modal-description {
-            color: var(--main-dark);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        .modal-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            color: var(--dark-purple);
-            font-weight: 500;
-            background: var(--light-purple);
-            padding: 0.8rem 1.4rem;
-            border-radius: 40px;
-            align-items: center;
-        }
+        .modal-image { width: 100%; height: 240px; object-fit: cover; border-radius: 1.2rem; margin-bottom: 1.2rem; background: var(--light-purple); }
+        .modal-title { font-size: 1.9rem; font-weight: 700; color: var(--dark-purple); margin-bottom: 0.5rem; }
+        .modal-description { color: var(--main-dark); font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; }
+        .modal-meta { display: flex; flex-wrap: wrap; gap: 1rem; color: var(--dark-purple); font-weight: 500; background: var(--light-purple); padding: 0.8rem 1.4rem; border-radius: 40px; align-items: center; }
         .modal-meta i { color: var(--medium-purple); margin-right: 0.3rem; }
-
-        .modal-stars {
-            color: var(--gold-star);
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            margin-top: 0.2rem;
-        }
-
+        .modal-stars { color: var(--gold-star); font-size: 1.2rem; letter-spacing: 3px; }
         .pack-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.8rem; }
-        .pack-item {
-            background: var(--very-light-purple);
-            border: 1px solid var(--soft-lavender);
-            border-radius: 2rem;
-            padding: 0.4rem 1.2rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-            color: var(--dark-purple);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .pack-item .price {
-            font-weight: 700;
-            color: var(--noshup-purple);
-            margin-left: 0.2rem;
-        }
+        .pack-item { background: var(--very-light-purple); border: 1px solid var(--soft-lavender); border-radius: 2rem; padding: 0.4rem 1.2rem; font-weight: 500; font-size: 0.95rem; color: var(--dark-purple); display: flex; align-items: center; gap: 0.4rem; }
+        .pack-item .price { font-weight: 700; color: var(--noshup-purple); margin-left: 0.2rem; }
 
         /* ===== Footer ===== */
         .footer-ffsoft-link {
             font-weight: 700;
-            background: rgba(132, 51, 143, 0.2);
+            background: rgba(132,51,143,0.2);
             padding: 0.2rem 1.4rem;
             border-radius: 60px;
-            border: 1px solid rgba(132, 51, 143, 0.3);
+            border: 1px solid rgba(132,51,143,0.3);
             transition: 0.2s;
             display: inline-flex;
             align-items: center;
@@ -566,53 +318,18 @@
             color: #d4b8da !important;
             text-decoration: none !important;
         }
-        .footer-ffsoft-link:hover {
-            background: rgba(132, 51, 143, 0.4);
-            border-color: var(--medium-purple);
-            color: white !important;
-        }
+        .footer-ffsoft-link:hover { background: rgba(132,51,143,0.4); border-color: var(--medium-purple); color: #fff !important; }
 
         /* ===== Mobile menu ===== */
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: var(--white);
-            border-radius: 1rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            padding: 1rem;
-            min-width: 200px;
-            border: 1px solid var(--soft-lavender);
-            z-index: 50;
-        }
+        .mobile-menu { display: none; position: absolute; top: 100%; right: 0; background: var(--white); border-radius: 1rem; box-shadow: 0 20px 60px rgba(0,0,0,0.15); padding: 1rem; min-width: 200px; border: 1px solid var(--soft-lavender); z-index: 50; }
         .mobile-menu.open { display: block; }
-        .mobile-menu a {
-            display: block;
-            padding: 0.6rem 1rem;
-            color: var(--dark-purple);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 0.5rem;
-            transition: 0.2s;
-        }
-        .mobile-menu a:hover {
-            background: var(--light-purple);
-            color: var(--noshup-purple);
-        }
+        .mobile-menu a { display: block; padding: 0.6rem 1rem; color: var(--dark-purple); text-decoration: none; font-weight: 600; border-radius: 0.5rem; transition: 0.2s; }
+        .mobile-menu a:hover { background: var(--light-purple); color: var(--noshup-purple); }
 
-        .hamburger-btn {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            color: var(--dark-purple);
-            cursor: pointer;
-            padding: 0.2rem 0.5rem;
-            transition: 0.2s;
-        }
+        .hamburger-btn { background: none; border: none; font-size: 2rem; color: var(--dark-purple); cursor: pointer; padding: 0.2rem 0.5rem; transition: 0.2s; }
         .hamburger-btn:hover { color: var(--noshup-purple); }
 
-        /* ===== Floating WhatsApp button ===== */
+        /* ===== Floating WhatsApp ===== */
         #floatingWhatsApp {
             position: fixed;
             bottom: 22px;
@@ -621,23 +338,17 @@
             height: 60px;
             border-radius: 50%;
             background: var(--wa-green);
-            color: #ffffff !important;
+            color: #fff !important;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45), 0 4px 10px rgba(0, 0, 0, 0.15);
             z-index: 999;
             text-decoration: none;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            transition: transform 0.25s, box-shadow 0.25s;
             animation: waPulse 2.4s ease-in-out infinite;
         }
-        #floatingWhatsApp:hover {
-            transform: scale(1.1);
-            box-shadow: 0 14px 32px rgba(37, 211, 102, 0.6), 0 6px 14px rgba(0, 0, 0, 0.2);
-        }
-        #floatingWhatsApp i { color: #ffffff; }
-
+        #floatingWhatsApp:hover { transform: scale(1.1); }
         #floatingWhatsApp .wa-tooltip {
             position: absolute;
             right: 74px;
@@ -652,73 +363,35 @@
             white-space: nowrap;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.25s ease, transform 0.25s ease;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.25s, transform 0.25s;
         }
-        #floatingWhatsApp:hover .wa-tooltip {
-            opacity: 1;
-            transform: translateY(-50%) translateX(0);
-        }
+        #floatingWhatsApp:hover .wa-tooltip { opacity: 1; transform: translateY(-50%) translateX(0); }
 
-        /* ===== Responsive ===== */
         @media (max-width: 768px) {
-            .hero-slide-item {
-                white-space: normal;
-                font-size: 1.2rem;
-                padding: 0.3rem 1.2rem;
-                height: auto;
-                min-height: 3.6rem;
-            }
+            .hero-slide-item { white-space: normal; font-size: 1.2rem; padding: 0.3rem 1.2rem; height: auto; min-height: 3.6rem; }
             .hero-slider-wrapper { height: 4.6rem; }
             @keyframes slideUp {
-                0% { transform: translateY(0); opacity: 1; }
-                10% { transform: translateY(0); opacity: 1; }
-                20% { transform: translateY(-4.2rem); opacity: 1; }
-                30% { transform: translateY(-4.2rem); opacity: 1; }
-                40% { transform: translateY(-8.4rem); opacity: 1; }
-                50% { transform: translateY(-8.4rem); opacity: 1; }
-                60% { transform: translateY(-12.6rem); opacity: 1; }
-                70% { transform: translateY(-12.6rem); opacity: 1; }
-                80% { transform: translateY(-16.8rem); opacity: 1; }
-                90% { transform: translateY(-16.8rem); opacity: 1; }
-                100% { transform: translateY(-21rem); opacity: 1; }
+                0%,10% { transform: translateY(0); }
+                20%,30% { transform: translateY(-4.2rem); }
+                40%,50% { transform: translateY(-8.4rem); }
+                60%,70% { transform: translateY(-12.6rem); }
+                80%,90% { transform: translateY(-16.8rem); }
+                100% { transform: translateY(-21rem); }
             }
             .desktop-nav { display: none !important; }
             .mobile-menu-trigger { display: block !important; }
             .modal-content { padding: 1.8rem 1.2rem 1.2rem; }
             .modal-title { font-size: 1.5rem; }
             .modal-image { height: 180px; }
-
-            #floatingWhatsApp {
-                width: 54px;
-                height: 54px;
-                font-size: 1.75rem;
-                bottom: 16px;
-                right: 16px;
-            }
+            #floatingWhatsApp { width: 54px; height: 54px; font-size: 1.75rem; bottom: 16px; right: 16px; }
             #floatingWhatsApp .wa-tooltip { display: none; }
-
-            .testimonials-section { padding: 2rem 1rem; }
+            .testimonials-section { padding: 2rem 0; }
             .testimonials-heading-badge { width: 50px; height: 50px; font-size: 1.3rem; }
         }
 
         @media (max-width: 640px) {
-            .category-section {
-                padding: 1.25rem 0.9rem 1.5rem;
-                border-radius: 1.5rem;
-            }
-            .category-icon-badge {
-                width: 50px;
-                height: 50px;
-                font-size: 1.4rem;
-            }
-            .category-banner {
-                gap: 0.75rem;
-            }
-            .category-count-pill {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.9rem;
-            }
+            .category-section { padding: 1.25rem 0.9rem 1.5rem; border-radius: 1.5rem; }
+            .category-icon-badge { width: 50px; height: 50px; font-size: 1.4rem; }
         }
 
         @media (min-width: 769px) {
@@ -736,13 +409,11 @@
     <!-- ===== HEADER ===== -->
     <header class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center border-b-2 relative" style="border-color: var(--soft-lavender);">
         <div class="logo-area">
-            <img src="images/logo.png" alt="Noshup Foods logo" class="h-16 md:h-[72px] w-auto" style="filter: drop-shadow(0 2px 8px rgba(107, 26, 119, 0.2));" onerror="this.style.display='none'" />
+            <img src="images/logo.png" alt="Noshup Foods logo" class="h-16 md:h-[72px] w-auto" style="filter: drop-shadow(0 2px 8px rgba(107,26,119,0.2));" onerror="this.style.display='none'" />
         </div>
 
-        <!-- Desktop Navigation -->
         <nav class="desktop-nav flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0 items-center" id="desktopNav"></nav>
 
-        <!-- Mobile Hamburger Button -->
         <div class="mobile-menu-trigger">
             <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
@@ -787,32 +458,22 @@
         <div id="productContainer"></div>
 
         <div class="flex flex-wrap justify-center gap-3 md:gap-5 mt-8 p-4 md:p-6 rounded-3xl" style="background: var(--light-purple); border: 1px solid var(--soft-lavender);">
-            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
-                <i class="fas fa-donut" style="color: var(--medium-purple);"></i> Glazed Donuts
-            </span>
-            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
-                <i class="fas fa-pie" style="color: var(--medium-purple);"></i> Fruit Pies
-            </span>
-            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
-                <i class="fas fa-muffin" style="color: var(--medium-purple);"></i> Muffins
-            </span>
-            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
-                <i class="fas fa-biscuit" style="color: var(--medium-purple);"></i> Cookies
-            </span>
-            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
-                <i class="fas fa-croissant" style="color: var(--medium-purple);"></i> Croissants
-            </span>
-            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);">
-                <i class="fas fa-cheese" style="color: var(--medium-purple);"></i> Cheese Danish
-            </span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);"><i class="fas fa-donut" style="color: var(--medium-purple);"></i> Glazed Donuts</span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);"><i class="fas fa-pie" style="color: var(--medium-purple);"></i> Fruit Pies</span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);"><i class="fas fa-muffin" style="color: var(--medium-purple);"></i> Muffins</span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);"><i class="fas fa-biscuit" style="color: var(--medium-purple);"></i> Cookies</span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);"><i class="fas fa-croissant" style="color: var(--medium-purple);"></i> Croissants</span>
+            <span class="bg-white px-4 py-2 rounded-full text-sm md:text-base font-medium border" style="color: var(--dark-purple); border-color: var(--soft-lavender);"><i class="fas fa-cheese" style="color: var(--medium-purple);"></i> Cheese Danish</span>
         </div>
+    </div>
 
-        <!-- ===== TESTIMONIALS ===== -->
-        <section class="testimonials-section" id="testimonials">
+    <!-- ===== TESTIMONIALS (standalone, before footer) ===== -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container mx-auto px-4">
             <div class="text-center">
                 <div class="testimonials-heading justify-center">
                     <div class="testimonials-heading-badge">
-                        <i class="fas fa-comment-heart"></i>
+                        <i class="fas fa-quote-left"></i>
                     </div>
                     <div class="text-left">
                         <div class="testimonials-subtitle">Loved By Our Customers</div>
@@ -824,12 +485,14 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="testimonialsGrid"></div>
-        </section>
-    </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="testimonialsGrid">
+                <p class="text-center col-span-full py-6" style="color: var(--main-dark);">Loading reviews…</p>
+            </div>
+        </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="mt-12 py-10" style="background: var(--dark-purple); border-top: 3px solid var(--noshup-purple);">
+    <footer class="py-10" style="background: var(--dark-purple); border-top: 3px solid var(--noshup-purple);">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
@@ -855,7 +518,7 @@
                 </div>
             </div>
 
-            <div class="border-t pt-6 mt-6 text-center flex flex-wrap justify-center items-center gap-2 md:gap-6" style="border-color: rgba(132, 51, 143, 0.3); color: #d4b8da;">
+            <div class="border-t pt-6 mt-6 text-center flex flex-wrap justify-center items-center gap-2 md:gap-6" style="border-color: rgba(132,51,143,0.3); color: #d4b8da;">
                 <span>&copy; 2026 Noshup Foods. All rights reserved.</span>
                 <span>
                     <i class="fas fa-bolt" style="color: var(--medium-purple);"></i>
@@ -868,12 +531,11 @@
         </div>
     </footer>
 
-    <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+    <!-- ===== FLOATING WHATSAPP ===== -->
     <a href="https://wa.me/923228837335?text=Hi%20Noshup%20Foods!%20I'd%20like%20to%20inquire%20about%20your%20bakery%20items."
        target="_blank" rel="noopener"
        id="floatingWhatsApp"
-       aria-label="Chat with Noshup Foods on WhatsApp"
-       title="Chat with us on WhatsApp">
+       aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
         <span class="wa-tooltip">Chat with us</span>
     </a>
@@ -884,7 +546,7 @@
             <button class="modal-close" id="modalClose">&times;</button>
             <img src="" alt="Product" class="modal-image" id="modalImage" />
             <h2 class="modal-title" id="modalTitle">Product Name</h2>
-            <p class="modal-description" id="modalDescription">Product description goes here.</p>
+            <p class="modal-description" id="modalDescription"></p>
             <div class="mb-3">
                 <p class="font-semibold mb-1" style="color: var(--dark-purple);"><i class="fas fa-box-open" style="color: var(--medium-purple);"></i> Pack Sizes & Prices</p>
                 <div class="pack-grid" id="modalPackGrid"></div>
@@ -896,8 +558,7 @@
                 </div>
                 <div class="modal-stars" id="modalStars"></div>
             </div>
-            <!-- Modal Add to Cart -->
-            <a href="#" id="modalAddToCart" target="_blank" rel="noopener" class="add-to-cart-btn" style="margin-top: 1.25rem; width: 100%;">
+            <a href="#" id="modalAddToCart" target="_blank" rel="noopener" class="add-to-cart-btn" style="margin-top: 1.25rem;">
                 <i class="fab fa-whatsapp"></i> Add to Cart — Inquire on WhatsApp
             </a>
         </div>
@@ -906,15 +567,12 @@
     <!-- ===== Data + logic ===== -->
     <script src="data.js"></script>
     <script>
-        // ================================================================
-        //  DYNAMIC RENDER — edit only data.js to manage products
-        // ================================================================
+        // ---- Debug: confirm data.js loaded ----
+        console.log('[Noshup] data.js loaded → productData:', typeof productData, '| testimonials:', typeof testimonials);
 
         const FALLBACK_SVG = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect fill='%23F3E6F5' width='400' height='200'/%3E%3Ctext x='50' y='120' font-size='24' fill='%236B1A77'%3E%F0%9F%8D%B0 fresh%3C/text%3E%3C/svg%3E`;
-
         const WHATSAPP_NUMBER = '923228837335';
 
-        // Avatar gradient palette — cycles per testimonial
         const AVATAR_GRADIENTS = [
             'linear-gradient(135deg, #E46A9D, #C13B75)',
             'linear-gradient(135deg, #F0A93B, #D4881B)',
@@ -926,9 +584,7 @@
         let flatProducts = [];
 
         function getCategoriesWithItems() {
-            return Object.entries(productData).filter(
-                ([_, cat]) => cat && Array.isArray(cat.items) && cat.items.length > 0
-            );
+            return Object.entries(productData).filter(([_, cat]) => cat && Array.isArray(cat.items) && cat.items.length > 0);
         }
 
         function buildWhatsAppLink(productName) {
@@ -937,15 +593,10 @@
         }
 
         function getInitials(fullName) {
-            return fullName
-                .split(' ')
-                .filter(Boolean)
-                .slice(0, 2)
-                .map(w => w[0].toUpperCase())
-                .join('');
+            return fullName.split(' ').filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('');
         }
 
-        // ---------- Header Nav (categories + Reviews link) ----------
+        // ---------- Header Nav ----------
         function renderCategoryNav() {
             const desktopNav = document.getElementById('desktopNav');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -961,37 +612,30 @@
                        onmouseover="this.style.color='var(--noshup-purple)'"
                        onmouseout="this.style.color='var(--dark-purple)'">
                         <i class="fas ${category.icon}" style="color: var(--medium-purple);"></i> ${category.label}
-                    </a>
-                `;
+                    </a>`;
                 mobileHtml += `
                     <a href="#${key}" class="mobile-nav-link">
                         <i class="fas ${category.icon}" style="color: var(--medium-purple); width: 1.5rem;"></i> ${category.label}
-                    </a>
-                `;
+                    </a>`;
             });
 
-            // Reviews nav link (desktop + mobile)
             desktopHtml += `
                 <a href="#testimonials" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full"
                    style="color: var(--dark-purple);"
                    onmouseover="this.style.color='var(--noshup-purple)'"
                    onmouseout="this.style.color='var(--dark-purple)'">
                     <i class="fas fa-star" style="color: var(--medium-purple);"></i> Reviews
-                </a>
-            `;
+                </a>`;
             mobileHtml += `
                 <a href="#testimonials" class="mobile-nav-link">
                     <i class="fas fa-star" style="color: var(--medium-purple); width: 1.5rem;"></i> Reviews
-                </a>
-            `;
+                </a>`;
 
             desktopNav.innerHTML = desktopHtml;
             mobileMenu.innerHTML = mobileHtml;
 
             document.querySelectorAll('.mobile-nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    document.getElementById('mobileMenu').classList.remove('open');
-                });
+                link.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
             });
         }
 
@@ -1002,16 +646,14 @@
 
             let globalIndex = 0;
             let html = '';
-
             const cats = getCategoriesWithItems();
+
             if (cats.length === 0) {
                 container.innerHTML = `
                     <div class="text-center py-12" style="color: var(--dark-purple);">
                         <i class="fas fa-bread-slice text-6xl mb-4" style="color: var(--medium-purple);"></i>
                         <h3 class="text-2xl font-semibold">No products yet</h3>
-                        <p class="mt-2">Check back soon for our delicious bakery items!</p>
-                    </div>
-                `;
+                    </div>`;
                 return;
             }
 
@@ -1027,7 +669,7 @@
                                 <div class="category-icon-badge icon-theme-${theme}">
                                     <i class="fas ${category.icon}"></i>
                                 </div>
-                                <div class="category-title-block">
+                                <div>
                                     <span class="category-subtitle">Our Menu</span>
                                     <h2 class="category-title">${category.label}</h2>
                                 </div>
@@ -1036,27 +678,23 @@
                                 <i class="fas fa-utensils"></i> ${itemCount} ${itemLabel}
                             </span>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                `;
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">`;
 
                 category.items.forEach(product => {
                     const rating = product.rating || 5;
                     const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-
                     const packEntries = product.packs ? Object.entries(product.packs) : [];
                     let lowestPrice = '';
                     if (packEntries.length > 0) {
                         const prices = packEntries.map(([_, p]) => p.price).filter(p => typeof p === 'number');
                         if (prices.length > 0) lowestPrice = Math.min(...prices);
                     }
-
                     const waLink = buildWhatsAppLink(product.name);
 
                     html += `
                         <div class="product-card bg-white rounded-3xl p-4 md:p-5 flex flex-col" data-index="${globalIndex}">
                             <div class="overflow-hidden rounded-2xl" style="background: var(--light-purple);">
-                                <img src="images/${product.image}" alt="${product.name}" loading="lazy"
-                                     onerror="this.src='${FALLBACK_SVG}'" />
+                                <img src="images/${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='${FALLBACK_SVG}'" />
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold mt-3" style="color: var(--dark-purple);">${product.name}</h3>
                             <p class="text-sm flex-1" style="color: var(--main-dark);">
@@ -1072,22 +710,19 @@
                             <div class="mt-3 text-center text-sm font-medium" style="color: var(--medium-purple);">
                                 <i class="fas fa-eye"></i> Click to view details
                             </div>
-                            <a href="${waLink}" target="_blank" rel="noopener"
-                               class="add-to-cart-btn"
+                            <a href="${waLink}" target="_blank" rel="noopener" class="add-to-cart-btn"
                                onclick="event.stopPropagation();"
                                aria-label="Add ${product.name} to cart on WhatsApp">
                                 <i class="fab fa-whatsapp"></i> Add to Cart
                             </a>
-                        </div>
-                    `;
+                        </div>`;
                     globalIndex++;
                 });
 
                 html += `
                         </div>
                         <div class="category-divider"></div>
-                    </section>
-                `;
+                    </section>`;
             });
 
             container.innerHTML = html;
@@ -1104,47 +739,53 @@
         // ---------- Testimonials ----------
         function renderTestimonials() {
             const grid = document.getElementById('testimonialsGrid');
-            if (!grid) return;
-
-            if (typeof testimonials === 'undefined' || !Array.isArray(testimonials) || testimonials.length === 0) {
-                grid.innerHTML = `<p class="text-center col-span-full" style="color: var(--main-dark);">No reviews yet.</p>`;
+            if (!grid) {
+                console.warn('[Testimonials] #testimonialsGrid not found in DOM');
                 return;
             }
 
-            let html = '';
-            testimonials.forEach((t, i) => {
-                const rating = t.rating || 5;
-                const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-                const initials = getInitials(t.name || 'Customer');
-                const gradient = AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length];
+            try {
+                const list = (typeof testimonials !== 'undefined' && Array.isArray(testimonials)) ? testimonials : [];
+                console.log('[Testimonials] Rendering', list.length, 'items');
 
-                html += `
-                    <div class="testimonial-card">
-                        <i class="fas fa-quote-right quote-icon"></i>
-                        <div class="testimonial-stars">${stars}</div>
-                        <p class="testimonial-text">&ldquo;${t.text}&rdquo;</p>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-avatar" style="background: ${gradient};">
-                                ${initials}
-                            </div>
-                            <div>
-                                <p class="testimonial-name">${t.name}</p>
-                                <p class="testimonial-location"><i class="fas fa-map-marker-alt"></i>${t.location || ''}</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
+                if (list.length === 0) {
+                    grid.innerHTML = `<p class="text-center col-span-full py-6" style="color: var(--main-dark);">No reviews yet.</p>`;
+                    return;
+                }
 
-            grid.innerHTML = html;
+                let html = '';
+                list.forEach((t, i) => {
+                    const rating = Math.max(1, Math.min(5, t.rating || 5));
+                    const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+                    const initials = getInitials(t.name || 'Customer');
+                    const gradient = AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length];
+
+                    html += `
+                        <div class="testimonial-card">
+                            <i class="fas fa-quote-right quote-icon"></i>
+                            <div class="testimonial-stars">${stars}</div>
+                            <p class="testimonial-text">&ldquo;${t.text}&rdquo;</p>
+                            <div class="testimonial-footer">
+                                <div class="testimonial-avatar" style="background: ${gradient};">${initials}</div>
+                                <div>
+                                    <p class="testimonial-name">${t.name}</p>
+                                    <p class="testimonial-location"><i class="fas fa-map-marker-alt"></i>${t.location || ''}</p>
+                                </div>
+                            </div>
+                        </div>`;
+                });
+                grid.innerHTML = html;
+                console.log('[Testimonials] ✓ Rendered successfully');
+            } catch (err) {
+                console.error('[Testimonials] Error:', err);
+                grid.innerHTML = `<p class="text-center col-span-full py-6" style="color: #b91c1c;">Could not load reviews. Check console.</p>`;
+            }
         }
 
-        // ---------- Flat list for modal ----------
+        // ---------- Flat list ----------
         function buildFlatProducts() {
             const flat = [];
-            getCategoriesWithItems().forEach(([_, cat]) => {
-                cat.items.forEach(item => flat.push(item));
-            });
+            getCategoriesWithItems().forEach(([_, cat]) => cat.items.forEach(item => flat.push(item)));
             return flat;
         }
 
@@ -1167,7 +808,6 @@
             modalImage.src = `images/${product.image}`;
             modalImage.alt = product.name;
             modalImage.onerror = function() { this.src = FALLBACK_SVG; };
-
             modalTitle.textContent = product.name;
             modalDescription.textContent = product.description;
             modalSize.textContent = product.size || '—';
@@ -1179,12 +819,7 @@
             let packHtml = '';
             if (product.packs && Object.keys(product.packs).length > 0) {
                 for (const [packName, packData] of Object.entries(product.packs)) {
-                    packHtml += `
-                        <div class="pack-item">
-                            <i class="fas fa-box" style="color: var(--medium-purple);"></i> ${packName}
-                            <span class="price">Rs ${packData.price}</span>
-                        </div>
-                    `;
+                    packHtml += `<div class="pack-item"><i class="fas fa-box" style="color: var(--medium-purple);"></i> ${packName}<span class="price">Rs ${packData.price}</span></div>`;
                 }
             } else {
                 packHtml = `<span class="text-sm italic" style="color: var(--main-dark);">Pack sizes available on request</span>`;
@@ -1192,8 +827,6 @@
             modalPackGrid.innerHTML = packHtml;
 
             modalAddToCart.href = buildWhatsAppLink(product.name);
-            modalAddToCart.setAttribute('aria-label', `Add ${product.name} to cart on WhatsApp`);
-
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1203,15 +836,14 @@
             document.body.style.overflow = '';
         }
 
-        modalClose.addEventListener('click', closeModal);
-        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        if (modalClose) modalClose.addEventListener('click', closeModal);
+        if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
         // ---------- Hamburger ----------
         document.addEventListener('DOMContentLoaded', () => {
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const mobileMenu = document.getElementById('mobileMenu');
-
             if (hamburgerBtn && mobileMenu) {
                 hamburgerBtn.addEventListener('click', e => {
                     e.stopPropagation();
@@ -1227,13 +859,22 @@
 
         // ---------- Init ----------
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('[Init] DOM ready, bootstrapping…');
+
+            // Always attempt testimonials first (independent of products)
+            renderTestimonials();
+
             if (typeof productData !== 'undefined') {
-                flatProducts = buildFlatProducts();
-                renderCategoryNav();
-                renderProducts();
-                renderTestimonials();
+                try {
+                    flatProducts = buildFlatProducts();
+                    renderCategoryNav();
+                    renderProducts();
+                    console.log('[Init] Products rendered ✓');
+                } catch (err) {
+                    console.error('[Init] Product render error:', err);
+                }
             } else {
-                console.error('productData not found — make sure data.js is loaded before the main script');
+                console.error('[Init] productData is undefined — check that data.js loaded correctly');
                 document.getElementById('productContainer').innerHTML =
                     `<p class="text-center py-8" style="color: var(--dark-purple);">⚠️ Product data could not be loaded.</p>`;
             }
