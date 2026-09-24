@@ -251,8 +251,8 @@ const productData = {
             },
             {
                 image: 'b10.jpg',
-                name: 'Garlic Bread',
-                description: 'Freshly baked bread topped with garlic butter and herbs. Crispy on the outside, soft on the inside.',
+                name: 'Chip Cookies',
+                description: 'Artisan Choco Chunk – Decadent. Gooey. Irresistible.',
                 size: '6″',
                 serves: 'serves 2',
                 rating: 4,
