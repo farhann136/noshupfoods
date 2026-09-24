@@ -138,79 +138,13 @@ const productData = {
         ]
     },
 
+    // ============================================================
+    //  BISCUITS section — currently holds SNACK-type items
+    //  (breads, rusks, meringues, macarons, etc.)
+    // ============================================================
     biscuits: {
         icon: 'fa-cookie',
         label: 'Biscuits',
-        items: [
-            {
-                image: 'biscuit1.jpg',
-                name: 'Badami Naan Khataai',
-                description: 'Traditional Pakistani biscuit made with almond flour and ghee, creating a crumbly, melt-in-mouth texture. Perfect with a cup of chai, this signature treat is a customer favourite.',
-                size: '2″ round',
-                serves: 'serves 1',
-                rating: 5,
-                packs: {
-                    '250g': { price: 350 },
-                    '500g': { price: 650 },
-                    '1kg': { price: 1200 }
-                }
-            },
-            {
-                image: 'biscuit2.jpg',
-                name: 'Butter Cookies',
-                description: 'Classic butter cookies with a melt-in-mouth texture. Light, crisp, and perfectly buttery — a timeless treat for all ages.',
-                size: '2″ round',
-                serves: 'serves 1',
-                rating: 4,
-                packs: {
-                    '250g': { price: 300 },
-                    '500g': { price: 550 },
-                    '1kg': { price: 1000 }
-                }
-            },
-            {
-                image: 'biscuit3.jpg',
-                name: 'Chocolate Chip Cookies',
-                description: 'Loaded with rich chocolate chips, these cookies are crispy on the edges and chewy in the center. A perfect treat with your afternoon tea.',
-                size: '2″ round',
-                serves: 'serves 1',
-                rating: 5,
-                packs: {
-                    'Box of 6': { price: 450 },
-                    'Box of 12': { price: 850 },
-                    'Box of 24': { price: 1600 }
-                }
-            },
-            {
-                image: 'biscuit4.jpg',
-                name: 'Coconut Macaroons',
-                description: 'Chewy coconut macaroons with a crisp exterior and soft, moist interior. Dipped in dark chocolate for extra richness.',
-                size: '2″ round',
-                serves: 'serves 1',
-                rating: 4,
-                packs: {
-                    'Box of 6': { price: 500 },
-                    'Box of 12': { price: 950 }
-                }
-            },
-            {
-                image: 'biscuit5.jpg',
-                name: 'Oatmeal Raisin Cookies',
-                description: 'Hearty oatmeal cookies with plump raisins and a hint of cinnamon. Soft, chewy, and full of wholesome flavor.',
-                size: '2.5″ round',
-                serves: 'serves 1',
-                rating: 4,
-                packs: {
-                    'Box of 6': { price: 480 },
-                    'Box of 12': { price: 900 }
-                }
-            }
-        ]
-    },
-
-    snacks: {
-        icon: 'fa-utensils',
-        label: 'Snacks',
         items: [
             {
                 image: 'snack1.jpg',
@@ -348,6 +282,80 @@ const productData = {
                     'Slice': { price: 400 },
                     'Half (6″)': { price: 1400 },
                     'Whole (8″)': { price: 2600 }
+                }
+            }
+        ]
+    },
+
+    // ============================================================
+    //  SNACKS section — currently holds BISCUIT-type items
+    //  (nan khatai, cookies, macaroons, etc.)
+    // ============================================================
+    snacks: {
+        icon: 'fa-utensils',
+        label: 'Snacks',
+        items: [
+            {
+                image: 'biscuit1.jpg',
+                name: 'Badami Naan Khataai',
+                description: 'Traditional Pakistani biscuit made with almond flour and ghee, creating a crumbly, melt-in-mouth texture. Perfect with a cup of chai, this signature treat is a customer favourite.',
+                size: '2″ round',
+                serves: 'serves 1',
+                rating: 5,
+                packs: {
+                    '250g': { price: 350 },
+                    '500g': { price: 650 },
+                    '1kg': { price: 1200 }
+                }
+            },
+            {
+                image: 'biscuit2.jpg',
+                name: 'Butter Cookies',
+                description: 'Classic butter cookies with a melt-in-mouth texture. Light, crisp, and perfectly buttery — a timeless treat for all ages.',
+                size: '2″ round',
+                serves: 'serves 1',
+                rating: 4,
+                packs: {
+                    '250g': { price: 300 },
+                    '500g': { price: 550 },
+                    '1kg': { price: 1000 }
+                }
+            },
+            {
+                image: 'biscuit3.jpg',
+                name: 'Chocolate Chip Cookies',
+                description: 'Loaded with rich chocolate chips, these cookies are crispy on the edges and chewy in the center. A perfect treat with your afternoon tea.',
+                size: '2″ round',
+                serves: 'serves 1',
+                rating: 5,
+                packs: {
+                    'Box of 6': { price: 450 },
+                    'Box of 12': { price: 850 },
+                    'Box of 24': { price: 1600 }
+                }
+            },
+            {
+                image: 'biscuit4.jpg',
+                name: 'Coconut Macaroons',
+                description: 'Chewy coconut macaroons with a crisp exterior and soft, moist interior. Dipped in dark chocolate for extra richness.',
+                size: '2″ round',
+                serves: 'serves 1',
+                rating: 4,
+                packs: {
+                    'Box of 6': { price: 500 },
+                    'Box of 12': { price: 950 }
+                }
+            },
+            {
+                image: 'biscuit5.jpg',
+                name: 'Oatmeal Raisin Cookies',
+                description: 'Hearty oatmeal cookies with plump raisins and a hint of cinnamon. Soft, chewy, and full of wholesome flavor.',
+                size: '2.5″ round',
+                serves: 'serves 1',
+                rating: 4,
+                packs: {
+                    'Box of 6': { price: 480 },
+                    'Box of 12': { price: 900 }
                 }
             }
         ]
