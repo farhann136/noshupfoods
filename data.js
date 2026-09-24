@@ -37,8 +37,8 @@ const productData = {
             },
             {
                 image: 'desert2.jpg',
-                name: 'New York Cheesecake',
-                description: 'Ultra-creamy cheesecake with a buttery graham cracker crust, topped with a vibrant berry compote. Rich, smooth, and absolutely irresistible.',
+                name: 'Rich Nutella Fudge Cake',
+                description: 'Dense chocolate fudge cake loaded with Nutella. Gooey, rich, and melt-in-mouth. For real chocolate lovers.',
                 size: '7″',
                 serves: 'serves 6-8',
                 rating: 5,
@@ -50,23 +50,23 @@ const productData = {
             },
             {
                 image: 'desert3.jpg',
-                name: 'Fudge Brownie',
-                description: 'Gooey chocolate brownie loaded with walnuts and chocolate chunks. The perfect balance of crispy edges and a soft, fudgy centre that melts in your mouth.',
-                size: '5″',
-                serves: 'serves 4',
-                rating: 4,
+                name: 'Red Velvet Cake',
+                description: 'Classic red velvet layers filled with smooth cream cheese. Luxuriously soft, subtly cocoa, and made to melt.',
+                size: '7″',
+                serves: 'serves 6-8',
+                rating: 5,
                 packs: {
-                    'Box of 4': { price: 700 },
-                    'Box of 6': { price: 950 },
-                    'Box of 9': { price: 1350 }
+                    'Slice': { price: 450 },
+                    'Half (6″)': { price: 1500 },
+                    'Whole (7″)': { price: 2800 }
                 }
             },
             {
                 image: 'desert4.jpg',
-                name: 'Panna Cotta',
-                description: 'Silky smooth Italian custard infused with vanilla bean, served with a tangy berry compote. Light, elegant, and the perfect ending to any meal.',
+                name: 'Lemon Tart',
+                description: 'Bright lemon tart. No preservatives. Just real citrus goodness.',
                 size: '4″',
-                serves: 'serves 2',
+                serves: 'serves 1-2',
                 rating: 4,
                 packs: {
                     'Single': { price: 400 },
@@ -75,8 +75,8 @@ const productData = {
             },
             {
                 image: 'desert5.jpg',
-                name: 'Chocolate Lava Cake',
-                description: 'Warm chocolate cake with a molten center that flows when you cut into it. Served with a scoop of vanilla ice cream for the ultimate indulgence.',
+                name: 'Tiramisu',
+                description: 'Tiramisu is a silky and creamy dessert that brings a touch of elegance to every occasion.',
                 size: '4″',
                 serves: 'serves 1-2',
                 rating: 5,
@@ -87,8 +87,8 @@ const productData = {
             },
             {
                 image: 'desert6.jpg',
-                name: 'Fruit Trifle',
-                description: 'Layers of sponge cake, fresh fruits, custard, and whipped cream. A refreshing and colorful dessert that is perfect for gatherings.',
+                name: 'Tiramisu',
+                description: 'Tiramisu is a silky and creamy dessert that brings a touch of elegance to every occasion.',
                 size: '8″ bowl',
                 serves: 'serves 6-8',
                 rating: 4,
@@ -99,8 +99,8 @@ const productData = {
             },
             {
                 image: 'desert7.jpg',
-                name: 'Red Velvet Cupcake',
-                description: 'Moist red velvet cake topped with rich cream cheese frosting. A classic favorite with a beautiful red crumb.',
+                name: 'Loaded Chocolate Muffin',
+                description: 'Chocolate muffins are rich, tender, and fluffy baked treats featuring a deep cocoa flavor with loaded chocolate.',
                 size: '2.5″',
                 serves: 'serves 1',
                 rating: 5,
@@ -112,10 +112,10 @@ const productData = {
             },
             {
                 image: 'desert8.jpg',
-                name: 'Lemon Tart',
-                description: 'Buttery tart shell filled with tangy lemon curd, topped with a light meringue. A perfect balance of sweet and sour.',
-                size: '4″',
-                serves: 'serves 1-2',
+                name: 'Red Velvet Muffin',
+                description: 'Red velvet muffin: Soft, moist, vibrant red crumb with a hint of cocoa.',
+                size: '2.5″',
+                serves: 'serves 1',
                 rating: 4,
                 packs: {
                     'Single': { price: 350 },
@@ -124,8 +124,8 @@ const productData = {
             },
             {
                 image: 'desert9.jpg',
-                name: 'Chocolate Mousse',
-                description: 'Light and airy chocolate mousse made with premium dark chocolate. Served in individual cups for a perfect portion.',
+                name: 'Three Milk Cake',
+                description: 'Soaked in milk. Drowned in cream. Light, fluffy, and not too sweet. The comfort dessert you\'ll crave.',
                 size: '3″ cup',
                 serves: 'serves 1',
                 rating: 5,
