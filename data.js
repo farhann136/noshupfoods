@@ -15,6 +15,8 @@
 //    serves      -> e.g. "serves 4-6"
 //    rating      -> 1 to 5
 //    packs       -> { "Pack Name": { price: 123 }, ... }
+//
+//  Testimonials: edit the `testimonials` array at the bottom of this file.
 // ================================================================
 
 const productData = {
@@ -127,7 +129,7 @@ const productData = {
     },
 
     // ============================================================
-    //  BISCUITS & BREADS section — holds snack/bread-type items
+    //  BISCUITS & BREADS section
     // ============================================================
     biscuits: {
         icon: 'fa-cookie',
@@ -275,7 +277,7 @@ const productData = {
     },
 
     // ============================================================
-    //  SNACKS section — holds biscuit-type items
+    //  SNACKS section
     // ============================================================
     snacks: {
         icon: 'fa-utensils',
@@ -347,3 +349,76 @@ const productData = {
         ]
     }
 };
+
+// ================================================================
+//  💬 TESTIMONIALS — customer reviews shown before the footer
+//
+//  Each testimonial:
+//    name     -> customer name
+//    location -> city
+//    rating   -> 1 to 5
+//    text     -> short review
+// ================================================================
+
+const testimonials = [
+    {
+        name: 'Ayesha Khan',
+        location: 'Lahore',
+        rating: 5,
+        text: 'The Badami Naan Khataai is exactly like the ones we used to get in old Lahore bakeries. Melt-in-mouth perfection with my evening chai!'
+    },
+    {
+        name: 'Muhammad Bilal',
+        location: 'Karachi',
+        rating: 5,
+        text: 'Ordered the Rich Nutella Fudge Cake for my wife\'s birthday. It was insanely good — gooey, rich, and finished in one sitting. Highly recommended.'
+    },
+    {
+        name: 'Fatima Ahmed',
+        location: 'Islamabad',
+        rating: 5,
+        text: 'Their Red Velvet Cake is hands-down the best I\'ve had in Pakistan. Creamy frosting, soft layers — absolutely luxurious.'
+    },
+    {
+        name: 'Hassan Raza',
+        location: 'Lahore',
+        rating: 5,
+        text: 'The Butter Cake Rusk is a game-changer. Perfect crunch, perfect sweetness, and it stays fresh for days. My family\'s favourite now.'
+    },
+    {
+        name: 'Sana Malik',
+        location: 'Faisalabad',
+        rating: 5,
+        text: 'Ordered brownies and cinnamon rolls for a family gathering — everyone kept asking where I got them from. Freshness you can actually taste.'
+    },
+    {
+        name: 'Usman Tariq',
+        location: 'Multan',
+        rating: 5,
+        text: 'Fast delivery, neat packaging, and the Croissants were flaky and buttery. Noshup Foods has definitely earned a regular customer.'
+    },
+    {
+        name: 'Zainab Sheikh',
+        location: 'Rawalpindi',
+        rating: 5,
+        text: 'The Three Milk Cake is dreamy — light, creamy, and not overly sweet. Exactly what I crave after dinner.'
+    },
+    {
+        name: 'Ali Hamza',
+        location: 'Lahore',
+        rating: 5,
+        text: 'Their Sourdough Bread is top-tier. Crusty outside, soft inside — perfect for sandwiches. You can tell it\'s made with real care.'
+    },
+    {
+        name: 'Hira Siddiqui',
+        location: 'Karachi',
+        rating: 5,
+        text: 'Ordered the Chocolate Chip Cookies and Coconut Macaroons — both were gone within an hour. Soft, chewy, and full of flavour.'
+    },
+    {
+        name: 'Ahmed Nawaz',
+        location: 'Peshawar',
+        rating: 5,
+        text: 'Noshup Foods never disappoints. Every order has been fresh, beautifully packed, and absolutely delicious. Truly bakery-level quality.'
+    }
+];
