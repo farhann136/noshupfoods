@@ -364,13 +364,13 @@ const testimonials = [
     },
     {
         name: 'Muhammad Bilal',
-        location: 'Karachi',
+        location: 'Lahore',
         rating: 5,
         text: 'Ordered the Rich Nutella Fudge Cake for my wife\'s birthday. It was insanely good — gooey, rich, and finished in one sitting. Highly recommended.'
     },
     {
         name: 'Fatima Ahmed',
-        location: 'Islamabad',
+        location: 'Lahore',
         rating: 5,
         text: 'Their Red Velvet Cake is hands-down the best I\'ve had in Pakistan. Creamy frosting, soft layers — absolutely luxurious.'
     },
@@ -382,19 +382,19 @@ const testimonials = [
     },
     {
         name: 'Sana Malik',
-        location: 'Faisalabad',
+        location: 'Lahore',
         rating: 5,
         text: 'Ordered brownies and cinnamon rolls for a family gathering — everyone kept asking where I got them from. Freshness you can actually taste.'
     },
     {
         name: 'Usman Tariq',
-        location: 'Multan',
+        location: 'Lahore',
         rating: 5,
         text: 'Fast delivery, neat packaging, and the Croissants were flaky and buttery. Noshup Foods has definitely earned a regular customer.'
     },
     {
         name: 'Zainab Sheikh',
-        location: 'Rawalpindi',
+        location: 'Lahore',
         rating: 5,
         text: 'The Three Milk Cake is dreamy — light, creamy, and not overly sweet. Exactly what I crave after dinner.'
     },
@@ -406,13 +406,13 @@ const testimonials = [
     },
     {
         name: 'Hira Siddiqui',
-        location: 'Karachi',
+        location: 'Lahore',
         rating: 5,
         text: 'Ordered the Chocolate Chip Cookies and Coconut Macaroons — both were gone within an hour. Soft, chewy, and full of flavour.'
     },
     {
         name: 'Ahmed Nawaz',
-        location: 'Peshawar',
+        location: 'Lahore',
         rating: 5,
         text: 'Noshup Foods never disappoints. Every order has been fresh, beautifully packed, and absolutely delicious. Truly bakery-level quality.'
     }
