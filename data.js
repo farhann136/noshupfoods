@@ -86,18 +86,6 @@ const productData = {
                 }
             },
             {
-                image: 'desert6.jpg',
-                name: 'Tiramisu',
-                description: 'Tiramisu is a silky and creamy dessert that brings a touch of elegance to every occasion.',
-                size: '8″ bowl',
-                serves: 'serves 6-8',
-                rating: 4,
-                packs: {
-                    'Small Bowl': { price: 900 },
-                    'Large Bowl': { price: 1600 }
-                }
-            },
-            {
                 image: 'desert7.jpg',
                 name: 'Loaded Chocolate Muffin',
                 description: 'Chocolate muffins are rich, tender, and fluffy baked treats featuring a deep cocoa flavor with loaded chocolate.',
@@ -147,8 +135,8 @@ const productData = {
         items: [
             {
                 image: 'snack1.jpg',
-                name: 'Meringue Biscuits',
-                description: 'Light, airy, sweet little clouds that melt the moment you bite.',
+                name: 'Puff Pastry Twister',
+                description: 'Golden, puffed spiral with a crisp, crunchy shell.',
                 size: '3″',
                 serves: 'serves 1-2',
                 rating: 4,
@@ -160,8 +148,8 @@ const productData = {
             },
             {
                 image: 'snack2.jpg',
-                name: 'Butter Cookies',
-                description: 'Premium Butter Cookies – Rich, Crispy & Melt-In-Mouth',
+                name: 'Donuts',
+                description: 'Donuts are typically ring-shaped or filled, known for their sweet glaze, diverse toppings, and soft, airy texture.',
                 size: '4″',
                 serves: 'serves 2',
                 rating: 4,
@@ -172,8 +160,8 @@ const productData = {
             },
             {
                 image: 'snack3.jpg',
-                name: 'Morsels',
-                description: 'Our signature butter coin biscuits, Pale golden, crisp, melt-in-mouth & impossible to stop at one.',
+                name: 'Brownie',
+                description: 'A dense, fudgy center and a distinctively thin, crinkly top crust.',
                 size: '3″',
                 serves: 'serves 1',
                 rating: 5,
@@ -185,8 +173,8 @@ const productData = {
             },
             {
                 image: 'snack4.jpg',
-                name: 'Macaron',
-                description: 'A taste of Italy in Lahore',
+                name: 'Croissant',
+                description: 'Croissant is a famous, crescent-shaped French pastry known for its golden, flaky crust and soft, buttery inside.',
                 size: '3″',
                 serves: 'serves 1',
                 rating: 5,
@@ -198,8 +186,8 @@ const productData = {
             },
             {
                 image: 'snack5.jpg',
-                name: 'Badam Khatai',
-                description: 'A Premium Badam Khatai, Golden, Buttery & Almond-Rich Delight.',
+                name: 'Cinnamon Rolls',
+                description: 'Soft swirled dough with cinnamon-sugar filling, topped with vanilla glaze. Warm, buttery, and gooey.',
                 size: '4″',
                 serves: 'serves 1',
                 rating: 4,
