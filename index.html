@@ -92,11 +92,11 @@
             padding: 2rem 0;
         }
 
-        .hero-slogan, .hero-title, .hero-slide-item, .hero-sub {
+        .hero-title, .hero-slide-item, .hero-sub {
             color: #000000 !important;
             text-shadow: 0 2px 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.6);
         }
-        .hero-slogan i, .hero-title i, .hero-slide-item i, .hero-sub i {
+        .hero-title i, .hero-slide-item i, .hero-sub i {
             color: #000000 !important;
         }
 
@@ -167,6 +167,32 @@
             object-fit: cover;
         }
         .product-card:hover img { transform: scale(1.02); }
+
+        /* ===== Add to cart / WhatsApp button ===== */
+        .add-to-cart-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border-radius: 999px;
+            background: var(--wa-green);
+            color: #ffffff !important;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+            border: none;
+            margin-top: 0.75rem;
+        }
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            background: #1ebe5b;
+            box-shadow: 0 10px 22px rgba(37, 211, 102, 0.5);
+        }
+        .add-to-cart-btn i { color: #ffffff; }
 
         /* ===== Category section wrapper (distinct per category) ===== */
         .category-section {
@@ -587,21 +613,20 @@
     <section class="hero-section">
         <div class="hero-overlay">
             <div class="container mx-auto px-4 text-center">
-                <div class="hero-slogan text-2xl md:text-4xl font-light mb-1">
-                    <i class="fas fa-leaf"></i> Eat Better · Feel Better <i class="fas fa-leaf"></i>
-                </div>
                 <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-extrabold mb-1" style="animation: tiltIn 0.8s ease-out;">
                     <i class="fas fa-seedling"></i> fresh · baked <i class="fas fa-heart"></i>
                 </h1>
 
                 <div class="hero-slider-wrapper">
                     <div class="hero-slider-track">
-                        <div class="hero-slide-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
-                        <div class="hero-slide-item"><i class="fas fa-cookie-bite"></i>  nan khatai · crisp</div>
-                        <div class="hero-slide-item"><i class="fas fa-mug-saucer"></i>  tea time delights</div>
-                        <div class="hero-slide-item"><i class="fas fa-cake-candles"></i>  custom cupcakes</div>
-                        <div class="hero-slide-item"><i class="fas fa-utensils"></i>  daily fresh</div>
-                        <div class="hero-slide-item"><i class="fas fa-birthday-cake"></i>  cakes &amp; cupcakes</div>
+                        <div class="hero-slide-item"><i class="fas fa-bread-slice"></i> cake rusk</div>
+                        <div class="hero-slide-item"><i class="fas fa-cookie-bite"></i> almond khatai</div>
+                        <div class="hero-slide-item"><i class="fas fa-utensils"></i> snacks</div>
+                        <div class="hero-slide-item"><i class="fas fa-birthday-cake"></i> fresh cakes</div>
+                        <div class="hero-slide-item"><i class="fas fa-bread-slice"></i> cake rusk</div>
+                        <div class="hero-slide-item"><i class="fas fa-cookie-bite"></i> almond khatai</div>
+                        <div class="hero-slide-item"><i class="fas fa-utensils"></i> snacks</div>
+                        <div class="hero-slide-item"><i class="fas fa-birthday-cake"></i> fresh cakes</div>
                     </div>
                 </div>
 
@@ -709,6 +734,10 @@
                 </div>
                 <div class="modal-stars" id="modalStars"></div>
             </div>
+            <!-- Modal Add to Cart button -->
+            <a href="#" id="modalAddToCart" target="_blank" rel="noopener" class="add-to-cart-btn" style="margin-top: 1.25rem; width: 100%;">
+                <i class="fab fa-whatsapp"></i> Add to Cart — Inquire on WhatsApp
+            </a>
         </div>
     </div>
 
@@ -721,12 +750,19 @@
 
         const FALLBACK_SVG = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect fill='%23F3E6F5' width='400' height='200'/%3E%3Ctext x='50' y='120' font-size='24' fill='%236B1A77'%3E%F0%9F%8D%B0 fresh%3C/text%3E%3C/svg%3E`;
 
+        const WHATSAPP_NUMBER = '923228837335';
+
         let flatProducts = [];
 
         function getCategoriesWithItems() {
             return Object.entries(productData).filter(
                 ([_, cat]) => cat && Array.isArray(cat.items) && cat.items.length > 0
             );
+        }
+
+        function buildWhatsAppLink(productName) {
+            const msg = `Hi Noshup Foods! I'd like to inquire about: ${productName}. Please share details.`;
+            return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
         }
 
         // ---------- Header Nav ----------
@@ -819,6 +855,8 @@
                         if (prices.length > 0) lowestPrice = Math.min(...prices);
                     }
 
+                    const waLink = buildWhatsAppLink(product.name);
+
                     html += `
                         <div class="product-card bg-white rounded-3xl p-4 md:p-5 flex flex-col" data-index="${globalIndex}">
                             <div class="overflow-hidden rounded-2xl" style="background: var(--light-purple);">
@@ -839,6 +877,13 @@
                             <div class="mt-3 text-center text-sm font-medium" style="color: var(--medium-purple);">
                                 <i class="fas fa-eye"></i> Click to view details
                             </div>
+                            <!-- Add to Cart (WhatsApp) button -->
+                            <a href="${waLink}" target="_blank" rel="noopener"
+                               class="add-to-cart-btn"
+                               onclick="event.stopPropagation();"
+                               aria-label="Add ${product.name} to cart on WhatsApp">
+                                <i class="fab fa-whatsapp"></i> Add to Cart
+                            </a>
                         </div>
                     `;
                     globalIndex++;
@@ -855,7 +900,11 @@
 
             document.querySelectorAll('.product-card').forEach(card => {
                 const index = parseInt(card.dataset.index);
-                card.addEventListener('click', () => openModal(index));
+                card.addEventListener('click', (e) => {
+                    // If the click originated from the add-to-cart link, don't open modal
+                    if (e.target.closest('.add-to-cart-btn')) return;
+                    openModal(index);
+                });
             });
         }
 
@@ -878,6 +927,7 @@
         const modalServes = document.getElementById('modalServes');
         const modalStars = document.getElementById('modalStars');
         const modalPackGrid = document.getElementById('modalPackGrid');
+        const modalAddToCart = document.getElementById('modalAddToCart');
 
         function openModal(index) {
             const product = flatProducts[index];
@@ -909,6 +959,10 @@
                 packHtml = `<span class="text-sm italic" style="color: var(--main-dark);">Pack sizes available on request</span>`;
             }
             modalPackGrid.innerHTML = packHtml;
+
+            // Set WhatsApp link on modal Add to Cart button
+            modalAddToCart.href = buildWhatsAppLink(product.name);
+            modalAddToCart.setAttribute('aria-label', `Add ${product.name} to cart on WhatsApp`);
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
