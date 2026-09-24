@@ -1,4 +1,4 @@
-// ================================================================
+  // ================================================================
 //  📦 PRODUCT DATA — Noshup Foods
 //
 //  ⚡ HOW TO USE:
@@ -130,13 +130,14 @@ const productData = {
 
     // ============================================================
     //  BISCUITS & BREADS section
+    //  Image names: b1.jpg → b11.jpg
     // ============================================================
     biscuits: {
         icon: 'fa-cookie',
         label: 'Biscuits & Breads',
         items: [
             {
-                image: 'snack1.jpg',
+                image: 'b1.jpg',
                 name: 'Puff Pastry Twister',
                 description: 'Golden, puffed spiral with a crisp, crunchy shell.',
                 size: '3″',
@@ -149,7 +150,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack2.jpg',
+                image: 'b2.jpg',
                 name: 'Donuts',
                 description: 'Donuts are typically ring-shaped or filled, known for their sweet glaze, diverse toppings, and soft, airy texture.',
                 size: '4″',
@@ -161,7 +162,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack3.jpg',
+                image: 'b3.jpg',
                 name: 'Brownie',
                 description: 'A dense, fudgy center and a distinctively thin, crinkly top crust.',
                 size: '3″',
@@ -174,7 +175,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack4.jpg',
+                image: 'b4.jpg',
                 name: 'Croissant',
                 description: 'Croissant is a famous, crescent-shaped French pastry known for its golden, flaky crust and soft, buttery inside.',
                 size: '3″',
@@ -187,7 +188,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack5.jpg',
+                image: 'b5.jpg',
                 name: 'Cinnamon Rolls',
                 description: 'Soft swirled dough with cinnamon-sugar filling, topped with vanilla glaze. Warm, buttery, and gooey.',
                 size: '4″',
@@ -200,7 +201,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack6.jpg',
+                image: 'b6.jpg',
                 name: 'Butter Cake Rusk',
                 description: 'Golden, buttery, double-baked for extra crunch. Light, crispy, melts with chai.',
                 size: '4″',
@@ -212,7 +213,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack7.jpg',
+                image: 'b7.jpg',
                 name: 'Sourdough Bread',
                 description: 'Slow-fermented, crusty outside, cloud-soft inside with an open airy crumb. The classic artisan loaf.',
                 size: '6″',
@@ -224,7 +225,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack8.jpg',
+                image: 'b8.jpg',
                 name: 'Burger Bun',
                 description: 'Soft, fresh, and delicious burger buns with a light, fluffy texture—perfect for juicy burgers, sandwiches, and homemade meals.',
                 size: '2″',
@@ -236,7 +237,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack9.jpg',
+                image: 'b9.jpg',
                 name: 'Fucasia Bread',
                 description: 'Golden, olive oil-rich and pillowy, topped with fresh rosemary and flaked sea salt. Simple, fragrant, irresistible.',
                 size: 'Regular',
@@ -249,7 +250,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack10.jpg',
+                image: 'b10.jpg',
                 name: 'Garlic Bread',
                 description: 'Freshly baked bread topped with garlic butter and herbs. Crispy on the outside, soft on the inside.',
                 size: '6″',
@@ -261,7 +262,7 @@ const productData = {
                 }
             },
             {
-                image: 'snack11.jpg',
+                image: 'b11.jpg',
                 name: 'Raspberry Cake',
                 description: 'Soft, fluffy sponge layered with fresh raspberry filling and topped with creamy frosting. A fruity, tangy delight in every bite.',
                 size: '6″',
@@ -277,14 +278,15 @@ const productData = {
     },
 
     // ============================================================
-    //  SNACKS section — updated names & descriptions
+    //  SNACKS section
+    //  Image names: s1.jpg → s5.jpg
     // ============================================================
     snacks: {
         icon: 'fa-utensils',
         label: 'Snacks',
         items: [
             {
-                image: 'biscuit1.jpg',
+                image: 's1.jpg',
                 name: 'Puff Pastry Twister',
                 description: 'Golden, puffed spiral with a crisp, crunchy shell.',
                 size: '2″ round',
@@ -297,7 +299,7 @@ const productData = {
                 }
             },
             {
-                image: 'biscuit2.jpg',
+                image: 's2.jpg',
                 name: 'Donuts',
                 description: 'Donuts are typically ring-shaped or filled, known for their sweet glaze, diverse toppings, and soft, airy texture.',
                 size: '2″ round',
@@ -310,7 +312,7 @@ const productData = {
                 }
             },
             {
-                image: 'biscuit3.jpg',
+                image: 's3.jpg',
                 name: 'Brownie',
                 description: 'A dense, fudgy center and a distinctively thin, crinkly top crust.',
                 size: '2″ round',
@@ -323,7 +325,7 @@ const productData = {
                 }
             },
             {
-                image: 'biscuit4.jpg',
+                image: 's4.jpg',
                 name: 'Croissant',
                 description: 'Croissant is a famous, crescent-shaped French pastry known for its golden, flaky crust and soft, buttery inside.',
                 size: '2″ round',
@@ -335,7 +337,7 @@ const productData = {
                 }
             },
             {
-                image: 'biscuit5.jpg',
+                image: 's5.jpg',
                 name: 'Cinnamon Rolls',
                 description: 'Soft swirled dough with cinnamon-sugar filling, topped with vanilla glaze. Warm, buttery, and gooey.',
                 size: '2.5″ round',
