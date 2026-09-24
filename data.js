@@ -1,22 +1,5 @@
 // ================================================================
 //  📦 PRODUCT DATA — Noshup Foods
-//
-//  ⚡ HOW TO USE:
-//  1. Add/remove a category → add/remove a top-level block
-//  2. Add/remove an item → add/remove an object inside `items: []`
-//  3. Category order on the page = order in this file.
-//  4. If a category has 0 items, it is completely hidden.
-//
-//  Each product:
-//    image       -> filename inside /images folder
-//    name        -> display name
-//    description -> full description
-//    size        -> e.g. "6″" or "2″ round"
-//    serves      -> e.g. "serves 4-6"
-//    rating      -> 1 to 5
-//    packs       -> { "Pack Name": { price: 123 }, ... }
-//
-//  Testimonials: edit the `testimonials` array at the bottom of this file.
 // ================================================================
 
 const productData = {
@@ -128,9 +111,6 @@ const productData = {
         ]
     },
 
-    // ============================================================
-    //  BISCUITS & BREADS section
-    // ============================================================
     biscuits: {
         icon: 'fa-cookie',
         label: 'Biscuits & Breads',
@@ -276,9 +256,6 @@ const productData = {
         ]
     },
 
-    // ============================================================
-    //  SNACKS section
-    // ============================================================
     snacks: {
         icon: 'fa-utensils',
         label: 'Snacks',
@@ -351,15 +328,8 @@ const productData = {
 };
 
 // ================================================================
-//  💬 TESTIMONIALS — customer reviews shown before the footer
-//
-//  Each testimonial:
-//    name     -> customer name
-//    location -> city
-//    rating   -> 1 to 5
-//    text     -> short review
+//  💬 TESTIMONIALS
 // ================================================================
-
 const testimonials = [
     {
         name: 'Ayesha Khan',
