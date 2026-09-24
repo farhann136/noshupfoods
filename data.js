@@ -140,14 +140,13 @@ const productData = {
 
     // ============================================================
     //  BISCUITS & BREADS section — holds snack/bread-type items
-    //  Images renamed to b1.jpg … b11.jpg
     // ============================================================
     biscuits: {
         icon: 'fa-cookie',
         label: 'Biscuits & Breads',
         items: [
             {
-                image: 'b1.jpg',
+                image: 'snack1.jpg',
                 name: 'Meringue Biscuits',
                 description: 'Light, airy, sweet little clouds that melt the moment you bite.',
                 size: '3″',
@@ -160,7 +159,7 @@ const productData = {
                 }
             },
             {
-                image: 'b2.jpg',
+                image: 'snack2.jpg',
                 name: 'Butter Cookies',
                 description: 'Premium Butter Cookies – Rich, Crispy & Melt-In-Mouth',
                 size: '4″',
@@ -172,7 +171,7 @@ const productData = {
                 }
             },
             {
-                image: 'b3.jpg',
+                image: 'snack3.jpg',
                 name: 'Morsels',
                 description: 'Our signature butter coin biscuits, Pale golden, crisp, melt-in-mouth & impossible to stop at one.',
                 size: '3″',
@@ -185,7 +184,7 @@ const productData = {
                 }
             },
             {
-                image: 'b4.jpg',
+                image: 'snack4.jpg',
                 name: 'Macaron',
                 description: 'A taste of Italy in Lahore',
                 size: '3″',
@@ -198,7 +197,7 @@ const productData = {
                 }
             },
             {
-                image: 'b5.jpg',
+                image: 'snack5.jpg',
                 name: 'Badam Khatai',
                 description: 'A Premium Badam Khatai, Golden, Buttery & Almond-Rich Delight.',
                 size: '4″',
@@ -211,7 +210,7 @@ const productData = {
                 }
             },
             {
-                image: 'b6.jpg',
+                image: 'snack6.jpg',
                 name: 'Butter Cake Rusk',
                 description: 'Golden, buttery, double-baked for extra crunch. Light, crispy, melts with chai.',
                 size: '4″',
@@ -223,7 +222,7 @@ const productData = {
                 }
             },
             {
-                image: 'b7.jpg',
+                image: 'snack7.jpg',
                 name: 'Sourdough Bread',
                 description: 'Slow-fermented, crusty outside, cloud-soft inside with an open airy crumb. The classic artisan loaf.',
                 size: '6″',
@@ -235,7 +234,7 @@ const productData = {
                 }
             },
             {
-                image: 'b8.jpg',
+                image: 'snack8.jpg',
                 name: 'Burger Bun',
                 description: 'Soft, fresh, and delicious burger buns with a light, fluffy texture—perfect for juicy burgers, sandwiches, and homemade meals.',
                 size: '2″',
@@ -247,7 +246,7 @@ const productData = {
                 }
             },
             {
-                image: 'b9.jpg',
+                image: 'snack9.jpg',
                 name: 'Fucasia Bread',
                 description: 'Golden, olive oil-rich and pillowy, topped with fresh rosemary and flaked sea salt. Simple, fragrant, irresistible.',
                 size: 'Regular',
@@ -260,7 +259,7 @@ const productData = {
                 }
             },
             {
-                image: 'b10.jpg',
+                image: 'snack10.jpg',
                 name: 'Garlic Bread',
                 description: 'Freshly baked bread topped with garlic butter and herbs. Crispy on the outside, soft on the inside.',
                 size: '6″',
@@ -272,7 +271,7 @@ const productData = {
                 }
             },
             {
-                image: 'b11.jpg',
+                image: 'snack11.jpg',
                 name: 'Raspberry Cake',
                 description: 'Soft, fluffy sponge layered with fresh raspberry filling and topped with creamy frosting. A fruity, tangy delight in every bite.',
                 size: '6″',
@@ -289,14 +288,13 @@ const productData = {
 
     // ============================================================
     //  SNACKS section — holds biscuit-type items
-    //  Images renamed to s1.jpg … s5.jpg
     // ============================================================
     snacks: {
         icon: 'fa-utensils',
         label: 'Snacks',
         items: [
             {
-                image: 's1.jpg',
+                image: 'biscuit1.jpg',
                 name: 'Badami Naan Khataai',
                 description: 'Traditional Pakistani biscuit made with almond flour and ghee, creating a crumbly, melt-in-mouth texture. Perfect with a cup of chai, this signature treat is a customer favourite.',
                 size: '2″ round',
@@ -309,7 +307,7 @@ const productData = {
                 }
             },
             {
-                image: 's2.jpg',
+                image: 'biscuit2.jpg',
                 name: 'Butter Cookies',
                 description: 'Classic butter cookies with a melt-in-mouth texture. Light, crisp, and perfectly buttery — a timeless treat for all ages.',
                 size: '2″ round',
@@ -322,7 +320,7 @@ const productData = {
                 }
             },
             {
-                image: 's3.jpg',
+                image: 'biscuit3.jpg',
                 name: 'Chocolate Chip Cookies',
                 description: 'Loaded with rich chocolate chips, these cookies are crispy on the edges and chewy in the center. A perfect treat with your afternoon tea.',
                 size: '2″ round',
@@ -335,7 +333,7 @@ const productData = {
                 }
             },
             {
-                image: 's4.jpg',
+                image: 'biscuit4.jpg',
                 name: 'Coconut Macaroons',
                 description: 'Chewy coconut macaroons with a crisp exterior and soft, moist interior. Dipped in dark chocolate for extra richness.',
                 size: '2″ round',
@@ -347,7 +345,7 @@ const productData = {
                 }
             },
             {
-                image: 's5.jpg',
+                image: 'biscuit5.jpg',
                 name: 'Oatmeal Raisin Cookies',
                 description: 'Hearty oatmeal cookies with plump raisins and a hint of cinnamon. Soft, chewy, and full of wholesome flavor.',
                 size: '2.5″ round',
