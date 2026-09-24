@@ -1,5 +1,22 @@
 // ================================================================
 //  📦 PRODUCT DATA — Noshup Foods
+//
+//  ⚡ HOW TO USE:
+//  1. Add/remove a category → add/remove a top-level block
+//  2. Add/remove an item → add/remove an object inside `items: []`
+//  3. Category order on the page = order in this file.
+//  4. If a category has 0 items, it is completely hidden.
+//
+//  Each product:
+//    image       -> filename inside /images folder
+//    name        -> display name
+//    description -> full description
+//    size        -> e.g. "6″" or "2″ round"
+//    serves      -> e.g. "serves 4-6"
+//    rating      -> 1 to 5
+//    packs       -> { "Pack Name": { price: 123 }, ... }
+//
+//  Testimonials: edit the `testimonials` array at the bottom of this file.
 // ================================================================
 
 const productData = {
@@ -111,6 +128,9 @@ const productData = {
         ]
     },
 
+    // ============================================================
+    //  BISCUITS & BREADS section
+    // ============================================================
     biscuits: {
         icon: 'fa-cookie',
         label: 'Biscuits & Breads',
@@ -256,14 +276,17 @@ const productData = {
         ]
     },
 
+    // ============================================================
+    //  SNACKS section — updated names & descriptions
+    // ============================================================
     snacks: {
         icon: 'fa-utensils',
         label: 'Snacks',
         items: [
             {
                 image: 'biscuit1.jpg',
-                name: 'Badami Naan Khataai',
-                description: 'Traditional Pakistani biscuit made with almond flour and ghee, creating a crumbly, melt-in-mouth texture. Perfect with a cup of chai, this signature treat is a customer favourite.',
+                name: 'Puff Pastry Twister',
+                description: 'Golden, puffed spiral with a crisp, crunchy shell.',
                 size: '2″ round',
                 serves: 'serves 1',
                 rating: 5,
@@ -275,8 +298,8 @@ const productData = {
             },
             {
                 image: 'biscuit2.jpg',
-                name: 'Butter Cookies',
-                description: 'Classic butter cookies with a melt-in-mouth texture. Light, crisp, and perfectly buttery — a timeless treat for all ages.',
+                name: 'Donuts',
+                description: 'Donuts are typically ring-shaped or filled, known for their sweet glaze, diverse toppings, and soft, airy texture.',
                 size: '2″ round',
                 serves: 'serves 1',
                 rating: 4,
@@ -288,8 +311,8 @@ const productData = {
             },
             {
                 image: 'biscuit3.jpg',
-                name: 'Chocolate Chip Cookies',
-                description: 'Loaded with rich chocolate chips, these cookies are crispy on the edges and chewy in the center. A perfect treat with your afternoon tea.',
+                name: 'Brownie',
+                description: 'A dense, fudgy center and a distinctively thin, crinkly top crust.',
                 size: '2″ round',
                 serves: 'serves 1',
                 rating: 5,
@@ -301,8 +324,8 @@ const productData = {
             },
             {
                 image: 'biscuit4.jpg',
-                name: 'Coconut Macaroons',
-                description: 'Chewy coconut macaroons with a crisp exterior and soft, moist interior. Dipped in dark chocolate for extra richness.',
+                name: 'Croissant',
+                description: 'Croissant is a famous, crescent-shaped French pastry known for its golden, flaky crust and soft, buttery inside.',
                 size: '2″ round',
                 serves: 'serves 1',
                 rating: 4,
@@ -313,8 +336,8 @@ const productData = {
             },
             {
                 image: 'biscuit5.jpg',
-                name: 'Oatmeal Raisin Cookies',
-                description: 'Hearty oatmeal cookies with plump raisins and a hint of cinnamon. Soft, chewy, and full of wholesome flavor.',
+                name: 'Cinnamon Rolls',
+                description: 'Soft swirled dough with cinnamon-sugar filling, topped with vanilla glaze. Warm, buttery, and gooey.',
                 size: '2.5″ round',
                 serves: 'serves 1',
                 rating: 4,
