@@ -138,8 +138,8 @@ const productData = {
         items: [
             {
                 image: 'b1.jpg',
-                name: 'Puff Pastry Twister',
-                description: 'Golden, puffed spiral with a crisp, crunchy shell.',
+                name: 'Meringue Biscuits',
+                description: 'Light, airy, sweet little clouds that melt the moment you bite.',
                 size: '3″',
                 serves: 'serves 1-2',
                 rating: 4,
@@ -151,8 +151,8 @@ const productData = {
             },
             {
                 image: 'b2.jpg',
-                name: 'Donuts',
-                description: 'Donuts are typically ring-shaped or filled, known for their sweet glaze, diverse toppings, and soft, airy texture.',
+                name: 'Butter Cookies',
+                description: 'Premium Butter Cookies – Rich, Crispy & Melt-In-Mouth.',
                 size: '4″',
                 serves: 'serves 2',
                 rating: 4,
@@ -163,8 +163,8 @@ const productData = {
             },
             {
                 image: 'b3.jpg',
-                name: 'Brownie',
-                description: 'A dense, fudgy center and a distinctively thin, crinkly top crust.',
+                name: 'Morsels',
+                description: 'Our signature butter coin biscuits. Pale golden, crisp, melt-in-mouth & impossible to stop at one.',
                 size: '3″',
                 serves: 'serves 1',
                 rating: 5,
@@ -176,8 +176,8 @@ const productData = {
             },
             {
                 image: 'b4.jpg',
-                name: 'Croissant',
-                description: 'Croissant is a famous, crescent-shaped French pastry known for its golden, flaky crust and soft, buttery inside.',
+                name: 'Macaron',
+                description: 'A taste of Italy in Lahore.',
                 size: '3″',
                 serves: 'serves 1',
                 rating: 5,
@@ -189,8 +189,8 @@ const productData = {
             },
             {
                 image: 'b5.jpg',
-                name: 'Cinnamon Rolls',
-                description: 'Soft swirled dough with cinnamon-sugar filling, topped with vanilla glaze. Warm, buttery, and gooey.',
+                name: 'Badam Khatai',
+                description: 'A premium Badam Khatai, Golden, Buttery & Almond-Rich Delight.',
                 size: '4″',
                 serves: 'serves 1',
                 rating: 4,
@@ -337,15 +337,15 @@ const productData = {
             },
             {
                 image: 's6.jpg',
-                name: 'Raspberry Cake',
-                description: 'Soft, fluffy sponge layered with fresh raspberry filling and topped with creamy frosting. A fruity, tangy delight in every bite.',
-                size: '6″',
-                serves: 'serves 4-6',
+                name: 'Plain Tea Cake',
+                description: 'Soft, buttery & golden. Baked fresh daily with premium butter. Pure vanilla crumb — perfect with Tea. Light. Fluffy. Melt-in-mouth.',
+                size: '4″',
+                serves: 'serves 1-2',
                 rating: 5,
                 packs: {
-                    'Slice': { price: 400 },
-                    'Half (6″)': { price: 1400 },
-                    'Whole (8″)': { price: 2600 }
+                    'Single': { price: 100 },
+                    'Pack of 4': { price: 380 },
+                    'Pack of 6': { price: 550 }
                 }
             }
         ]
