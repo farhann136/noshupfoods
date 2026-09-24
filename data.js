@@ -24,8 +24,8 @@ const productData = {
         items: [
             {
                 image: 'desert1.jpg',
-                name: 'Tiramisu',
-                description: 'Classic Italian dessert with layers of coffee-soaked ladyfingers, creamy mascarpone, and a dusting of rich cocoa powder. A sophisticated treat for coffee lovers.',
+                name: 'Baked Cheese Cake',
+                description: 'Velvety cream cheese. Crunchy biscuit base. Topped with love. Not too sweet, just right.',
                 size: '6″',
                 serves: 'serves 4-6',
                 rating: 5,
