@@ -310,6 +310,145 @@
         .stars { color: var(--gold-star); letter-spacing: 2px; font-size: 0.95rem; }
         .stars .far { color: #d4c4d8; }
 
+        /* ===== Testimonials ===== */
+        .testimonials-section {
+            margin-top: 3rem;
+            padding: 2.5rem 1.25rem 2.5rem;
+            border-radius: 2rem;
+            background: linear-gradient(180deg, #F7F0FB 0%, #FCF7FD 100%);
+            border: 1px solid var(--soft-lavender);
+            position: relative;
+            overflow: hidden;
+        }
+        .testimonials-section::before {
+            content: "\201C";
+            position: absolute;
+            top: -1.5rem;
+            right: 1.5rem;
+            font-size: 12rem;
+            line-height: 1;
+            color: rgba(132, 51, 143, 0.07);
+            font-family: Georgia, serif;
+            pointer-events: none;
+        }
+
+        .testimonials-heading {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.4rem;
+        }
+        .testimonials-heading-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #fff;
+            background: linear-gradient(135deg, #9B5FBF, #6B1A77);
+            box-shadow: 0 8px 20px rgba(107, 26, 119, 0.25);
+            flex-shrink: 0;
+        }
+        .testimonials-title {
+            font-size: clamp(1.5rem, 4vw, 2.1rem);
+            font-weight: 800;
+            color: var(--dark-purple);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+        .testimonials-subtitle {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--medium-purple);
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .testimonials-intro {
+            color: var(--main-dark);
+            max-width: 620px;
+            margin: 0.75rem auto 2rem;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            border: 1px solid var(--soft-lavender);
+            border-radius: 1.5rem;
+            padding: 1.5rem 1.4rem 1.3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -12px rgba(107, 26, 119, 0.22);
+            border-color: var(--medium-purple);
+        }
+        .testimonial-card .quote-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            font-size: 1.5rem;
+            color: var(--soft-lavender);
+            opacity: 0.9;
+        }
+        .testimonial-text {
+            color: var(--main-dark);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .testimonial-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding-top: 0.85rem;
+            border-top: 1px dashed var(--soft-lavender);
+        }
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+            box-shadow: 0 6px 14px rgba(107, 26, 119, 0.2);
+        }
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--dark-purple);
+            font-size: 1rem;
+            line-height: 1.2;
+            margin: 0;
+        }
+        .testimonial-location {
+            font-size: 0.8rem;
+            color: var(--medium-purple);
+            margin: 0;
+        }
+        .testimonial-location i {
+            margin-right: 0.25rem;
+        }
+        .testimonial-stars {
+            color: var(--gold-star);
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
         /* ===== Modal ===== */
         .modal-overlay {
             display: none;
@@ -558,6 +697,9 @@
                 right: 16px;
             }
             #floatingWhatsApp .wa-tooltip { display: none; }
+
+            .testimonials-section { padding: 2rem 1rem; }
+            .testimonials-heading-badge { width: 50px; height: 50px; font-size: 1.3rem; }
         }
 
         @media (max-width: 640px) {
@@ -598,7 +740,7 @@
         </div>
 
         <!-- Desktop Navigation -->
-        <nav class="desktop-nav flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0" id="desktopNav"></nav>
+        <nav class="desktop-nav flex flex-wrap gap-2 md:gap-4 mt-2 md:mt-0 items-center" id="desktopNav"></nav>
 
         <!-- Mobile Hamburger Button -->
         <div class="mobile-menu-trigger">
@@ -664,6 +806,26 @@
                 <i class="fas fa-cheese" style="color: var(--medium-purple);"></i> Cheese Danish
             </span>
         </div>
+
+        <!-- ===== TESTIMONIALS ===== -->
+        <section class="testimonials-section" id="testimonials">
+            <div class="text-center">
+                <div class="testimonials-heading justify-center">
+                    <div class="testimonials-heading-badge">
+                        <i class="fas fa-comment-heart"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="testimonials-subtitle">Loved By Our Customers</div>
+                        <h2 class="testimonials-title">What They Say</h2>
+                    </div>
+                </div>
+                <p class="testimonials-intro">
+                    Real stories from real customers across Pakistan — a slice of happiness in every bite.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="testimonialsGrid"></div>
+        </section>
     </div>
 
     <!-- ===== FOOTER ===== -->
@@ -752,6 +914,15 @@
 
         const WHATSAPP_NUMBER = '923228837335';
 
+        // Avatar gradient palette — cycles per testimonial
+        const AVATAR_GRADIENTS = [
+            'linear-gradient(135deg, #E46A9D, #C13B75)',
+            'linear-gradient(135deg, #F0A93B, #D4881B)',
+            'linear-gradient(135deg, #7CB342, #558B2F)',
+            'linear-gradient(135deg, #5C9BD1, #3579B5)',
+            'linear-gradient(135deg, #9B5FBF, #6B1A77)'
+        ];
+
         let flatProducts = [];
 
         function getCategoriesWithItems() {
@@ -765,7 +936,16 @@
             return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
         }
 
-        // ---------- Header Nav ----------
+        function getInitials(fullName) {
+            return fullName
+                .split(' ')
+                .filter(Boolean)
+                .slice(0, 2)
+                .map(w => w[0].toUpperCase())
+                .join('');
+        }
+
+        // ---------- Header Nav (categories + Reviews link) ----------
         function renderCategoryNav() {
             const desktopNav = document.getElementById('desktopNav');
             const mobileMenu = document.getElementById('mobileMenu');
@@ -789,6 +969,21 @@
                     </a>
                 `;
             });
+
+            // Reviews nav link (desktop + mobile)
+            desktopHtml += `
+                <a href="#testimonials" class="text-sm md:text-base font-semibold transition px-2 py-1 rounded-full"
+                   style="color: var(--dark-purple);"
+                   onmouseover="this.style.color='var(--noshup-purple)'"
+                   onmouseout="this.style.color='var(--dark-purple)'">
+                    <i class="fas fa-star" style="color: var(--medium-purple);"></i> Reviews
+                </a>
+            `;
+            mobileHtml += `
+                <a href="#testimonials" class="mobile-nav-link">
+                    <i class="fas fa-star" style="color: var(--medium-purple); width: 1.5rem;"></i> Reviews
+                </a>
+            `;
 
             desktopNav.innerHTML = desktopHtml;
             mobileMenu.innerHTML = mobileHtml;
@@ -906,6 +1101,44 @@
             });
         }
 
+        // ---------- Testimonials ----------
+        function renderTestimonials() {
+            const grid = document.getElementById('testimonialsGrid');
+            if (!grid) return;
+
+            if (typeof testimonials === 'undefined' || !Array.isArray(testimonials) || testimonials.length === 0) {
+                grid.innerHTML = `<p class="text-center col-span-full" style="color: var(--main-dark);">No reviews yet.</p>`;
+                return;
+            }
+
+            let html = '';
+            testimonials.forEach((t, i) => {
+                const rating = t.rating || 5;
+                const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+                const initials = getInitials(t.name || 'Customer');
+                const gradient = AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length];
+
+                html += `
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right quote-icon"></i>
+                        <div class="testimonial-stars">${stars}</div>
+                        <p class="testimonial-text">&ldquo;${t.text}&rdquo;</p>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar" style="background: ${gradient};">
+                                ${initials}
+                            </div>
+                            <div>
+                                <p class="testimonial-name">${t.name}</p>
+                                <p class="testimonial-location"><i class="fas fa-map-marker-alt"></i>${t.location || ''}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = html;
+        }
+
         // ---------- Flat list for modal ----------
         function buildFlatProducts() {
             const flat = [];
@@ -998,6 +1231,7 @@
                 flatProducts = buildFlatProducts();
                 renderCategoryNav();
                 renderProducts();
+                renderTestimonials();
             } else {
                 console.error('productData not found — make sure data.js is loaded before the main script');
                 document.getElementById('productContainer').innerHTML =
