@@ -44,6 +44,7 @@
 
         .animate-float { animation: floatGlow 4s ease-in-out infinite; }
 
+        /* ===== Hero ===== */
         .hero-section {
             background: url('images/hero.png') center/cover no-repeat;
             position: relative;
@@ -104,6 +105,7 @@
             border: 1px solid rgba(0,0,0,0.1);
         }
 
+        /* ===== Product card ===== */
         .product-card {
             transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
             cursor: pointer;
@@ -198,7 +200,7 @@
 
         .stars { color: var(--gold-star); letter-spacing: 2px; font-size: 0.95rem; }
 
-        /* ===== Testimonials ===== */
+        /* ===== Testimonials Carousel ===== */
         .testimonials-section {
             background: linear-gradient(180deg, #F7F0FB 0%, #FCF7FD 100%);
             border-top: 1px solid var(--soft-lavender);
@@ -226,55 +228,153 @@
         .testimonials-intro {
             color: var(--main-dark);
             max-width: 620px;
-            margin: 0.75rem auto 2rem;
+            margin: 0.75rem auto 2.2rem;
             text-align: center;
             font-size: 1rem;
             line-height: 1.6;
         }
 
+        .testimonial-carousel {
+            position: relative;
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tc-viewport {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 1.75rem;
+            min-width: 0;
+        }
+
+        .tc-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .tc-slide {
+            min-width: 100%;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         .testimonial-card {
             background: #fff;
             border: 1px solid var(--soft-lavender);
-            border-radius: 1.5rem;
-            padding: 1.5rem 1.4rem 1.3rem;
+            border-radius: 1.75rem;
+            padding: 2.25rem 2rem 1.75rem;
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
-            height: 100%;
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            gap: 1rem;
             position: relative;
+            text-align: center;
+            box-shadow: 0 12px 30px -12px rgba(107,26,119,0.15);
         }
-        .testimonial-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px -12px rgba(107,26,119,0.22);
-            border-color: var(--medium-purple);
-        }
-        .testimonial-card .quote-icon {
+        .testimonial-card::before {
+            content: "\201C";
             position: absolute;
-            top: 1rem;
-            right: 1.25rem;
-            font-size: 1.4rem;
+            top: -0.5rem;
+            left: 1.5rem;
+            font-family: Georgia, serif;
+            font-size: 6rem;
+            line-height: 1;
             color: var(--soft-lavender);
+            opacity: 0.5;
+            pointer-events: none;
         }
-        .testimonial-text { color: var(--main-dark); font-size: 0.95rem; line-height: 1.6; flex-grow: 1; margin: 0; }
+        .testimonial-quote-icon {
+            font-size: 1.5rem;
+            color: var(--medium-purple);
+            opacity: 0.7;
+            margin: 0 auto 0.25rem;
+        }
+        .testimonial-stars {
+            color: var(--gold-star);
+            letter-spacing: 3px;
+            font-size: 1.1rem;
+        }
+        .testimonial-text {
+            color: var(--main-dark);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-style: italic;
+            margin: 0.25rem 0 0.5rem;
+            flex-grow: 1;
+        }
+
         .testimonial-footer {
             display: flex;
             align-items: center;
-            gap: 0.85rem;
-            padding-top: 0.85rem;
+            justify-content: center;
+            gap: 0.9rem;
+            padding-top: 1rem;
             border-top: 1px dashed var(--soft-lavender);
         }
         .testimonial-avatar {
-            width: 48px; height: 48px; border-radius: 50%;
+            width: 52px; height: 52px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: #fff; font-weight: 700; font-size: 1rem;
+            color: #fff; font-weight: 700; font-size: 1.05rem;
             letter-spacing: 0.5px; flex-shrink: 0;
             box-shadow: 0 6px 14px rgba(107,26,119,0.2);
         }
+        .testimonial-author { text-align: left; }
         .testimonial-name { font-weight: 700; color: var(--dark-purple); font-size: 1rem; line-height: 1.2; margin: 0; }
-        .testimonial-location { font-size: 0.8rem; color: var(--medium-purple); margin: 0; }
+        .testimonial-location { font-size: 0.82rem; color: var(--medium-purple); margin: 0.15rem 0 0; }
         .testimonial-location i { margin-right: 0.25rem; }
-        .testimonial-stars { color: var(--gold-star); letter-spacing: 2px; font-size: 0.9rem; }
+
+        .tc-arrow {
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            border: 1px solid var(--soft-lavender);
+            background: #fff;
+            color: var(--dark-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            box-shadow: 0 6px 14px rgba(107,26,119,0.08);
+            flex-shrink: 0;
+        }
+        .tc-arrow:hover {
+            background: var(--noshup-purple);
+            color: #fff;
+            border-color: var(--noshup-purple);
+            transform: scale(1.06);
+            box-shadow: 0 10px 22px rgba(107,26,119,0.25);
+        }
+        .tc-arrow:active { transform: scale(0.97); }
+        .tc-arrow:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .tc-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .tc-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: var(--soft-lavender);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+        .tc-dot:hover { background: var(--medium-purple); transform: scale(1.15); }
+        .tc-dot.active {
+            width: 28px;
+            background: linear-gradient(90deg, #9B5FBF, #6B1A77);
+            box-shadow: 0 4px 12px rgba(107,26,119,0.3);
+        }
 
         /* ===== Modal ===== */
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
@@ -367,6 +467,7 @@
         }
         #floatingWhatsApp:hover .wa-tooltip { opacity: 1; transform: translateY(-50%) translateX(0); }
 
+        /* ===== Responsive ===== */
         @media (max-width: 768px) {
             .hero-slide-item { white-space: normal; font-size: 1.2rem; padding: 0.3rem 1.2rem; height: auto; min-height: 3.6rem; }
             .hero-slider-wrapper { height: 4.6rem; }
@@ -385,8 +486,34 @@
             .modal-image { height: 180px; }
             #floatingWhatsApp { width: 54px; height: 54px; font-size: 1.75rem; bottom: 16px; right: 16px; }
             #floatingWhatsApp .wa-tooltip { display: none; }
-            .testimonials-section { padding: 2rem 0; }
+
+            .testimonials-section { padding: 2.5rem 0; }
             .testimonials-heading-badge { width: 50px; height: 50px; font-size: 1.3rem; }
+
+            .testimonial-carousel { gap: 0.4rem; }
+            .tc-arrow { width: 38px; height: 38px; font-size: 0.9rem; }
+            .testimonial-card { padding: 1.75rem 1.25rem 1.4rem; border-radius: 1.4rem; }
+            .testimonial-card::before { font-size: 4rem; left: 1rem; top: -0.25rem; }
+            .testimonial-text { font-size: 0.97rem; }
+            .testimonial-avatar { width: 46px; height: 46px; font-size: 0.95rem; }
+            .tc-dot { width: 8px; height: 8px; }
+            .tc-dot.active { width: 22px; }
+        }
+
+        @media (max-width: 480px) {
+            .tc-arrow {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 5;
+                background: rgba(255,255,255,0.95);
+                backdrop-filter: blur(6px);
+            }
+            .tc-arrow:hover { transform: translateY(-50%) scale(1.06); }
+            .tc-prev { left: -6px; }
+            .tc-next { right: -6px; }
+            .testimonial-carousel { gap: 0; }
+            .tc-viewport { border-radius: 1.4rem; }
         }
 
         @media (max-width: 640px) {
@@ -467,7 +594,7 @@
         </div>
     </div>
 
-    <!-- ===== TESTIMONIALS (standalone, before footer) ===== -->
+    <!-- ===== TESTIMONIALS CAROUSEL ===== -->
     <section class="testimonials-section" id="testimonials">
         <div class="container mx-auto px-4">
             <div class="text-center">
@@ -485,9 +612,27 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="testimonialsGrid">
-                <p class="text-center col-span-full py-6" style="color: var(--main-dark);">Loading reviews…</p>
+            <div class="testimonial-carousel" id="tcCarousel">
+                <button class="tc-arrow tc-prev" id="tcPrev" aria-label="Previous review">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="tc-viewport">
+                    <div class="tc-track" id="tcTrack">
+                        <div class="tc-slide">
+                            <div class="testimonial-card">
+                                <p class="text-center" style="color: var(--main-dark);">Loading reviews…</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="tc-arrow tc-next" id="tcNext" aria-label="Next review">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
+
+            <div class="tc-dots" id="tcDots"></div>
         </div>
     </section>
 
@@ -567,7 +712,6 @@
     <!-- ===== Data + logic ===== -->
     <script src="data.js"></script>
     <script>
-        // ---- Debug: confirm data.js loaded ----
         console.log('[Noshup] data.js loaded → productData:', typeof productData, '| testimonials:', typeof testimonials);
 
         const FALLBACK_SVG = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect fill='%23F3E6F5' width='400' height='200'/%3E%3Ctext x='50' y='120' font-size='24' fill='%236B1A77'%3E%F0%9F%8D%B0 fresh%3C/text%3E%3C/svg%3E`;
@@ -736,53 +880,176 @@
             });
         }
 
-        // ---------- Testimonials ----------
+        // ---------- Testimonials Carousel ----------
+        const TC_AUTOPLAY_MS = 5500;
+
+        const tcState = {
+            index: 0,
+            count: 0,
+            timerId: null,
+            trackEl: null,
+            dotsEl: null
+        };
+
         function renderTestimonials() {
-            const grid = document.getElementById('testimonialsGrid');
-            if (!grid) {
-                console.warn('[Testimonials] #testimonialsGrid not found in DOM');
+            const trackEl = document.getElementById('tcTrack');
+            const dotsEl = document.getElementById('tcDots');
+            const prevBtn = document.getElementById('tcPrev');
+            const nextBtn = document.getElementById('tcNext');
+            const carouselEl = document.getElementById('tcCarousel');
+
+            if (!trackEl || !dotsEl || !prevBtn || !nextBtn) {
+                console.warn('[Testimonials] Carousel elements missing in DOM');
                 return;
             }
 
-            try {
-                const list = (typeof testimonials !== 'undefined' && Array.isArray(testimonials)) ? testimonials : [];
-                console.log('[Testimonials] Rendering', list.length, 'items');
+            const list = (typeof testimonials !== 'undefined' && Array.isArray(testimonials)) ? testimonials : [];
+            console.log('[Testimonials] Rendering carousel with', list.length, 'items');
 
-                if (list.length === 0) {
-                    grid.innerHTML = `<p class="text-center col-span-full py-6" style="color: var(--main-dark);">No reviews yet.</p>`;
-                    return;
-                }
-
-                let html = '';
-                list.forEach((t, i) => {
-                    const rating = Math.max(1, Math.min(5, t.rating || 5));
-                    const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-                    const initials = getInitials(t.name || 'Customer');
-                    const gradient = AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length];
-
-                    html += `
+            if (list.length === 0) {
+                trackEl.innerHTML = `
+                    <div class="tc-slide">
                         <div class="testimonial-card">
-                            <i class="fas fa-quote-right quote-icon"></i>
+                            <p class="text-center" style="color: var(--main-dark);">No reviews yet.</p>
+                        </div>
+                    </div>`;
+                dotsEl.innerHTML = '';
+                return;
+            }
+
+            tcState.count = list.length;
+            tcState.trackEl = trackEl;
+            tcState.dotsEl = dotsEl;
+
+            // Build slides
+            let slidesHtml = '';
+            let dotsHtml = '';
+            list.forEach((t, i) => {
+                const rating = Math.max(1, Math.min(5, t.rating || 5));
+                const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+                const initials = getInitials(t.name || 'Customer');
+                const gradient = AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length];
+
+                slidesHtml += `
+                    <div class="tc-slide" aria-hidden="${i === 0 ? 'false' : 'true'}">
+                        <div class="testimonial-card">
+                            <i class="fas fa-quote-left testimonial-quote-icon"></i>
                             <div class="testimonial-stars">${stars}</div>
                             <p class="testimonial-text">&ldquo;${t.text}&rdquo;</p>
                             <div class="testimonial-footer">
                                 <div class="testimonial-avatar" style="background: ${gradient};">${initials}</div>
-                                <div>
+                                <div class="testimonial-author">
                                     <p class="testimonial-name">${t.name}</p>
                                     <p class="testimonial-location"><i class="fas fa-map-marker-alt"></i>${t.location || ''}</p>
                                 </div>
                             </div>
-                        </div>`;
+                        </div>
+                    </div>`;
+                dotsHtml += `<button class="tc-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="Go to review ${i + 1}"></button>`;
+            });
+
+            trackEl.innerHTML = slidesHtml;
+            dotsEl.innerHTML = dotsHtml;
+
+            // Dot click handlers
+            dotsEl.querySelectorAll('.tc-dot').forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const idx = parseInt(dot.dataset.index, 10);
+                    goToSlide(idx);
+                    restartAutoplay();
                 });
-                grid.innerHTML = html;
-                console.log('[Testimonials] ✓ Rendered successfully');
-            } catch (err) {
-                console.error('[Testimonials] Error:', err);
-                grid.innerHTML = `<p class="text-center col-span-full py-6" style="color: #b91c1c;">Could not load reviews. Check console.</p>`;
+            });
+
+            // Arrow handlers
+            prevBtn.addEventListener('click', () => { prevSlide(); restartAutoplay(); });
+            nextBtn.addEventListener('click', () => { nextSlide(); restartAutoplay(); });
+
+            // Pause on hover
+            carouselEl.addEventListener('mouseenter', stopAutoplay);
+            carouselEl.addEventListener('mouseleave', startAutoplay);
+
+            // Keyboard support
+            document.addEventListener('keydown', (e) => {
+                if (!isCarouselInView()) return;
+                if (e.key === 'ArrowLeft') { prevSlide(); restartAutoplay(); }
+                if (e.key === 'ArrowRight') { nextSlide(); restartAutoplay(); }
+            });
+
+            // Touch swipe
+            let touchStartX = 0;
+            let touchEndX = 0;
+            carouselEl.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAutoplay();
+            }, { passive: true });
+            carouselEl.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) nextSlide();
+                    else prevSlide();
+                }
+                startAutoplay();
+            }, { passive: true });
+
+            // Init first slide position
+            updateCarousel();
+            startAutoplay();
+            console.log('[Testimonials] ✓ Carousel ready');
+        }
+
+        function goToSlide(i) {
+            if (tcState.count === 0) return;
+            tcState.index = (i + tcState.count) % tcState.count;
+            updateCarousel();
+        }
+
+        function nextSlide() { goToSlide(tcState.index + 1); }
+        function prevSlide() { goToSlide(tcState.index - 1); }
+
+        function updateCarousel() {
+            if (!tcState.trackEl) return;
+            tcState.trackEl.style.transform = `translateX(-${tcState.index * 100}%)`;
+
+            // Update dots
+            tcState.dotsEl.querySelectorAll('.tc-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === tcState.index);
+            });
+
+            // Update aria-hidden on slides
+            tcState.trackEl.querySelectorAll('.tc-slide').forEach((slide, i) => {
+                slide.setAttribute('aria-hidden', i === tcState.index ? 'false' : 'true');
+            });
+        }
+
+        function startAutoplay() {
+            stopAutoplay();
+            if (tcState.count <= 1) return;
+            tcState.timerId = setInterval(() => {
+                nextSlide();
+            }, TC_AUTOPLAY_MS);
+        }
+
+        function stopAutoplay() {
+            if (tcState.timerId) {
+                clearInterval(tcState.timerId);
+                tcState.timerId = null;
             }
         }
 
-        // ---------- Flat list ----------
+        function restartAutoplay() {
+            stopAutoplay();
+            startAutoplay();
+        }
+
+        function isCarouselInView() {
+            const el = document.getElementById('tcCarousel');
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            return rect.top < window.innerHeight && rect.bottom > 0;
+        }
+
+        // ---------- Flat list for modal ----------
         function buildFlatProducts() {
             const flat = [];
             getCategoriesWithItems().forEach(([_, cat]) => cat.items.forEach(item => flat.push(item)));
@@ -861,7 +1128,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log('[Init] DOM ready, bootstrapping…');
 
-            // Always attempt testimonials first (independent of products)
             renderTestimonials();
 
             if (typeof productData !== 'undefined') {
