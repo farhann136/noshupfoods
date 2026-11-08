@@ -28,101 +28,121 @@ const productData = {
                 image: 'desert1.jpg',
                 name: 'Baked Cheese Cake',
                 description: 'Velvety cream cheese. Crunchy biscuit base. Topped with love. Not too sweet, just right.',
-                size: '6″',
-                serves: 'serves 4-6',
+                size: '2 lb',
+                serves: 'serves 8-10',
                 rating: 5,
                 packs: {
-                    'Small (4 pcs)': { price: 850 },
-                    'Medium (6 pcs)': { price: 1200 },
-                    'Large (9 pcs)': { price: 1750 }
+                    '2 lb': { price: 3000 }
                 }
             },
             {
                 image: 'desert2.jpg',
                 name: 'Rich Nutella Fudge Cake',
                 description: 'Dense chocolate fudge cake loaded with Nutella. Gooey, rich, and melt-in-mouth. For real chocolate lovers.',
-                size: '7″',
-                serves: 'serves 6-8',
+                size: '2 lb',
+                serves: 'serves 8-10',
                 rating: 5,
                 packs: {
-                    'Slice': { price: 450 },
-                    'Half (6″)': { price: 1500 },
-                    'Whole (7″)': { price: 2800 }
+                    '2 lb': { price: 2000 }
                 }
             },
             {
                 image: 'desert3.jpg',
                 name: 'Red Velvet Cake',
                 description: 'Classic red velvet layers filled with smooth cream cheese. Luxuriously soft, subtly cocoa, and made to melt.',
-                size: '7″',
-                serves: 'serves 6-8',
+                size: '2 lb',
+                serves: 'serves 8-10',
                 rating: 5,
                 packs: {
-                    'Slice': { price: 450 },
-                    'Half (6″)': { price: 1500 },
-                    'Whole (7″)': { price: 2800 }
+                    '2 lb': { price: 3200 }
                 }
             },
             {
                 image: 'desert4.jpg',
                 name: 'Lemon Tart',
                 description: 'Bright lemon tart. No preservatives. Just real citrus goodness.',
-                size: '4″',
+                size: 'Single',
                 serves: 'serves 1-2',
                 rating: 4,
                 packs: {
-                    'Single': { price: 400 },
-                    'Twin Pack': { price: 750 }
+                    'Single': { price: 250 }
                 }
             },
             {
                 image: 'desert5.jpg',
                 name: 'Tiramisu',
                 description: 'Tiramisu is a silky and creamy dessert that brings a touch of elegance to every occasion.',
-                size: '4″',
-                serves: 'serves 1-2',
+                size: 'Slice',
+                serves: 'serves 1',
                 rating: 5,
                 packs: {
-                    'Single': { price: 550 },
-                    'Box of 4': { price: 2000 }
+                    'Slice': { price: 400 }
                 }
             },
             {
                 image: 'desert7.jpg',
                 name: 'Loaded Chocolate Muffin',
                 description: 'Chocolate muffins are rich, tender, and fluffy baked treats featuring a deep cocoa flavor with loaded chocolate.',
-                size: '2.5″',
+                size: 'Single',
                 serves: 'serves 1',
                 rating: 5,
                 packs: {
-                    'Box of 4': { price: 800 },
-                    'Box of 6': { price: 1150 },
-                    'Box of 12': { price: 2200 }
+                    'Single': { price: 200 }
                 }
             },
             {
                 image: 'desert8.jpg',
                 name: 'Red Velvet Muffin',
                 description: 'Red velvet muffin: Soft, moist, vibrant red crumb with a hint of cocoa.',
-                size: '2.5″',
+                size: 'Single',
                 serves: 'serves 1',
                 rating: 4,
                 packs: {
-                    'Single': { price: 350 },
-                    'Box of 4': { price: 1300 }
+                    'Single': { price: 200 }
                 }
             },
             {
                 image: 'desert9.jpg',
                 name: 'Three Milk Cake',
                 description: 'Soaked in milk. Drowned in cream. Light, fluffy, and not too sweet. The comfort dessert you\'ll crave.',
-                size: '3″ cup',
+                size: '1 lb',
+                serves: 'serves 4-6',
+                rating: 5,
+                packs: {
+                    '1 lb': { price: 2000 }
+                }
+            },
+            {
+                image: 'desert10.jpg',
+                name: 'Three Milk Sundae',
+                description: 'Layers of three-milk soaked cake topped with cream. Light, creamy, and dreamy in every spoon.',
+                size: 'Cup',
                 serves: 'serves 1',
                 rating: 5,
                 packs: {
-                    'Single Cup': { price: 300 },
-                    'Pack of 4': { price: 1100 },
-                    'Pack of 6': { price: 1600 }
+                    'Single Cup': { price: 300 }
+                }
+            },
+            {
+                image: 'desert11.jpg',
+                name: 'Red Velvet Sundae',
+                description: 'Red velvet cake crumbles layered with cream and topped with a velvety finish. Elegant in a cup.',
+                size: 'Cup',
+                serves: 'serves 1',
+                rating: 5,
+                packs: {
+                    'Single Cup': { price: 300 }
+                }
+            },
+            {
+                image: 'desert12.jpg',
+                name: 'Lotus Sundae',
+                description: 'Lotus Biscoff crumbles, caramel cream, and cake layered into a rich, indulgent sundae.',
+                size: 'Cup',
+                serves: 'serves 1',
+                rating: 5,
+                packs: {
+                    'Single Cup': { price: 400 }
                 }
             }
         ]
@@ -130,7 +150,7 @@ const productData = {
 
     // ============================================================
     //  BISCUITS & BREADS section
-    //  Image names: b1.jpg → b10.jpg
+    //  Image names: b1.jpg → b11.jpg
     // ============================================================
     biscuits: {
         icon: 'fa-cookie',
@@ -140,100 +160,88 @@ const productData = {
                 image: 'b1.jpg',
                 name: 'Meringue Biscuits',
                 description: 'Light, airy, sweet little clouds that melt the moment you bite.',
-                size: '3″',
-                serves: 'serves 1-2',
+                size: '500 g',
+                serves: 'serves 6-8',
                 rating: 4,
                 packs: {
-                    'Pack of 4': { price: 400 },
-                    'Pack of 8': { price: 750 },
-                    'Pack of 12': { price: 1100 }
+                    '500 g': { price: 1000 }
                 }
             },
             {
                 image: 'b2.jpg',
                 name: 'Butter Cookies',
                 description: 'Premium Butter Cookies – Rich, Crispy & Melt-In-Mouth.',
-                size: '4″',
-                serves: 'serves 2',
+                size: '1 kg',
+                serves: 'serves 10-12',
                 rating: 4,
                 packs: {
-                    '6 pcs': { price: 500 },
-                    '12 pcs': { price: 950 }
+                    '1 kg': { price: 1200 }
                 }
             },
             {
                 image: 'b3.jpg',
-                name: 'Morsels',
+                name: 'Butter Morsels',
                 description: 'Our signature butter coin biscuits. Pale golden, crisp, melt-in-mouth & impossible to stop at one.',
-                size: '3″',
-                serves: 'serves 1',
+                size: 'Box',
+                serves: 'serves 4-6',
                 rating: 5,
                 packs: {
-                    'Box of 4': { price: 600 },
-                    'Box of 8': { price: 1100 },
-                    'Box of 12': { price: 1600 }
+                    'Box': { price: 350 }
                 }
             },
             {
                 image: 'b4.jpg',
                 name: 'Macaron',
                 description: 'A taste of Italy in Lahore.',
-                size: '3″',
-                serves: 'serves 1',
+                size: '4 pcs',
+                serves: 'serves 2-4',
                 rating: 5,
                 packs: {
-                    '4 pcs': { price: 300 },
-                    '8 pcs': { price: 550 },
-                    '12 pcs': { price: 800 }
+                    '4 pcs': { price: 750 }
                 }
             },
             {
                 image: 'b5.jpg',
                 name: 'Badam Khatai',
                 description: 'A premium Badam Khatai, Golden, Buttery & Almond-Rich Delight.',
-                size: '4″',
-                serves: 'serves 1',
+                size: '1 kg',
+                serves: 'serves 10-12',
                 rating: 4,
                 packs: {
-                    '2 pcs': { price: 350 },
-                    '4 pcs': { price: 650 },
-                    '6 pcs': { price: 950 }
+                    '1 kg': { price: 2200 }
                 }
             },
             {
                 image: 'b6.jpg',
-                name: 'Butter Cake Rusk',
+                name: 'Milky Cake Rusk',
                 description: 'Golden, buttery, double-baked for extra crunch. Light, crispy, melts with chai.',
-                size: '4″',
-                serves: 'serves 1-2',
+                size: '1 kg',
+                serves: 'serves 8-10',
                 rating: 4,
                 packs: {
-                    '4 pcs': { price: 300 },
-                    '8 pcs': { price: 550 }
+                    '1 kg': { price: 1300 }
                 }
             },
             {
                 image: 'b7.jpg',
                 name: 'Sourdough Bread',
                 description: 'Slow-fermented, crusty outside, cloud-soft inside with an open airy crumb. The classic artisan loaf.',
-                size: '6″',
-                serves: 'serves 2',
+                size: 'Loaf',
+                serves: 'serves 2-4',
                 rating: 4,
                 packs: {
-                    '4 pcs': { price: 350 },
-                    '8 pcs': { price: 650 }
+                    'Loaf': { price: 200 }
                 }
             },
             {
                 image: 'b8.jpg',
                 name: 'Burger Bun',
                 description: 'Soft, fresh, and delicious burger buns with a light, fluffy texture—perfect for juicy burgers, sandwiches, and homemade meals.',
-                size: '2″',
+                size: '2 pcs',
                 serves: 'serves 1-2',
                 rating: 5,
                 packs: {
-                    '6 pcs': { price: 400 },
-                    '12 pcs': { price: 750 }
+                    '2 pcs': { price: 50 }
                 }
             },
             {
@@ -244,21 +252,29 @@ const productData = {
                 serves: 'serves 1-2',
                 rating: 5,
                 packs: {
-                    'Small': { price: 250 },
-                    'Medium': { price: 350 },
-                    'Large': { price: 450 }
+                    'Regular': { price: 200 }
                 }
             },
             {
                 image: 'b10.jpg',
                 name: 'Chip Cookies',
                 description: 'Artisan Choco Chunk – Decadent. Gooey. Irresistible.',
-                size: '6″',
-                serves: 'serves 2',
+                size: '2 pcs',
+                serves: 'serves 1-2',
                 rating: 4,
                 packs: {
-                    '4 pcs': { price: 350 },
-                    '8 pcs': { price: 650 }
+                    '2 pcs': { price: 300 }
+                }
+            },
+            {
+                image: 'b11.jpg',
+                name: 'Potato Bun',
+                description: 'Soft, pillowy potato buns with a tender crumb — perfect for burgers, sandwiches, or a quick snack.',
+                size: '2 pcs',
+                serves: 'serves 1-2',
+                rating: 5,
+                packs: {
+                    '2 pcs': { price: 75 }
                 }
             }
         ]
