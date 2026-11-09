@@ -113,7 +113,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert10.jpg',
+                image: 'desert10.jpeg',
                 name: 'Three Milk Sundae',
                 description: 'Layers of three-milk soaked cake topped with cream. Light, creamy, and dreamy in every spoon.',
                 size: 'Cup',
@@ -124,7 +124,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert11.jpg',
+                image: 'desert11.jpeg',
                 name: 'Red Velvet Sundae',
                 description: 'Red velvet cake crumbles layered with cream and topped with a velvety finish. Elegant in a cup.',
                 size: 'Cup',
@@ -135,7 +135,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert12.jpg',
+                image: 'desert12.jpeg',
                 name: 'Lotus Sundae',
                 description: 'Lotus Biscoff crumbles, caramel cream, and cake layered into a rich, indulgent sundae.',
                 size: 'Cup',
