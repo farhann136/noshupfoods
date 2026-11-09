@@ -267,7 +267,7 @@ const productData = {
                 }
             },
             {
-                image: 'b11.jpg',
+                image: 'b11.jpeg',
                 name: 'Potato Bun',
                 description: 'Soft, pillowy potato buns with a tender crumb — perfect for burgers, sandwiches, or a quick snack.',
                 size: '2 pcs',
