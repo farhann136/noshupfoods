@@ -69,7 +69,7 @@ const productData = {
                 }
             },
             {
-                image: 'desert5.jpg',
+                image: 'tiramasu.jpeg',
                 name: 'Tiramisu',
                 description: 'Tiramisu is a silky and creamy dessert that brings a touch of elegance to every occasion.',
                 size: 'Slice',
